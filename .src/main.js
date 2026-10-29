@@ -51,6 +51,9 @@
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(r.status); e.data = j; throw e; } return j; }); });
   }
   var ASSETS = window.CITRIC_ASSETS || 'assets/';
+  // Boshqa domendagi nusxa (Vercel): API va sertifikatlar asosiy hostingdan olinadi
+  var API = window.CITRIC_API || '';
+  var SITE = window.CITRIC_SITE || '';
   document.addEventListener('error', function (e) {
     var img = e.target;
     if (img.tagName === 'IMG' && img.getAttribute('data-fallback') && img.src.indexOf(img.getAttribute('data-fallback')) === -1) {
@@ -58,7 +61,7 @@
     }
   }, true);
   var CERT_FILES = ['sertfikat1.webp', 'serfikat2.webp', 'sertfikat3.webp', 'sertfikat4.webp', 'serfikat5.webp', 'sertfikat6.webp'];
-  function certSrc(i) { return 'rasmlar/' + CERT_FILES[i]; }
+  function certSrc(i) { return SITE + 'rasmlar/' + CERT_FILES[i]; }
   function certFallback(i) { return ASSETS + 'certificates/cert-' + (i + 1) + '.webp'; }
   var CERTS = [
     { type: { uz: 'Ekologik sertifikat', ru: 'Экологический сертификат', en: 'Environmental certificate' },
@@ -349,7 +352,11 @@
   }
   function loadProducts() {
     setProducts(window.CITRIC_PRODUCTS || []);
-    return Promise.resolve();
+    if (!API) return Promise.resolve();
+    // Vercel nusxasi: admin paneldagi o'zgarishlar darhol ko'rinishi uchun ro'yxat asosiy saytdan olinadi
+    return fetch(API + '?api=products').then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.products && j.products.length) setProducts(j.products);
+    }).catch(function () {});
   }
   function renderFilters() {
     $('#filters').innerHTML = CATEGORIES.map(function (c) {
@@ -579,7 +586,7 @@
   function track(type, ids) {
     ids = ids.filter(function (id) { return typeof id === 'number'; });
     if (!ids.length) return;
-    post('?api=track', { type: type, ids: ids }).catch(function () {});
+    post(API + '?api=track', { type: type, ids: ids }).catch(function () {});
   }
   var viewObs = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
@@ -694,7 +701,7 @@
     if (!okName || !okPhone || !cart.length) return;
     var btn = $('#orderBtn');
     btn.classList.add('loading');
-    post('?api=lead', {
+    post(API + '?api=lead', {
       type: 'order', lang: lang, name: form.name.value, phone: form.phone.value, website: form.website.value,
       items: cart.map(function (c) { return { id: c.id, qty: c.qty }; })
     }).then(function (r) {
@@ -725,7 +732,7 @@
     new FormData(form).forEach(function (v, k) { data[k] = v; });
     data.type = 'form';
     data.lang = lang;
-    post('?api=lead', data).then(function () {
+    post(API + '?api=lead', data).then(function () {
       form.closest('.form-card').classList.add('sent');
       form.reset();
     }).catch(function () { err.hidden = false; })
@@ -793,7 +800,7 @@
     renderChat();
     $('#chatSend').disabled = true;
     var history = chat.msgs.filter(function (m) { return !m.error; }).map(function (m) { return { role: m.role, text: m.text }; });
-    post('?api=chat', { lang: lang, session: chat.session, messages: history })
+    post(API + '?api=chat', { lang: lang, session: chat.session, messages: history })
       .then(function (r) {
         chat.session = r.session || chat.session;
         chat.msgs.push({ role: 'model', text: r.reply || '', products: r.products || [] });
