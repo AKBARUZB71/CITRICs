@@ -203,7 +203,9 @@
     'chat.hello': 'Здравствуйте! Я AI-консультант **CITRIC.UZ**. Напишите, для какого продукта вам нужен ингредиент — подберу подходящие варианты, расскажу о применении и передам заявку менеджеру.',
     'chat.err': 'Не удалось получить ответ. Попробуйте ещё раз или позвоните менеджеру: **+998 95 154 88 88**',
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
-    'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине'
+    'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
+    'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
+    'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты'
   };
   var EN = {
     'nav.company': 'Company', 'nav.catalog': 'Catalog', 'nav.certs': 'Certificates', 'nav.delivery': 'Delivery',
@@ -290,7 +292,9 @@
     'chat.hello': "Hello! I'm the **CITRIC.UZ** AI consultant. Tell me which product you need an ingredient for — I'll suggest suitable options, explain how they're used and pass your request to a manager.",
     'chat.err': "Couldn't get a reply. Please try again or call our manager: **+998 95 154 88 88**",
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
-    'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart'
+    'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
+    'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
+    'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps'
   };
   // Qadoq turlari (bazada o'zbekcha saqlanadi)
   var PACK = {
@@ -316,7 +320,8 @@
     'pm.pack': 'Qadoq', 'pm.origin': 'Ishlab chiqarilgan', 'pm.code': 'Kod / belgi', 'pm.cat': 'Kategoriya',
     'pm.desc': "Mahsulot haqida", 'pm.qty': 'Miqdor (qadoq)', 'pm.update': 'Savatni yangilash',
     'pm.ai': 'AI maslahatchi', 'pm.call': "Qo'ng'iroq qilish",
-    'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar'
+    'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar',
+    'a.close': 'Yopish', 'a.delete': "O'chirish"
   };
   var lang = store('local', 'citric-lang') || 'uz';
   if (lang !== 'ru' && lang !== 'en') lang = 'uz';
@@ -338,6 +343,14 @@
   $$('[data-i18n-title]').forEach(function (el) {
     var k = el.getAttribute('data-i18n-title');
     if (!(k in UZ)) UZ[k] = el.getAttribute('title');
+  });
+  $$('[data-i18n-aria]').forEach(function (el) {
+    var k = el.getAttribute('data-i18n-aria');
+    if (!(k in UZ)) UZ[k] = el.getAttribute('aria-label');
+  });
+  $$('[data-i18n-alt]').forEach(function (el) {
+    var k = el.getAttribute('data-i18n-alt');
+    if (!(k in UZ)) UZ[k] = el.getAttribute('alt');
   });
   var PRODUCTS = [];
   var BY_ID = {};
@@ -417,7 +430,7 @@
     '<div class="pm-sheet"><div class="pm-scroll" id="pmScroll">' +
       '<div class="pm-top"><button type="button" class="pm-back" data-close-pm><svg class="i"><use href="#i-left"/></svg><span></span></button>' +
       '<div class="pm-crumbs"></div>' +
-      '<button type="button" class="pm-close" data-close-pm aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div>' +
+      '<button type="button" class="pm-close" data-close-pm aria-label="' + t('a.close') + '"><svg class="i"><use href="#i-x"/></svg></button></div>' +
       '<div class="pm-main" id="pmMain"></div>' +
       '<section class="pm-more"><h3 class="pm-more-title"></h3><div class="products-grid pm-grid" id="pmGrid"></div>' +
       '<div class="pm-sentinel" id="pmSentinel"><span class="pm-loader"></span></div></section>' +
@@ -436,6 +449,7 @@
     if (!p) return;
     var inCart = cartQty(p.id);
     $('.pm-back span', pm).textContent = t('pm.back');
+    $('.pm-close', pm).setAttribute('aria-label', t('a.close'));
     $('.pm-crumbs', pm).innerHTML = '<span>' + t('nav.catalog') + '</span><svg class="i"><use href="#i-chev"/></svg><span>' + esc(catName(p.cat)) + '</span>';
     $('.pm-more-title', pm).textContent = t('pm.more');
     $('#pmMain').innerHTML =
@@ -641,7 +655,7 @@
         '<div class="qty"><button type="button" data-qty="-1" aria-label="-"><svg class="i"><use href="#i-minus"/></svg></button>' +
         '<input type="number" min="1" max="999" value="' + c.qty + '" aria-label="qty">' +
         '<button type="button" data-qty="1" aria-label="+"><svg class="i"><use href="#i-plus"/></svg></button></div></div>' +
-        '<button type="button" class="cart-del" aria-label="Delete"><svg class="i"><use href="#i-trash"/></svg></button></li>';
+        '<button type="button" class="cart-del" aria-label="' + t('a.delete') + '"><svg class="i"><use href="#i-trash"/></svg></button></li>';
     }).join('');
     $('#cartTotal').innerHTML = '<span>' + t('cart.items') + ': <b>' + cart.length + '</b></span><span>' + t('cart.total') + ': <b>' + count + '</b></span>';
     $$('.product-btn').forEach(function (b) {
@@ -892,6 +906,8 @@
     $$('[data-i18n]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n')); });
     $$('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
     $$('[data-i18n-title]').forEach(function (el) { el.setAttribute('title', t(el.getAttribute('data-i18n-title'))); });
+    $$('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
+    $$('[data-i18n-alt]').forEach(function (el) { el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
     $('#langLabel').textContent = lang.toUpperCase();
     $$('.lang-menu [data-lang]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
     renderFilters();
@@ -899,7 +915,7 @@
     renderSelects();
     renderCerts();
     updateCartUI();
-    if (chatEl.classList.contains('open')) renderChat();
+    renderChat(); // yopiq chat ham joriy tilda bo'lsin
     if (pm.classList.contains('open')) { renderPm(); pmFillRest(); }
   }
   var langDd = $('#langDd');
