@@ -2,7 +2,7 @@
 // .src/build-vercel.php — Vercel uchun statik nusxa: public/index.html
 // Sahifa lokal serverdan olinadi (php -S localhost:5501), rasmlar CDN ga, API esa asosiy hostingga yo'naltiriladi.
 // Ishlatish: php .src/build-vercel.php
-const LOCAL = 'http://localhost:5501/index.php';
+const LOCAL = 'http://127.0.0.1:5588/index.php';
 const SITE  = 'https://696f540674d5d.xvest3.ru/citric.uz/';   // PHP sayt (API, bot, admin) — domen ulanganda shu yerni o'zgartiring
 const CDN   = 'https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/assets/';
 

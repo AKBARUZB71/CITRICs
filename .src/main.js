@@ -133,8 +133,8 @@
   var RU = {
     'nav.company': 'Компания', 'nav.catalog': 'Каталог', 'nav.certs': 'Сертификаты', 'nav.delivery': 'Доставка',
     'nav.contacts': 'Контакты', 'nav.partners': 'Наши клиенты',
-    'cta.manager': 'Связаться с менеджером', 'cta.toCatalog': 'Перейти в каталог', 'cta.ai': 'AI-консультант',
-    'cta.askAi': 'Спросить AI-консультанта', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
+    'cta.manager': 'Связаться с менеджером', 'cta.toCatalog': 'Перейти в каталог', 'cta.ai': 'ИИ-консультант',
+    'cta.askAi': 'Спросить у ИИ-консультанта', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
     'hero.badge': 'С 2013 года · Ташкент',
     'hero.title': 'Поставка пищевых ингредиентов',
     'hero.text': 'Качественные ингредиенты и сырьё для кондитерских и пищевых предприятий, а также предприятий по производству напитков. Доставляем по всему Узбекистану.',
@@ -145,7 +145,7 @@
     'v.play': 'Смотреть видео',
     'v.s1t': 'Импорт и приёмка', 'v.s1': 'Прямые поставки от надёжных производителей.',
     'v.s2t': 'Контроль качества', 'v.s2': 'Каждая партия проверяется по сертификатам и документам.',
-    'v.s3t': 'Современный склад', 'v.s3': 'Хранение с соблюдением необходимого температурного режима и условий.',
+    'v.s3t': 'Современный склад', 'v.s3': 'Хранение при оптимальной температуре и в надлежащих условиях.',
     'v.s4t': 'Быстрая доставка', 'v.s4': 'Своевременная отгрузка по всему Узбекистану.',
     'cert.eyebrow': 'Сертификаты', 'cert.title': 'Качество подтверждено документами',
     'cert.sub': 'Вся наша продукция импортируется в соответствии с требованиями государственной сертификации и санитарными нормами Республики Узбекистан.',
@@ -160,21 +160,21 @@
     'pm.details': 'Подробнее', 'pm.back': 'Назад в каталог', 'pm.more': 'Другие товары',
     'pm.pack': 'Упаковка', 'pm.origin': 'Производство', 'pm.code': 'Код / маркировка', 'pm.cat': 'Категория',
     'pm.desc': 'О продукте', 'pm.qty': 'Количество (уп.)', 'pm.update': 'Обновить корзину',
-    'pm.ai': 'AI-консультант', 'pm.call': 'Позвонить',
+    'pm.ai': 'ИИ-консультант', 'pm.call': 'Позвонить',
     'pm.f1': 'Сертифицированное качество', 'pm.f2': 'Доставка по Узбекистану', 'pm.f3': 'Оптовые цены',
     'cart.items': 'Товаров', 'cart.packs': 'уп.', 'cart.total': 'Всего упаковок', 'cart.orderNo': 'Номер заказа',
     'cart.err': 'Ошибка отправки. Позвоните нам: +998 95 154 88 88',
-    'f.1t': 'Продукция мировых лидеров', 'f.1': 'От лучших производителей мира.',
+    'f.1t': 'Продукция ведущих мировых производителей', 'f.1': 'От лучших производителей мира.',
     'f.2t': 'Гарантия качества', 'f.2': 'Соответствует международным стандартам.',
     'f.3t': 'Развитая логистика', 'f.3': 'Консолидационные склады и дистрибуция.',
     'f.4t': 'Индивидуальный подход', 'f.4': 'Особое решение для каждого клиента.',
     'f.5t': 'Цифровые технологии', 'f.5': 'Современные IT-решения и поддержка.',
     'about.badge': 'лет опыта', 'about.eyebrow': 'О компании', 'about.title': 'О нас',
-    'about.p1': 'CITRIC.UZ работает на рынке Узбекистана с 2013 года. Компания представляет мировых лидеров по производству пищевых ингредиентов.',
+    'about.p1': 'CITRIC.UZ работает на рынке Узбекистана с 2013 года. Компания поставляет продукцию ведущих мировых производителей пищевых ингредиентов.',
     'about.p2': 'Благодаря развитой дистрибьюторской сети и хорошо организованной логистике мы бесперебойно обеспечиваем пищевые предприятия высококачественными ингредиентами и сырьём.',
     'about.l1': 'Прямой импорт из Китая, Турции, Индии и Европы', 'about.l2': 'Быстрая отгрузка с собственного склада в Ташкенте',
     'about.l3': 'Сертификаты качества на каждую партию',
-    'p.eyebrow': 'Продукция', 'p.title': 'Широкий ассортимент пищевых ингредиентов', 'p.all': 'Полный прайс-лист',
+    'p.eyebrow': 'Продукция', 'p.title': 'Пищевые ингредиенты и промышленная химия', 'p.all': 'Полный прайс-лист',
     'p.note': 'Не нашли нужный продукт? Напишите нам — мы подберём нужный ингредиент.',
     'p.onRequest': 'Цена по запросу', 'p.more': 'Показать ещё', 'p.loadErr': 'Не удалось загрузить каталог. Обновите страницу.',
     'ind.eyebrow': 'Сферы применения', 'ind.title': 'Для каких отраслей мы работаем',
@@ -184,7 +184,7 @@
     'w.eyebrow': 'Почему мы?', 'w.title': 'Почему именно CITRIC.UZ?',
     'w.1t': 'Качество и доверие', 'w.1': 'Только продукция от надёжных производителей.',
     'w.2t': 'Опытная команда', 'w.2': 'Профессионалы пищевой промышленности.',
-    'w.3t': 'Конкурентные цены', 'w.3': 'Выгодные цены и гибкая оплата благодаря прямому импорту.',
+    'w.3t': 'Конкурентные цены', 'w.3': 'Выгодные цены и гибкие условия оплаты благодаря прямому импорту.',
     'w.4t': 'Устойчивое развитие', 'w.4': 'Будущее, связанное с благополучием наших партнёров.',
     'c.eyebrow': 'Наши клиенты', 'c.title': 'Нас выбирают',
     'c.sub': 'Ведущие кондитерские и пищевые предприятия Узбекистана, а также предприятия по производству напитков закупают ингредиенты у нас.',
@@ -208,15 +208,16 @@
     'fm.msg': 'Сообщение', 'fm.msgph': 'Объём, фасовка, адрес доставки...', 'fm.send': 'Отправить',
     'fm.okt': 'Спасибо! Ваша заявка принята', 'fm.ok': 'Наш менеджер скоро свяжется с вами.',
     'fm.any': 'Другое / несколько продуктов', 'fm.err': 'Ошибка отправки. Попробуйте ещё раз или позвоните: +998 95 154 88 88',
-    'chat.title': 'AI-консультант', 'chat.status': 'Онлайн · отвечает за несколько секунд', 'chat.reset': 'Новый диалог',
+    'chat.title': 'ИИ-консультант', 'chat.status': 'Онлайн · отвечает за несколько секунд', 'chat.reset': 'Новый диалог',
     'chat.q1': 'Что нужно для сока?', 'chat.q2': 'Помогите выбрать консервант', 'chat.q3': 'Сколько стоит лимонная кислота?', 'chat.q4': 'Условия доставки',
     'chat.ph': 'Опишите нужный продукт своими словами...', 'chat.fab': 'Есть вопрос?',
-    'chat.foot': 'AI-консультант отвечает только по продукции CITRIC.UZ. Точную цену подтверждает менеджер.',
-    'chat.hello': 'Здравствуйте! Я AI-консультант **CITRIC.UZ**. Напишите, для какого продукта вам нужен ингредиент — подберу подходящие варианты, расскажу о применении и передам заявку менеджеру.',
+    'chat.foot': 'ИИ-консультант отвечает только по продукции CITRIC.UZ. Точную цену подтверждает менеджер.',
+    'chat.hello': 'Здравствуйте! Я ИИ-консультант **CITRIC.UZ**. Напишите, для какого продукта вам нужен ингредиент — подберу подходящие варианты, расскажу о применении и передам заявку менеджеру.',
     'chat.err': 'Не удалось получить ответ. Попробуйте ещё раз или позвоните менеджеру: **+998 95 154 88 88**',
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
     'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
     'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
+    'a.prev': 'Предыдущий', 'a.next': 'Следующий', 'a.toTop': 'Наверх', 'a.ai': 'ИИ-консультант', 'a.clientsLogos': 'Логотипы клиентов', 'a.msg': 'Сообщение',
     'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты'
   };
   var EN = {
@@ -225,7 +226,7 @@
     'cta.manager': 'Contact a manager', 'cta.toCatalog': 'Go to catalog', 'cta.ai': 'AI consultant',
     'cta.askAi': 'Ask the AI consultant', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
     'hero.badge': 'Since 2013 · Tashkent',
-    'hero.title': 'Food Ingredients Supply',
+    'hero.title': 'Supply of Food Ingredients',
     'hero.text': 'High-quality ingredients and raw materials for confectionery, beverage and food manufacturers. Delivered across Uzbekistan.',
     'hero.s2': 'Client companies', 'hero.s4': 'Major brands chose us',
     's.1': 'Year founded', 's.4': 'Types of ingredients',
@@ -253,17 +254,17 @@
     'pm.f1': 'Certified quality', 'pm.f2': 'Delivery across Uzbekistan', 'pm.f3': 'Wholesale prices',
     'cart.items': 'Products', 'cart.packs': 'packs', 'cart.total': 'Total packs', 'cart.orderNo': 'Order number',
     'cart.err': 'Sending failed. Please call us: +998 95 154 88 88',
-    'f.1t': 'Products of global leaders', 'f.1': "From the world's best manufacturers.",
+    'f.1t': 'Products from Leading Global Manufacturers', 'f.1': "From the world's best manufacturers.",
     'f.2t': 'Quality guarantee', 'f.2': 'Meets international standards.',
-    'f.3t': 'Well-established logistics', 'f.3': 'Consolidation warehouses and distribution.',
-    'f.4t': 'Personalized service', 'f.4': 'A tailored solution for every client.',
+    'f.3t': 'Well-Established Logistics Network', 'f.3': 'Consolidation warehouses and distribution.',
+    'f.4t': 'Personalized Service', 'f.4': 'A tailored solution for every client.',
     'f.5t': 'Digital technologies', 'f.5': 'Modern IT solutions and support.',
     'about.badge': 'years of experience', 'about.eyebrow': 'About the company', 'about.title': 'About Us',
-    'about.p1': 'CITRIC.UZ has been operating in the Uzbekistan market since 2013. The company represents global leaders in the production of food ingredients.',
+    'about.p1': 'CITRIC.UZ has been operating in the Uzbekistan market since 2013. The company supplies products from leading global manufacturers of food ingredients.',
     'about.p2': 'Thanks to a developed distribution network and well-organized logistics, we reliably supply food manufacturers with high-quality ingredients and raw materials.',
     'about.l1': 'Direct imports from China, Turkey, India and Europe', 'about.l2': 'Fast shipping from our own warehouse in Tashkent',
     'about.l3': 'Quality certificates for every batch',
-    'p.eyebrow': 'Products', 'p.title': 'A wide range of food ingredients', 'p.all': 'Full price list',
+    'p.eyebrow': 'Products', 'p.title': 'Food Ingredients and Industrial Chemicals', 'p.all': 'Full price list',
     'p.note': "Didn't find the product you need? Write to us — we will find the right ingredient.",
     'p.onRequest': 'Price on request', 'p.more': 'Show more', 'p.loadErr': 'Failed to load the catalog. Please refresh the page.',
     'ind.eyebrow': 'Applications', 'ind.title': 'Industries we serve',
@@ -273,7 +274,7 @@
     'w.eyebrow': 'Why us?', 'w.title': 'Why CITRIC.UZ?',
     'w.1t': 'Quality and trust', 'w.1': 'Only products from reliable manufacturers.',
     'w.2t': 'Experienced team', 'w.2': 'Food industry professionals.',
-    'w.3t': 'Competitive prices', 'w.3': 'Favorable prices and flexible payment thanks to direct imports.',
+    'w.3t': 'Competitive prices', 'w.3': 'Competitive prices and flexible payment terms thanks to direct imports.',
     'w.4t': 'Sustainable growth', 'w.4': 'A future tied to the success of our partners.',
     'c.eyebrow': 'Our clients', 'c.title': 'Trusted by',
     'c.sub': "Uzbekistan's leading confectionery, beverage and food manufacturers source their ingredients from us.",
@@ -306,6 +307,7 @@
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
     'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
     'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
+    'a.prev': 'Previous', 'a.next': 'Next', 'a.toTop': 'Back to top', 'a.ai': 'AI consultant', 'a.clientsLogos': 'Client logos', 'a.msg': 'Message',
     'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps'
   };
   // Qadoq turlari (bazada o'zbekcha saqlanadi)
@@ -333,7 +335,9 @@
     'pm.desc': "Mahsulot haqida", 'pm.qty': 'Miqdor (qadoq)', 'pm.update': 'Savatni yangilash',
     'pm.ai': 'AI maslahatchi', 'pm.call': "Qo'ng'iroq qilish",
     'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar',
-    'a.close': 'Yopish', 'a.delete': "O'chirish"
+    'a.close': 'Yopish', 'a.delete': "O'chirish",
+    'a.prev': 'Oldingi', 'a.next': 'Keyingi', 'a.toTop': 'Yuqoriga', 'a.ai': 'AI maslahatchi',
+    'a.clientsLogos': 'Mijozlar logotiplari', 'a.msg': 'Xabar'
   };
   var lang = store('local', 'citric-lang') || 'uz';
   if (lang !== 'ru' && lang !== 'en') lang = 'uz';
@@ -370,9 +374,13 @@
   var activeCat = 'all';
   var PAGE = 15, showAll = false; // «Hammasi»da avval 15 ta, keyin «Yana ko'rsatish»
   function setProducts(list) {
-    PRODUCTS = list;
+    PRODUCTS = (list || []).map(function (p) {
+      if (p && p.origin && p.origin.ru === '?????') p.origin.ru = 'Китай';
+      if (p && p.uz === 'Limon kislotasi anhidrid') p.uz = 'Suvsiz limon kislotasi';
+      return p;
+    });
     BY_ID = {};
-    list.forEach(function (p) { BY_ID[p.id] = p; });
+    PRODUCTS.forEach(function (p) { BY_ID[p.id] = p; });
     productsLoaded = true;
   }
   function loadProducts() {
