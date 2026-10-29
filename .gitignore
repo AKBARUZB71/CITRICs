@@ -1,0 +1,16 @@
+# Maxfiy sozlamalar — hech qachon yuklanmaydi
+config.php
+
+# Lokal baza va vaqtinchalik fayllar
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+tekshir.php
+a.php
+uploads/
+.claude/
+
+# Rasm va videolar alohida ommaviy repoda (AKBARUZB71/CITRIC → jsDelivr CDN)
+assets/
+mahsulotlar/
+rasmlar/

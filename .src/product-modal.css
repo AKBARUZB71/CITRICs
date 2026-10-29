@@ -1,0 +1,150 @@
+
+/* ---------- Mahsulot sahifasi (katta oyna) ---------- */
+.product[data-pid] { cursor: pointer; }
+.product:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.product-view {
+  position: absolute; left: 50%; bottom: 14px; transform: translate(-50%, 10px); opacity: 0;
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px;
+  background: rgba(18, 38, 26, .82); color: #fff; font-size: 12.5px; font-weight: 700; white-space: nowrap;
+  backdrop-filter: blur(6px); transition: opacity .3s, transform .3s var(--ease); pointer-events: none;
+}
+.product-view .i { width: 15px; height: 15px; }
+.product:hover .product-view { opacity: 1; transform: translate(-50%, 0); }
+
+.pm { position: fixed; inset: 0; z-index: 200; visibility: hidden; }
+.pm.open { visibility: visible; }
+.pm-backdrop { display: none; }
+.pm-sheet {
+  position: absolute; inset: 0; background: #fff; overflow: hidden;
+  opacity: 0; transition: opacity .3s;
+}
+.pm.open .pm-sheet { transform: none; opacity: 1; }
+.pm-scroll { height: 100%; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+.pm-scroll::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.pm-main, .pm-more > * { max-width: 1280px; }
+.pm-top { padding-left: max(28px, calc((100% - 1280px) / 2)); padding-right: max(28px, calc((100% - 1280px) / 2)); }
+.pm-main { margin: 0 auto; }
+.pm-more > * { margin-left: auto; margin-right: auto; }
+
+.pm-top {
+  position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 16px; padding: 14px 28px;
+  background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.pm-back {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border: 1.5px solid var(--line);
+  border-radius: 999px; background: #fff; color: var(--ink); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; transition: all .2s;
+}
+.pm-back:hover { border-color: var(--green); color: var(--green); }
+.pm-back .i { width: 18px; height: 18px; }
+.pm-crumbs { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13.5px; min-width: 0; }
+.pm-crumbs span:last-child { color: var(--green); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pm-crumbs .i { width: 14px; height: 14px; transform: rotate(-90deg); }
+.pm-close {
+  margin-left: auto; width: 42px; height: 42px; border: 0; border-radius: 50%; background: var(--green-soft); color: var(--ink);
+  display: grid; place-items: center; cursor: pointer; transition: all .25s;
+}
+.pm-close:hover { background: var(--green); color: #fff; transform: rotate(90deg); }
+.pm-close .i { width: 20px; height: 20px; }
+
+.pm-main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; padding: 36px 48px 48px; }
+.pm-img {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background: #f7f9f7;
+  border: 1px solid var(--line);
+}
+.pm-img img { width: 100%; height: 100%; object-fit: cover; }
+.pm-perks { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pm-perks li {
+  display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--green-softer);
+  border: 1px solid var(--line); font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.3;
+}
+.pm-perks .i { width: 22px; height: 22px; flex-shrink: 0; color: var(--green); }
+
+.pm-info { display: flex; flex-direction: column; gap: 20px; align-self: start; position: sticky; top: 92px; }
+.pm-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.pm-chip { padding: 6px 14px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: 13px; font-weight: 700; }
+.pm-chip.code { background: var(--orange-soft); color: #b77400; }
+.pm-title { margin: 0; font-size: clamp(26px, 3vw, 38px); line-height: 1.15; color: var(--ink); letter-spacing: -.02em; }
+.pm-price { font-size: 30px; font-weight: 800; color: var(--green); }
+.pm-price small { font-size: 15px; font-weight: 600; color: var(--muted); }
+.pm-price.on-request { font-size: 20px; color: #b77400; }
+.pm-specs { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pm-specs div { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.pm-specs dt { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.pm-specs dt .i { width: 15px; height: 15px; color: var(--green); }
+.pm-specs dd { margin: 6px 0 0; font-weight: 800; color: var(--ink); font-size: 15px; }
+.pm-desc h4 { margin: 0 0 8px; font-size: 16px; color: var(--ink); }
+.pm-desc p { margin: 0 0 10px; color: var(--text); font-size: 15.5px; line-height: 1.7; }
+
+.pm-buy {
+  display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 18px;
+  background: linear-gradient(135deg, var(--green-softer), #fff8e8); border: 1px solid var(--line);
+}
+.pm-qty { display: flex; flex-direction: column; gap: 6px; }
+.pm-qty > span { font-size: 12px; font-weight: 700; color: var(--muted); }
+.pm-qty .qty { background: #fff; }
+.pm-qty .qty button { width: 38px; height: 40px; }
+.pm-qty .qty input { width: 48px; font-size: 16px; }
+.pm-buy-btn { flex: 1; height: 56px; justify-content: center; gap: 10px; font-size: 16.5px; font-weight: 800; border: 0; cursor: pointer; }
+.pm-buy-btn .i { width: 20px; height: 20px; }
+.pm-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pm-act {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 14px;
+  border: 1.5px solid var(--line); background: #fff; color: var(--ink); font: inherit; font-weight: 700; font-size: 14.5px;
+  cursor: pointer; text-decoration: none; transition: all .2s;
+}
+.pm-act:hover { border-color: var(--green); color: var(--green); background: var(--green-softer); }
+.pm-act .i { width: 19px; height: 19px; color: var(--green); }
+
+.pm-more { padding: 40px 48px 56px; background: var(--green-softer); border-top: 1px solid var(--line); }
+.pm-more-title { margin: 0 0 24px; font-size: 24px; color: var(--ink); }
+.pm-sentinel { display: flex; justify-content: center; padding: 28px 0 8px; cursor: pointer; }
+.pm-sentinel[hidden] { display: none; }
+.pm-loader { width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--green); animation: pmspin .8s linear infinite; }
+@keyframes pmspin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1100px) {
+  .pm-main { gap: 32px; padding: 28px 28px 40px; }
+  .pm-more { padding: 32px 28px 48px; }
+  .pm-perks { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .pm-top { padding: 10px 14px; }
+  .pm-crumbs { display: none; }
+  .pm-main { grid-template-columns: 1fr; gap: 22px; padding: 16px 16px 28px; }
+  .pm-img { aspect-ratio: 1 / 1; border-radius: 16px; }
+  .pm-perks { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pm-perks li { flex-direction: column; text-align: center; padding: 10px 6px; font-size: 11.5px; gap: 6px; }
+  .pm-info { position: static; gap: 16px; }
+  .pm-specs { grid-template-columns: 1fr 1fr; }
+  .pm-buy {
+    position: sticky; bottom: 0; z-index: 2; margin: 0 -16px; border-radius: 18px 18px 0 0; padding: 12px 16px;
+    box-shadow: 0 -10px 30px rgba(18, 38, 26, .12); background: #fff;
+  }
+  .pm-qty > span { display: none; }
+  .pm-buy-btn { height: 50px; font-size: 15.5px; }
+  .pm-more { padding: 26px 16px 40px; }
+  .pm-more-title { font-size: 20px; margin-bottom: 16px; }
+  .product-view { display: none; }
+}
+
+/* Katalog: rasm joyida turadi (sichqoncha borganda qimirlamaydi) */
+.product:hover { transform: none; }
+.product:hover .product-img img { transform: none; }
+
+/* Butun sayt: o'ng tomondagi scroll chizig'i ko'rinmaydi (surish ishlaydi) */
+html { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* Mahsulot sahifasi: ixchamroq rasm, katalogdagi kabi yashil tugma */
+.pm-main { grid-template-columns: 420px minmax(0, 1fr); gap: 56px; align-items: start; }
+.pm-perks { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pm-perks li { flex-direction: column; text-align: center; gap: 8px; padding: 14px 8px; font-size: 12.5px; }
+.pm-buy-btn.btn-orange { background: var(--green); color: #fff; box-shadow: 0 10px 24px rgba(112, 179, 47, .32); border-radius: 12px; }
+.pm-buy-btn.btn-orange:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 14px 28px rgba(112, 179, 47, .4); }
+.pm-buy-btn.btn-orange:hover .i { transform: none; }
+.pm-qty .qty button { color: var(--green); }
+@media (max-width: 1100px) { .pm-main { grid-template-columns: 340px minmax(0, 1fr); gap: 36px; } }
+@media (max-width: 860px) {
+  .pm-main { grid-template-columns: 1fr; gap: 22px; }
+  .pm-img { max-width: 360px; width: 100%; margin: 0 auto; aspect-ratio: 4 / 5; }
+}
