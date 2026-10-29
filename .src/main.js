@@ -115,6 +115,18 @@
         row.map(function (c) { return tile(c, true); }).join('');
     });
     $('#clientsCount').textContent = CLIENTS.length - 1;
+    clientsStat();
+  }
+  function clientsStat() {
+    var el = $('[data-i18n="c.stat"]');
+    if (!el || typeof lang === 'undefined') return;
+    var n = CLIENTS.length - 1, m10 = n % 10, m100 = n % 100;
+    if (lang === 'ru') {
+      el.textContent = m10 === 1 && m100 !== 11 ? 'крупный бренд доверяет нам'
+        : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? 'крупных бренда доверяют нам' : 'крупных брендов доверяют нам';
+    } else if (lang === 'en') {
+      el.textContent = n === 1 ? 'major brand trusts us' : 'major brands trust us';
+    }
   }
   renderClients();
   var CATEGORIES = [{ id: 'all', uz: 'Hammasi', ru: 'Все', en: 'All' }].concat(window.CITRIC_CATEGORIES || []);
@@ -125,7 +137,7 @@
     'cta.askAi': 'Спросить AI-консультанта', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
     'hero.badge': 'С 2013 года · Ташкент',
     'hero.title': 'Поставка пищевых ингредиентов',
-    'hero.text': 'Качественные ингредиенты и сырьё для кондитерских, напиточных и пищевых предприятий. Доставляем по всему Узбекистану.',
+    'hero.text': 'Качественные ингредиенты и сырьё для кондитерских и пищевых предприятий, а также предприятий по производству напитков. Доставляем по всему Узбекистану.',
     'hero.s2': 'Компаний-клиентов', 'hero.s4': 'Крупных брендов выбрали нас',
     's.1': 'Год основания', 's.4': 'Видов ингредиентов',
     'v.eyebrow': 'Процесс работы', 'v.title': 'От склада — до вашего производства',
@@ -133,7 +145,7 @@
     'v.play': 'Смотреть видео',
     'v.s1t': 'Импорт и приёмка', 'v.s1': 'Прямые поставки от надёжных производителей.',
     'v.s2t': 'Контроль качества', 'v.s2': 'Каждая партия проверяется по сертификатам и документам.',
-    'v.s3t': 'Современный склад', 'v.s3': 'Хранение при правильной температуре и условиях.',
+    'v.s3t': 'Современный склад', 'v.s3': 'Хранение с соблюдением необходимого температурного режима и условий.',
     'v.s4t': 'Быстрая доставка', 'v.s4': 'Своевременная отгрузка по всему Узбекистану.',
     'cert.eyebrow': 'Сертификаты', 'cert.title': 'Качество подтверждено документами',
     'cert.sub': 'Вся наша продукция импортируется в соответствии с требованиями государственной сертификации и санитарными нормами Республики Узбекистан.',
@@ -175,7 +187,7 @@
     'w.3t': 'Конкурентные цены', 'w.3': 'Выгодные цены и гибкая оплата благодаря прямому импорту.',
     'w.4t': 'Устойчивое развитие', 'w.4': 'Будущее, связанное с благополучием наших партнёров.',
     'c.eyebrow': 'Наши клиенты', 'c.title': 'Нас выбирают',
-    'c.sub': 'Ведущие кондитерские, напиточные и пищевые производители Узбекистана закупают ингредиенты у нас.',
+    'c.sub': 'Ведущие кондитерские и пищевые предприятия Узбекистана, а также предприятия по производству напитков закупают ингредиенты у нас.',
     'c.stat': 'крупных брендов доверяют нам',
     'c.caption': 'Присоединяйтесь — качественное сырьё является основой стабильного производства.',
     't.eyebrow': 'Клиенты', 't.title': 'Что говорят наши клиенты?',
@@ -222,7 +234,7 @@
     'v.play': 'Watch video',
     'v.s1t': 'Import & receiving', 'v.s1': 'Direct supplies from trusted manufacturers.',
     'v.s2t': 'Quality control', 'v.s2': 'Every batch is checked against certificates and documents.',
-    'v.s3t': 'Modern warehouse', 'v.s3': 'Stored at the right temperature and conditions.',
+    'v.s3t': 'Modern warehouse', 'v.s3': 'Stored at the appropriate temperature and under suitable conditions.',
     'v.s4t': 'Fast delivery', 'v.s4': 'On-time shipping across Uzbekistan.',
     'cert.eyebrow': 'Certificates', 'cert.title': 'Quality confirmed by documents',
     'cert.sub': 'All our products are imported in compliance with state certification requirements and sanitary standards of the Republic of Uzbekistan.',
@@ -243,8 +255,8 @@
     'cart.err': 'Sending failed. Please call us: +998 95 154 88 88',
     'f.1t': 'Products of global leaders', 'f.1': "From the world's best manufacturers.",
     'f.2t': 'Quality guarantee', 'f.2': 'Meets international standards.',
-    'f.3t': 'Developed logistics', 'f.3': 'Consolidation warehouses and distribution.',
-    'f.4t': 'Individual approach', 'f.4': 'A tailored solution for every client.',
+    'f.3t': 'Well-established logistics', 'f.3': 'Consolidation warehouses and distribution.',
+    'f.4t': 'Personalized service', 'f.4': 'A tailored solution for every client.',
     'f.5t': 'Digital technologies', 'f.5': 'Modern IT solutions and support.',
     'about.badge': 'years of experience', 'about.eyebrow': 'About the company', 'about.title': 'About Us',
     'about.p1': 'CITRIC.UZ has been operating in the Uzbekistan market since 2013. The company represents global leaders in the production of food ingredients.',
@@ -275,15 +287,15 @@
     't.3': 'The managers are always available and help us choose the right ingredient. Prices are competitive and the quality is consistent.',
     't.3a': 'Confectionery factory',
     'ct.eyebrow': 'Contacts', 'ct.title': "Let's start working together",
-    'ct.sub': 'Leave a request — our manager will contact you and tell you about prices and delivery terms.',
+    'ct.sub': 'Submit an inquiry — our manager will contact you with information on prices and delivery terms.',
     'ct.phone': 'Phone', 'ct.addr': 'Address', 'ct.addrv': 'Tashkent, Uzbekistan', 'ct.hours': 'Working hours', 'ct.hoursv': 'Mon–Sat, 9:00 – 18:00',
     'ft.about': 'The best ingredients for a better life. A reliable supplier for the food industry.',
     'ft.links': 'Quick links', 'ft.contact': 'Contact',
     'ft.rights': 'All rights reserved.', 'ft.privacy': 'Privacy policy', 'ft.terms': 'Terms of use',
-    'fm.title': 'Send a request', 'fm.sub': 'Leave your details and we will contact you within 1 business day.',
+    'fm.title': 'Submit an inquiry', 'fm.sub': 'Leave your details and we will contact you within 1 business day.',
     'fm.name': 'Your name *', 'fm.phone': 'Phone *', 'fm.company': 'Company', 'fm.product': 'Product of interest',
     'fm.msg': 'Message', 'fm.msgph': 'Volume, packaging, delivery address...', 'fm.send': 'Send',
-    'fm.okt': 'Thank you! Your request has been received', 'fm.ok': 'Our manager will contact you soon.',
+    'fm.okt': 'Thank you! Your inquiry has been received', 'fm.ok': 'Our manager will contact you soon.',
     'fm.any': 'Other / several products', 'fm.err': 'Sending failed. Please try again or call: +998 95 154 88 88',
     'chat.title': 'AI consultant', 'chat.status': 'Online · replies in seconds', 'chat.reset': 'New chat',
     'chat.q1': 'What do I need for juice?', 'chat.q2': 'Help me choose a preservative', 'chat.q3': 'How much is citric acid?', 'chat.q4': 'Delivery terms',
@@ -299,7 +311,7 @@
   // Qadoq turlari (bazada o'zbekcha saqlanadi)
   var PACK = {
     ru: { 'Bochka': 'Бочка', 'Baraban': 'Барабан', 'Kanistr': 'Канистра', 'kg': 'кг' },
-    en: { 'Bochka': 'Drum', 'Baraban': 'Drum', 'Kanistr': 'Canister', 'kg': 'kg' }
+    en: { 'Bochka': 'Barrel', 'Baraban': 'Drum', 'Kanistr': 'Canister', 'kg': 'kg' }
   };
   function packText(v) {
     var m = PACK[lang];
@@ -909,6 +921,7 @@
     $$('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
     $$('[data-i18n-alt]').forEach(function (el) { el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
     $('#langLabel').textContent = lang.toUpperCase();
+    clientsStat();
     $$('.lang-menu [data-lang]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
     renderFilters();
     renderProducts();

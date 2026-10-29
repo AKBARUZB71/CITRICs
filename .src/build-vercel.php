@@ -15,6 +15,21 @@ $html = str_replace(['src="assets/', 'href="assets/', 'srcset="assets/', 'conten
 $html = str_replace('window.CITRIC_ASSETS = "assets\/";', 'window.CITRIC_ASSETS = ' . json_encode(CDN) . ';', $html);
 if (preg_match('~(src|href|srcset)="assets/~', $html)) exit("assets/ havolalari qoldi\n");
 
+// Mahsulotlar nusxasi: imkon bo'lsa asosiy saytning haqiqiy bazasidan (lokal test bazasidan emas)
+$live = @file_get_contents(SITE . 'index.php?api=products', false, stream_context_create(['http' => ['timeout' => 20]]));
+$liveJson = $live ? json_decode($live, true) : null;
+if (!empty($liveJson['products'])) {
+    $snap = json_encode($liveJson['products'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP);
+    $html = preg_replace('~window\.CITRIC_PRODUCTS = .*?;\n~', 'window.CITRIC_PRODUCTS = ' . addcslashes($snap, '\\$') . ";\n", $html, 1, $cnt);
+    echo $cnt ? "mahsulotlar: asosiy saytdan (" . count($liveJson['products']) . " ta)\n" : "OGOHLANTIRISH: CITRIC_PRODUCTS topilmadi\n";
+} else {
+    echo "mahsulotlar: lokal bazadan (asosiy sayt API javob bermadi)\n";
+}
+// Buzilgan kodlash himoyasi: '???' yoki U+FFFD bo'lsa — nusxa yaratilmaydi
+if (!mb_check_encoding($html, 'UTF-8') || strpos($html, "\u{FFFD}") !== false || preg_match('~"(?:uz|ru|en)":"[^"]*\?{3,}~', $html)) {
+    exit("XATO: mahsulot matnlarida buzilgan belgilar bor — nusxa yaratilmadi\n");
+}
+
 // API manzili — shifrlangan sayt skriptidan oldin
 $boot = '<script>window.CITRIC_API=' . json_encode(SITE . 'index.php') . ';window.CITRIC_SITE=' . json_encode(SITE) . ';</script>';
 $p = strpos($html, '<script>(function(d){var s=atob(');
