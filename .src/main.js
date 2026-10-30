@@ -216,6 +216,7 @@
     'chat.err': 'Не удалось получить ответ. Попробуйте ещё раз или позвоните менеджеру: **+998 95 154 88 88**',
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
     'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
+    'ok.btn': 'Хорошо', 'err.title': 'Не удалось отправить',
     'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
     'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты',
     'a.prev': 'Предыдущий', 'a.next': 'Следующий', 'a.top': 'Наверх', 'a.ai': 'ИИ-консультант', 'a.clients': 'Логотипы клиентов', 'a.msg': 'Сообщение'
@@ -306,6 +307,7 @@
     'chat.err': "Couldn't get a reply. Please try again or call our manager: **+998 95 154 88 88**",
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
     'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
+    'ok.btn': 'OK', 'err.title': 'Sending failed',
     'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
     'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps',
     'a.prev': 'Previous', 'a.next': 'Next', 'a.top': 'Back to top', 'a.ai': 'AI consultant', 'a.clients': 'Client logos', 'a.msg': 'Message'
@@ -335,6 +337,7 @@
     'pm.desc': "Mahsulot haqida", 'pm.qty': 'Miqdor (qadoq)', 'pm.update': 'Savatni yangilash',
     'pm.ai': 'AI maslahatchi', 'pm.call': "Qo'ng'iroq qilish",
     'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar',
+    'ok.btn': 'Yaxshi', 'err.title': "Yuborib bo'lmadi",
     'a.close': 'Yopish', 'a.delete': "O'chirish"
   };
   var lang = store('local', 'citric-lang') || 'uz';
@@ -719,7 +722,70 @@
     setQty(isNaN(+raw) ? raw : +raw, Math.max(1, +e.target.value || 1));
   });
   function validName(v) { return v.trim().length > 1; }
-  function validPhone(v) { return v.replace(/\D/g, '').length >= 9; }
+  // Telefon: faqat O'zbekiston raqami, +998 XX XXX XX XX
+  function validPhone(v) { var d = v.replace(/\D/g, ''); return d.length === 12 && d.indexOf('998') === 0; }
+  function fmtPhone(v) {
+    var d = v.replace(/\D/g, '');
+    var rest = (d.indexOf('998') === 0 ? d.slice(3) : d).slice(0, 9);
+    var out = '+998 ' + rest.slice(0, 2);
+    if (rest.length > 2) out += ' ' + rest.slice(2, 5);
+    if (rest.length > 5) out += ' ' + rest.slice(5, 7);
+    if (rest.length > 7) out += ' ' + rest.slice(7, 9);
+    return out;
+  }
+  function phoneMask(inp) {
+    inp.setAttribute('inputmode', 'tel');
+    inp.setAttribute('maxlength', '17');
+    inp.addEventListener('focus', function () { if (!inp.value) inp.value = '+998 '; });
+    inp.addEventListener('blur', function () { if (inp.value.replace(/\D/g, '') === '998') inp.value = ''; });
+    inp.addEventListener('keydown', function (e) {
+      // +998 prefiksini o'chirib bo'lmaydi
+      if ((e.key === 'Backspace' && inp.selectionStart <= 5 && inp.selectionEnd <= 5) || (e.key === 'Delete' && inp.selectionStart < 5)) e.preventDefault();
+    });
+    inp.addEventListener('input', function () {
+      inp.value = fmtPhone(inp.value);
+      inp.setSelectionRange(inp.value.length, inp.value.length);
+    });
+  }
+  $$('input[type="tel"]').forEach(phoneMask);
+
+  // Natija oynasi: galochka (muvaffaqiyat) yoki xato
+  var okModal = document.createElement('div');
+  okModal.className = 'ok-modal';
+  okModal.setAttribute('role', 'dialog');
+  okModal.setAttribute('aria-modal', 'true');
+  okModal.innerHTML = '<div class="ok-card"><div class="ok-icon"></div><h3 class="ok-title"></h3><p class="ok-text"></p>' +
+    '<p class="ok-no"></p><button type="button" class="btn btn-primary ok-btn"></button></div>';
+  document.body.appendChild(okModal);
+  function showResult(ok, title, text, no) {
+    $('.ok-icon', okModal).innerHTML = ok
+      ? '<svg viewBox="0 0 52 52"><circle class="ok-circle" cx="26" cy="26" r="24"/><path class="ok-check" d="M15 27.5l7.5 7.5L38 19"/></svg>'
+      : '<svg viewBox="0 0 52 52"><circle class="ok-circle" cx="26" cy="26" r="24"/><path class="ok-check" d="M18 18l16 16M34 18L18 34"/></svg>';
+    okModal.classList.toggle('is-error', !ok);
+    $('.ok-title', okModal).textContent = title;
+    $('.ok-text', okModal).textContent = text;
+    $('.ok-no', okModal).textContent = no || '';
+    $('.ok-no', okModal).hidden = !no;
+    $('.ok-btn', okModal).textContent = t('ok.btn');
+    okModal.classList.remove('open'); void okModal.offsetWidth;
+    okModal.classList.add('open');
+    lockScroll(true);
+    setTimeout(function () { $('.ok-btn', okModal).focus(); }, 350);
+  }
+  function hideResult() {
+    if (!okModal.classList.contains('open')) return;
+    okModal.classList.remove('open');
+    if (!cartEl.classList.contains('open') && !chatEl.classList.contains('open') && !pm.classList.contains('open')) lockScroll(false);
+  }
+  okModal.addEventListener('click', function (e) { if (e.target === okModal || e.target.closest('.ok-btn')) hideResult(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideResult(); });
+
+  // Buyurtma va arizalar: Vercel nusxasida — o'z serverless funksiyasiga, hostingda — PHP API ga
+  var LEAD_API = window.CITRIC_LEAD_API || (API + '?api=lead');
+  function itemInfo(c) {
+    var p = BY_ID[c.id] || {};
+    return { id: c.id, qty: c.qty, name: p[lang] || p.uz || '', code: p.code || '', pack: packText(p.pack), img: p.img || '' };
+  }
   $('#orderForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var form = this;
@@ -728,19 +794,20 @@
     form.phone.closest('.field').classList.toggle('error', !okPhone);
     if (!okName || !okPhone || !cart.length) return;
     var btn = $('#orderBtn');
+    if (btn.classList.contains('loading')) return;
     btn.classList.add('loading');
-    post(API + '?api=lead', {
-      type: 'order', lang: lang, name: form.name.value, phone: form.phone.value, website: form.website.value,
-      items: cart.map(function (c) { return { id: c.id, qty: c.qty }; })
+    post(LEAD_API, {
+      type: 'order', lang: lang, name: form.name.value.trim(), phone: form.phone.value, website: form.website.value,
+      items: cart.map(itemInfo)
     }).then(function (r) {
       cart = [];
       saveCart();
       updateCartUI();
       form.reset();
-      $('#orderNo').textContent = t('cart.orderNo') + ': #' + r.id;
-      cartEl.classList.add('done');
+      closeCart();
+      showResult(true, t('cart.okt'), t('cart.ok'), r && r.id ? t('cart.orderNo') + ': #' + r.id : '');
     }).catch(function () {
-      alert(t('cart.err'));
+      showResult(false, t('err.title'), t('cart.err'));
     }).then(function () { btn.classList.remove('loading'); });
   });
   $('#contactCard form').addEventListener('submit', function (e) {
@@ -755,15 +822,18 @@
     var btn = $('button[type="submit"]', form);
     var err = $('.form-error', form);
     err.hidden = true;
+    if (btn.classList.contains('loading')) return;
     btn.classList.add('loading');
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
     data.type = 'form';
     data.lang = lang;
-    post(API + '?api=lead', data).then(function () {
-      form.closest('.form-card').classList.add('sent');
+    var sel = form.querySelector('select[name="product"]');
+    if (sel && sel.value) data.product_name = sel.options[sel.selectedIndex].text;
+    post(LEAD_API, data).then(function () {
       form.reset();
-    }).catch(function () { err.hidden = false; })
+      showResult(true, t('fm.okt'), t('fm.ok'));
+    }).catch(function () { err.hidden = false; showResult(false, t('err.title'), t('fm.err')); })
       .then(function () { btn.classList.remove('loading'); });
   });
   document.addEventListener('input', function (e) {

@@ -31,7 +31,8 @@ if (!mb_check_encoding($html, 'UTF-8') || strpos($html, "\u{FFFD}") !== false ||
 }
 
 // API manzili — shifrlangan sayt skriptidan oldin
-$boot = '<script>window.CITRIC_API=' . json_encode(SITE . 'index.php') . ';window.CITRIC_SITE=' . json_encode(SITE) . ';</script>';
+// Buyurtma va arizalar — Vercel'ning o'z funksiyasi (api/lead.js) orqali to'g'ridan-to'g'ri Telegramga
+$boot = '<script>window.CITRIC_API=' . json_encode(SITE . 'index.php') . ';window.CITRIC_SITE=' . json_encode(SITE) . ';window.CITRIC_LEAD_API="/api/lead";</script>';
 $p = strpos($html, '<script>(function(d){var s=atob(');
 if ($p === false) exit("sayt skripti topilmadi\n");
 $html = substr($html, 0, $p) . $boot . substr($html, $p);
