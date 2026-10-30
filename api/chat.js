@@ -50,7 +50,7 @@ ISH TARTIBI:
 2. Katalogdan mos mahsulotlarni top va ALBATTA show_products funksiyasini chaqirib kartochkalarini ko'rsat. Matnda nima uchun mosligini 1-2 gapda tushuntir.
 3. Narx: katalogda "narx" bo'lsa — aynan o'shani ayt. null bo'lsa — narx hajm va partiyaga qarab belgilanishini, menejer aniq narx va chegirmani aytishini tushuntir. HECH QACHON narx, muddat, chegirma yoki qoldiq miqdorini o'ylab topma.
 4. Katalogda yo'q mahsulot so'ralsa — "yo'q" deb rad etma: kompaniya buyurtma asosida topib berishi mumkinligini, menejer aniqlab aytishini ayt va arizani qabul qil.
-5. Mijoz qiziqish bildirsa, ismini va telefon raqamini so'ra (ikkalasi kerak). Raqam O'zbekiston formatida bo'lishi kerak (+998 XX XXX XX XX).
+5. Mijoz qiziqish bildirsa, ismini va telefon raqamini so'ra (ikkalasi kerak). Raqam to'liq bo'lsin: O'zbekiston (+998 XX XXX XX XX) yoki boshqa davlat — Qozog'iston/Rossiya (+7), Qirg'iziston (+996), Tojikiston (+992), Turkmaniston (+993), Afg'oniston (+93), Ozarbayjon (+994), Turkiya (+90), Xitoy (+86), Hindiston (+91), BAA (+971).
 6. Ism va raqam olingach, submit_lead funksiyasini chaqir (product_ids — tanlangan mahsulotlar; katalogda bo'lmasa product_request maydoniga yoz; hajm va izohni ham qo'sh).
 7. submit_lead muvaffaqiyatli bo'lgach, mijozga murojaati uchun rahmat ayt va tez orada operatorlarimiz u bilan bog'lanishini ayt. Shundan keyin yana ariza yuborma.
 
@@ -133,7 +133,7 @@ module.exports = async (req, res) => {
       const nameV = clean(args.name, 60);
       const phone = normPhone(args.phone);
       if (nameV.length < 2) return { ok: false, error: "Ism noto'g'ri — mijozdan ismini so'ra" };
-      if (!phone) return { ok: false, error: "Telefon raqami noto'g'ri — mijozdan to'g'ri raqamni so'ra (+998 XX XXX XX XX)" };
+      if (!phone) return { ok: false, error: "Telefon raqami noto'g'ri — mijozdan davlat kodi bilan to'liq raqamni so'ra (masalan +998 90 123 45 67 yoki +7 912 345 67 89)" };
       const items = [];
       (args.product_ids || []).forEach((id) => {
         const p = BY_ID.get(parseInt(id, 10));

@@ -725,32 +725,109 @@
     setQty(isNaN(+raw) ? raw : +raw, Math.max(1, +e.target.value || 1));
   });
   function validName(v) { return v.trim().length > 1; }
-  // Telefon: faqat O'zbekiston raqami, +998 XX XXX XX XX
-  function validPhone(v) { var d = v.replace(/\D/g, ''); return d.length === 12 && d.indexOf('998') === 0; }
-  function fmtPhone(v) {
-    var d = v.replace(/\D/g, '');
-    var rest = (d.indexOf('998') === 0 ? d.slice(3) : d).slice(0, 9);
-    var out = '+998 ' + rest.slice(0, 2);
-    if (rest.length > 2) out += ' ' + rest.slice(2, 5);
-    if (rest.length > 5) out += ' ' + rest.slice(5, 7);
-    if (rest.length > 7) out += ' ' + rest.slice(7, 9);
+  // ---------- Telefon: davlat tanlash (bayroq) + har bir davlat formatidagi raqam ----------
+  // mask: X — raqam; uzunlik maskadagi X lar soniga teng
+  var COUNTRIES = [
+    { iso: 'uz', code: '998', mask: 'XX XXX XX XX',  ph: '90 123 45 67',   uz: "O'zbekiston",  ru: 'Узбекистан',   en: 'Uzbekistan' },
+    { iso: 'kz', code: '7',   mask: 'XXX XXX XX XX', ph: '701 234 56 78',  uz: "Qozog'iston",  ru: 'Казахстан',    en: 'Kazakhstan' },
+    { iso: 'ru', code: '7',   mask: 'XXX XXX XX XX', ph: '912 345 67 89',  uz: 'Rossiya',      ru: 'Россия',       en: 'Russia' },
+    { iso: 'kg', code: '996', mask: 'XXX XXX XXX',   ph: '700 123 456',    uz: "Qirg'iziston", ru: 'Кыргызстан',   en: 'Kyrgyzstan' },
+    { iso: 'tj', code: '992', mask: 'XX XXX XXXX',   ph: '90 123 4567',    uz: 'Tojikiston',   ru: 'Таджикистан',  en: 'Tajikistan' },
+    { iso: 'tm', code: '993', mask: 'XX XX XX XX',   ph: '65 12 34 56',    uz: 'Turkmaniston', ru: 'Туркменистан', en: 'Turkmenistan' },
+    { iso: 'af', code: '93',  mask: 'XX XXX XXXX',   ph: '70 123 4567',    uz: "Afg'oniston",  ru: 'Афганистан',   en: 'Afghanistan' },
+    { iso: 'az', code: '994', mask: 'XX XXX XX XX',  ph: '50 123 45 67',   uz: 'Ozarbayjon',   ru: 'Азербайджан',  en: 'Azerbaijan' },
+    { iso: 'tr', code: '90',  mask: 'XXX XXX XX XX', ph: '532 123 45 67',  uz: 'Turkiya',      ru: 'Турция',       en: 'Turkey' },
+    { iso: 'cn', code: '86',  mask: 'XXX XXXX XXXX', ph: '131 2345 6789',  uz: 'Xitoy',        ru: 'Китай',        en: 'China' },
+    { iso: 'in', code: '91',  mask: 'XXXXX XXXXX',   ph: '98765 43210',    uz: 'Hindiston',    ru: 'Индия',        en: 'India' },
+    { iso: 'ae', code: '971', mask: 'XX XXX XXXX',   ph: '50 123 4567',    uz: 'BAA',          ru: 'ОАЭ',          en: 'UAE' }
+  ];
+  var FLAG_CDN = 'https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/flags/4x3/';
+  function ccByIso(iso) { return COUNTRIES.filter(function (c) { return c.iso === iso; })[0] || COUNTRIES[0]; }
+  function maskLen(c) { return c.mask.replace(/[^X]/g, '').length; }
+  function fmtNational(c, v) {
+    var d = String(v).replace(/\D/g, '').slice(0, maskLen(c)), out = '', i = 0;
+    for (var k = 0; k < c.mask.length && i < d.length; k++) out += c.mask[k] === 'X' ? d[i++] : c.mask[k];
     return out;
   }
-  function phoneMask(inp) {
+  // Maydondagi to'liq raqam: "+998 90 123 45 67"
+  function fullPhone(inp) { var c = ccByIso(inp.dataset.cc); return '+' + c.code + ' ' + fmtNational(c, inp.value); }
+  function validPhone(inp) {
+    if (typeof inp === 'string') { var d = inp.replace(/\D/g, ''); return d.length >= 8 && d.length <= 15; }
+    var c = ccByIso(inp.dataset.cc);
+    return inp.value.replace(/\D/g, '').length === maskLen(c);
+  }
+  var ccOpen = null;
+  function closeCc() { if (ccOpen) { ccOpen.classList.remove('open'); $('.cc-btn', ccOpen).setAttribute('aria-expanded', 'false'); ccOpen = null; } }
+  function setCc(inp, iso, focus) {
+    var c = ccByIso(iso), box = inp.closest('.phone-box');
+    inp.dataset.cc = c.iso;
+    $('.cc-flag', box).src = FLAG_CDN + c.iso + '.svg';
+    $('.cc-flag', box).alt = c[lang] || c.uz;
+    $('.cc-code', box).textContent = '+' + c.code;
+    inp.placeholder = c.ph;
+    inp.setAttribute('maxlength', String(c.mask.length));
+    inp.value = fmtNational(c, inp.value);
+    $$('.cc-item', box).forEach(function (li) { li.setAttribute('aria-selected', li.getAttribute('data-iso') === c.iso ? 'true' : 'false'); });
+    store('local', 'citric-cc', c.iso);
+    if (focus) inp.focus();
+  }
+  function renderCcMenu(box) {
+    $('.cc-menu', box).innerHTML = COUNTRIES.map(function (c) {
+      return '<li class="cc-item" role="option" tabindex="-1" data-iso="' + c.iso + '">' +
+        '<img src="' + FLAG_CDN + c.iso + '.svg" alt="" width="24" height="18" loading="lazy">' +
+        '<span class="cc-name">' + esc(c[lang] || c.uz) + '</span><span class="cc-dial">+' + c.code + '</span></li>';
+    }).join('');
+    var inp = $('input[type="tel"]', box);
+    $$('.cc-item', box).forEach(function (li) { li.setAttribute('aria-selected', li.getAttribute('data-iso') === inp.dataset.cc ? 'true' : 'false'); });
+  }
+  function phoneField(inp) {
+    var box = document.createElement('div');
+    box.className = 'phone-box';
+    inp.parentNode.insertBefore(box, inp);
+    box.innerHTML = '<button type="button" class="cc-btn" aria-haspopup="listbox" aria-expanded="false">' +
+      '<img class="cc-flag" src="" alt="" width="24" height="18"><span class="cc-code"></span>' +
+      '<svg class="i cc-chev"><use href="#i-chev"/></svg></button><ul class="cc-menu" role="listbox"></ul>';
+    box.appendChild(inp);
     inp.setAttribute('inputmode', 'tel');
-    inp.setAttribute('maxlength', '17');
-    inp.addEventListener('focus', function () { if (!inp.value) inp.value = '+998 '; });
-    inp.addEventListener('blur', function () { if (inp.value.replace(/\D/g, '') === '998') inp.value = ''; });
-    inp.addEventListener('keydown', function (e) {
-      // +998 prefiksini o'chirib bo'lmaydi
-      if ((e.key === 'Backspace' && inp.selectionStart <= 5 && inp.selectionEnd <= 5) || (e.key === 'Delete' && inp.selectionStart < 5)) e.preventDefault();
+    inp.setAttribute('autocomplete', 'tel-national');
+    renderCcMenu(box);
+    setCc(inp, store('local', 'citric-cc') || 'uz');
+    $('.cc-btn', box).addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (ccOpen === box) { closeCc(); return; }
+      closeCc();
+      box.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+      ccOpen = box;
+      var sel = $('.cc-item[aria-selected="true"]', box);
+      if (sel) { sel.scrollIntoView({ block: 'nearest' }); sel.focus(); }
+    });
+    $('.cc-menu', box).addEventListener('click', function (e) {
+      var li = e.target.closest('.cc-item');
+      if (!li) return;
+      setCc(inp, li.getAttribute('data-iso'), true);
+      closeCc();
+    });
+    $('.cc-menu', box).addEventListener('keydown', function (e) {
+      var items = $$('.cc-item', box), i = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); (items[i + 1] || items[0]).focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
+      if (e.key === 'Enter' && i >= 0) { e.preventDefault(); setCc(inp, items[i].getAttribute('data-iso'), true); closeCc(); }
+      if (e.key === 'Escape') { e.stopPropagation(); closeCc(); $('.cc-btn', box).focus(); }
     });
     inp.addEventListener('input', function () {
-      inp.value = fmtPhone(inp.value);
-      inp.setSelectionRange(inp.value.length, inp.value.length);
+      var v = inp.value, c = ccByIso(inp.dataset.cc);
+      // To'liq raqam nusxa qilib qo'yilsa (+7..., +998...) — davlatni o'zi aniqlaydi
+      if (/^\s*(\+|00)/.test(v)) {
+        var d = v.replace(/\D/g, '').replace(/^00/, '');
+        var hit = COUNTRIES.filter(function (x) { return d.indexOf(x.code) === 0; }).sort(function (a, b) { return b.code.length - a.code.length; })[0];
+        if (hit) { if (hit.code !== c.code) setCc(inp, hit.iso); c = ccByIso(inp.dataset.cc); v = d.slice(c.code.length); }
+      }
+      inp.value = fmtNational(c, v);
     });
   }
-  $$('input[type="tel"]').forEach(phoneMask);
+  $$('input[type="tel"]').forEach(phoneField);
+  document.addEventListener('click', function (e) { if (ccOpen && !e.target.closest('.phone-box')) closeCc(); });
 
   // Natija oynasi: galochka (muvaffaqiyat) yoki xato
   var okModal = document.createElement('div');
@@ -792,7 +869,7 @@
   $('#orderForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var form = this;
-    var okName = validName(form.name.value), okPhone = validPhone(form.phone.value);
+    var okName = validName(form.name.value), okPhone = validPhone(form.phone);
     form.name.closest('.field').classList.toggle('error', !okName);
     form.phone.closest('.field').classList.toggle('error', !okPhone);
     if (!okName || !okPhone || !cart.length) return;
@@ -800,7 +877,7 @@
     if (btn.classList.contains('loading')) return;
     btn.classList.add('loading');
     post(LEAD_API, {
-      type: 'order', lang: lang, name: form.name.value.trim(), phone: form.phone.value, website: form.website.value,
+      type: 'order', lang: lang, name: form.name.value.trim(), phone: fullPhone(form.phone), website: form.website.value,
       items: cart.map(itemInfo)
     }).then(function (r) {
       cart = [];
@@ -817,7 +894,7 @@
     e.preventDefault();
     var form = this, ok = true;
     $$('[required]', form).forEach(function (inp) {
-      var valid = inp.type === 'tel' ? validPhone(inp.value) : validName(inp.value);
+      var valid = inp.type === 'tel' ? validPhone(inp) : validName(inp.value);
       inp.closest('.field').classList.toggle('error', !valid);
       if (!valid) ok = false;
     });
@@ -831,6 +908,8 @@
     new FormData(form).forEach(function (v, k) { data[k] = v; });
     data.type = 'form';
     data.lang = lang;
+    var telInp = form.querySelector('input[type="tel"]');
+    if (telInp) data.phone = fullPhone(telInp);
     var sel = form.querySelector('select[name="product"]');
     if (sel && sel.value) data.product_name = sel.options[sel.selectedIndex].text;
     post(LEAD_API, data).then(function () {
@@ -996,6 +1075,7 @@
     $$('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
     $$('[data-i18n-alt]').forEach(function (el) { el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
     $('#langLabel').textContent = lang.toUpperCase();
+    $$('.phone-box').forEach(function (box) { renderCcMenu(box); var ti = $('input[type="tel"]', box); setCc(ti, ti.dataset.cc); });
     clientsStat();
     $$('.lang-menu [data-lang]').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
     renderFilters();

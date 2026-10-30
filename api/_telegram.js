@@ -11,12 +11,25 @@ function esc(s) {
 function clean(s, max) {
   return String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0, max);
 }
-// +998 XX XXX XX XX; 9 xonali mahalliy raqam ham qabul qilinadi
+// Saytdagi 12 davlat: kod va mahalliy raqam formati (X — raqam). Sayt JS dagi ro'yxat bilan bir xil.
+const PHONE_FORMATS = [
+  ['998', 'XX XXX XX XX'], ['996', 'XXX XXX XXX'], ['992', 'XX XXX XXXX'], ['993', 'XX XX XX XX'], ['994', 'XX XXX XX XX'],
+  ['971', 'XX XXX XXXX'], ['93', 'XX XXX XXXX'], ['90', 'XXX XXX XX XX'], ['86', 'XXX XXXX XXXX'], ['91', 'XXXXX XXXXX'],
+  ['7', 'XXX XXX XX XX'],
+];
+// Telefonni tekshiradi va "+998 90 123 45 67" ko'rinishiga keltiradi; 9 xonali raqam — O'zbekiston deb olinadi
 function normPhone(v) {
-  let d = String(v || '').replace(/\D/g, '');
+  let d = String(v || '').replace(/\D/g, '').replace(/^00/, '');
   if (d.length === 9) d = '998' + d;
-  if (d.length !== 12 || !d.startsWith('998')) return null;
-  return `+998 ${d.slice(3, 5)} ${d.slice(5, 8)} ${d.slice(8, 10)} ${d.slice(10, 12)}`;
+  for (const [code, mask] of PHONE_FORMATS) {
+    const len = mask.replace(/[^X]/g, '').length;
+    if (d.startsWith(code) && d.length === code.length + len) {
+      let i = code.length, out = '';
+      for (const ch of mask) out += ch === 'X' ? d[i++] : ch;
+      return `+${code} ${out}`;
+    }
+  }
+  return null;
 }
 function tashkentNow() {
   return new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
