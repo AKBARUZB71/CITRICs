@@ -200,3 +200,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 /* Ro'yxat tepaga ochiladi (pastda joy yetmaganda) */
 .phone-box.up .cc-menu { top: auto; bottom: calc(100% + 6px); transform: translateY(6px); box-shadow: 0 -18px 44px rgba(18,38,26,.16); }
 .phone-box.up.open .cc-menu { transform: none; }
+
+/* Maydon ostidagi xato matni */
+.field-msg { display: flex; align-items: center; gap: 6px; color: #d64545; font-size: 12.5px; font-weight: 600; margin-top: 2px; animation: fieldMsgIn .2s ease-out; }
+.field-msg::before { content: "!"; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #d64545; color: #fff; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+@keyframes fieldMsgIn { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }

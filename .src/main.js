@@ -220,6 +220,7 @@
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
     'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
     'ok.btn': 'Хорошо', 'err.title': 'Не удалось отправить',
+    'err.name': 'Введите ваше имя', 'err.phone': 'Введите номер полностью — {n} цифр',
     'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
     'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты',
     'a.prev': 'Предыдущий', 'a.next': 'Следующий', 'a.top': 'Наверх', 'a.ai': 'ИИ-консультант', 'a.clients': 'Логотипы клиентов', 'a.msg': 'Сообщение'
@@ -311,6 +312,7 @@
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
     'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
     'ok.btn': 'OK', 'err.title': 'Sending failed',
+    'err.name': 'Please enter your name', 'err.phone': 'Please enter the full number — {n} digits',
     'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
     'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps',
     'a.prev': 'Previous', 'a.next': 'Next', 'a.top': 'Back to top', 'a.ai': 'AI consultant', 'a.clients': 'Client logos', 'a.msg': 'Message'
@@ -341,6 +343,7 @@
     'pm.ai': 'AI maslahatchi', 'pm.call': "Qo'ng'iroq qilish",
     'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar',
     'ok.btn': 'Yaxshi', 'err.title': "Yuborib bo'lmadi",
+    'err.name': 'Ismingizni kiriting', 'err.phone': "Raqamni to'liq kiriting — {n} ta raqam",
     'a.close': 'Yopish', 'a.delete': "O'chirish"
   };
   var lang = store('local', 'citric-lang') || 'uz';
@@ -750,6 +753,15 @@
     return out;
   }
   // Maydondagi to'liq raqam: "+998 90 123 45 67"
+  // Maydon ostida aniq xato matni (bo'sh msg — xatoni olib tashlaydi)
+  function setFieldError(inp, msg) {
+    var f = inp.closest('.field'); if (!f) return;
+    f.classList.toggle('error', !!msg);
+    var s = f.querySelector('.field-msg');
+    if (msg) { if (!s) { s = document.createElement('small'); s.className = 'field-msg'; s.setAttribute('role', 'alert'); f.appendChild(s); } s.textContent = msg; }
+    else if (s) s.remove();
+  }
+  function phoneError(inp) { return t('err.phone').replace('{n}', maskLen(ccByIso(inp.dataset.cc))); }
   function fullPhone(inp) { var c = ccByIso(inp.dataset.cc); return '+' + c.code + ' ' + fmtNational(c, inp.value); }
   function validPhone(inp) {
     if (typeof inp === 'string') { var d = inp.replace(/\D/g, ''); return d.length >= 8 && d.length <= 15; }
@@ -765,7 +777,7 @@
     $('.cc-flag', box).alt = c[lang] || c.uz;
     $('.cc-code', box).textContent = '+' + c.code;
     inp.placeholder = c.ph;
-    inp.setAttribute('maxlength', String(c.mask.length));
+    inp.setAttribute('maxlength', String(c.mask.length + 4)); // ortiqcha kod/8 ni tozalash uchun joy
     inp.value = fmtNational(c, inp.value);
     $$('.cc-item', box).forEach(function (li) { li.setAttribute('aria-selected', li.getAttribute('data-iso') === c.iso ? 'true' : 'false'); });
     store('local', 'citric-cc', c.iso);
@@ -820,13 +832,24 @@
     });
     inp.addEventListener('input', function () {
       var v = inp.value, c = ccByIso(inp.dataset.cc);
-      // To'liq raqam nusxa qilib qo'yilsa (+7..., +998...) — davlatni o'zi aniqlaydi
+      var d = v.replace(/\D/g, '');
+      // To'liq raqam nusxa qilib qo'yilsa (+7..., +998..., 00...) — davlatni o'zi aniqlaydi
       if (/^\s*(\+|00)/.test(v)) {
-        var d = v.replace(/\D/g, '').replace(/^00/, '');
+        d = d.replace(/^00/, '');
         var hit = COUNTRIES.filter(function (x) { return d.indexOf(x.code) === 0; }).sort(function (a, b) { return b.code.length - a.code.length; })[0];
-        if (hit) { if (hit.code !== c.code) setCc(inp, hit.iso); c = ccByIso(inp.dataset.cc); v = d.slice(c.code.length); }
+        if (hit) { if (hit.code !== c.code) setCc(inp, hit.iso); c = ccByIso(inp.dataset.cc); d = d.slice(c.code.length); }
+      } else if (d.length > maskLen(c)) {
+        // Ortiqcha boshlanish: davlat kodi (998 90…, 7 912…) yoki Rossiya/Qozog'istondagi "8" (8 912…)
+        if (d.indexOf(c.code) === 0 && d.length - c.code.length <= maskLen(c)) d = d.slice(c.code.length);
+        else if (c.code === '7' && d.charAt(0) === '8' && d.length === 11) d = d.slice(1);
       }
-      inp.value = fmtNational(c, v);
+      // +7: Qozog'iston raqamlari 6/7 bilan, Rossiyaniki boshqa raqam bilan boshlanadi — bayroq o'zi to'g'rilanadi
+      if (c.code === '7' && d.length >= 1) {
+        var want = /^[67]/.test(d) ? 'kz' : 'ru';
+        if (want !== c.iso) { setCc(inp, want); c = ccByIso(want); }
+      }
+      inp.value = fmtNational(c, d);
+      setFieldError(inp, false);
     });
   }
   $$('input[type="tel"]').forEach(phoneField);
@@ -873,8 +896,8 @@
     e.preventDefault();
     var form = this;
     var okName = validName(form.name.value), okPhone = validPhone(form.phone);
-    form.name.closest('.field').classList.toggle('error', !okName);
-    form.phone.closest('.field').classList.toggle('error', !okPhone);
+    setFieldError(form.name, okName ? '' : t('err.name'));
+    setFieldError(form.phone, okPhone ? '' : phoneError(form.phone));
     if (!okName || !okPhone || !cart.length) return;
     var btn = $('#orderBtn');
     if (btn.classList.contains('loading')) return;
@@ -898,7 +921,7 @@
     var form = this, ok = true;
     $$('[required]', form).forEach(function (inp) {
       var valid = inp.type === 'tel' ? validPhone(inp) : validName(inp.value);
-      inp.closest('.field').classList.toggle('error', !valid);
+      setFieldError(inp, valid ? '' : (inp.type === 'tel' ? phoneError(inp) : t('err.name')));
       if (!valid) ok = false;
     });
     if (!ok) return;
@@ -923,7 +946,7 @@
   });
   document.addEventListener('input', function (e) {
     var f = e.target.closest('.field.error');
-    if (f) f.classList.remove('error');
+    if (f && e.target.type !== 'tel') setFieldError(e.target, '');
   });
   var chatEl = $('#chat');
   var chat = store('session', 'citric-chat') || { session: '', msgs: [], done: false };
