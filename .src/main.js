@@ -145,7 +145,7 @@
     'v.play': 'Смотреть видео',
     'v.s1t': 'Импорт и приёмка', 'v.s1': 'Прямые поставки от надёжных производителей.',
     'v.s2t': 'Контроль качества', 'v.s2': 'Каждая партия проверяется по сертификатам и документам.',
-    'v.s3t': 'Современный склад', 'v.s3': 'Хранение с соблюдением необходимого температурного режима и условий.',
+    'v.s3t': 'Современный склад', 'v.s3': 'Хранение при оптимальной температуре и в надлежащих условиях.',
     'v.s4t': 'Быстрая доставка', 'v.s4': 'Своевременная отгрузка по всему Узбекистану.',
     'cert.eyebrow': 'Сертификаты', 'cert.title': 'Качество подтверждено документами',
     'cert.sub': 'Вся наша продукция импортируется в соответствии с требованиями государственной сертификации и санитарными нормами Республики Узбекистан.',
@@ -174,7 +174,7 @@
     'about.p2': 'Благодаря развитой дистрибьюторской сети и хорошо организованной логистике мы бесперебойно обеспечиваем пищевые предприятия высококачественными ингредиентами и сырьём.',
     'about.l1': 'Прямой импорт из Китая, Турции, Индии и Европы', 'about.l2': 'Быстрая отгрузка с собственного склада в Ташкенте',
     'about.l3': 'Сертификаты качества на каждую партию',
-    'p.eyebrow': 'Продукция', 'p.title': 'Широкий ассортимент пищевых ингредиентов', 'p.all': 'Полный прайс-лист',
+    'p.eyebrow': 'Продукция', 'p.title': 'Широкий ассортимент пищевых ингредиентов и промышленной химии', 'p.all': 'Полный прайс-лист',
     'p.note': 'Не нашли нужный продукт? Напишите нам — мы подберём нужный ингредиент.',
     'p.onRequest': 'Цена по запросу', 'p.more': 'Показать ещё', 'p.loadErr': 'Не удалось загрузить каталог. Обновите страницу.',
     'ind.eyebrow': 'Сферы применения', 'ind.title': 'Для каких отраслей мы работаем',
@@ -184,7 +184,7 @@
     'w.eyebrow': 'Почему мы?', 'w.title': 'Почему именно CITRIC.UZ?',
     'w.1t': 'Качество и доверие', 'w.1': 'Только продукция от надёжных производителей.',
     'w.2t': 'Опытная команда', 'w.2': 'Профессионалы пищевой промышленности.',
-    'w.3t': 'Конкурентные цены', 'w.3': 'Выгодные цены и гибкая оплата благодаря прямому импорту.',
+    'w.3t': 'Конкурентные цены', 'w.3': 'Выгодные цены и гибкие условия оплаты благодаря прямому импорту.',
     'w.4t': 'Устойчивое развитие', 'w.4': 'Будущее, связанное с благополучием наших партнёров.',
     'c.eyebrow': 'Наши клиенты', 'c.title': 'Нас выбирают',
     'c.sub': 'Ведущие кондитерские и пищевые предприятия Узбекистана, а также предприятия по производству напитков закупают ингредиенты у нас.',
@@ -217,7 +217,8 @@
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
     'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
     'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
-    'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты'
+    'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты',
+    'a.prev': 'Предыдущий', 'a.next': 'Следующий', 'a.top': 'Наверх', 'a.ai': 'ИИ-консультант', 'a.clients': 'Логотипы клиентов', 'a.msg': 'Сообщение'
   };
   var EN = {
     'nav.company': 'Company', 'nav.catalog': 'Catalog', 'nav.certs': 'Certificates', 'nav.delivery': 'Delivery',
@@ -225,7 +226,7 @@
     'cta.manager': 'Contact a manager', 'cta.toCatalog': 'Go to catalog', 'cta.ai': 'AI consultant',
     'cta.askAi': 'Ask the AI consultant', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
     'hero.badge': 'Since 2013 · Tashkent',
-    'hero.title': 'Food Ingredients Supply',
+    'hero.title': 'Supply of Food Ingredients',
     'hero.text': 'High-quality ingredients and raw materials for confectionery, beverage and food manufacturers. Delivered across Uzbekistan.',
     'hero.s2': 'Client companies', 'hero.s4': 'Major brands chose us',
     's.1': 'Year founded', 's.4': 'Types of ingredients',
@@ -253,9 +254,9 @@
     'pm.f1': 'Certified quality', 'pm.f2': 'Delivery across Uzbekistan', 'pm.f3': 'Wholesale prices',
     'cart.items': 'Products', 'cart.packs': 'packs', 'cart.total': 'Total packs', 'cart.orderNo': 'Order number',
     'cart.err': 'Sending failed. Please call us: +998 95 154 88 88',
-    'f.1t': 'Products of global leaders', 'f.1': "From the world's best manufacturers.",
+    'f.1t': 'Products from leading global manufacturers', 'f.1': "From the world's best manufacturers.",
     'f.2t': 'Quality guarantee', 'f.2': 'Meets international standards.',
-    'f.3t': 'Well-established logistics', 'f.3': 'Consolidation warehouses and distribution.',
+    'f.3t': 'Well-established logistics network', 'f.3': 'Consolidation warehouses and distribution.',
     'f.4t': 'Personalized service', 'f.4': 'A tailored solution for every client.',
     'f.5t': 'Digital technologies', 'f.5': 'Modern IT solutions and support.',
     'about.badge': 'years of experience', 'about.eyebrow': 'About the company', 'about.title': 'About Us',
@@ -263,7 +264,7 @@
     'about.p2': 'Thanks to a developed distribution network and well-organized logistics, we reliably supply food manufacturers with high-quality ingredients and raw materials.',
     'about.l1': 'Direct imports from China, Turkey, India and Europe', 'about.l2': 'Fast shipping from our own warehouse in Tashkent',
     'about.l3': 'Quality certificates for every batch',
-    'p.eyebrow': 'Products', 'p.title': 'A wide range of food ingredients', 'p.all': 'Full price list',
+    'p.eyebrow': 'Products', 'p.title': 'A wide range of food ingredients and industrial chemicals', 'p.all': 'Full price list',
     'p.note': "Didn't find the product you need? Write to us — we will find the right ingredient.",
     'p.onRequest': 'Price on request', 'p.more': 'Show more', 'p.loadErr': 'Failed to load the catalog. Please refresh the page.',
     'ind.eyebrow': 'Applications', 'ind.title': 'Industries we serve',
@@ -273,7 +274,7 @@
     'w.eyebrow': 'Why us?', 'w.title': 'Why CITRIC.UZ?',
     'w.1t': 'Quality and trust', 'w.1': 'Only products from reliable manufacturers.',
     'w.2t': 'Experienced team', 'w.2': 'Food industry professionals.',
-    'w.3t': 'Competitive prices', 'w.3': 'Favorable prices and flexible payment thanks to direct imports.',
+    'w.3t': 'Competitive prices', 'w.3': 'Competitive prices and flexible payment terms thanks to direct imports.',
     'w.4t': 'Sustainable growth', 'w.4': 'A future tied to the success of our partners.',
     'c.eyebrow': 'Our clients', 'c.title': 'Trusted by',
     'c.sub': "Uzbekistan's leading confectionery, beverage and food manufacturers source their ingredients from us.",
@@ -306,7 +307,8 @@
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
     'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
     'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
-    'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps'
+    'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps',
+    'a.prev': 'Previous', 'a.next': 'Next', 'a.top': 'Back to top', 'a.ai': 'AI consultant', 'a.clients': 'Client logos', 'a.msg': 'Message'
   };
   // Qadoq turlari (bazada o'zbekcha saqlanadi)
   var PACK = {
@@ -930,6 +932,12 @@
     updateCartUI();
     renderChat(); // yopiq chat ham joriy tilda bo'lsin
     if (pm.classList.contains('open')) { renderPm(); pmFillRest(); }
+    else { // yopiq oynada eski til qolmasin
+      $('#pmMain').innerHTML = ''; pmGrid.innerHTML = ''; $('.pm-crumbs', pm).innerHTML = '';
+      $('.pm-back span', pm).textContent = t('pm.back');
+      $('.pm-more-title', pm).textContent = t('pm.more');
+      $('.pm-close', pm).setAttribute('aria-label', t('a.close'));
+    }
   }
   var langDd = $('#langDd');
   $('.lang-toggle', langDd).addEventListener('click', function (e) {
