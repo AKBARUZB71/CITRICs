@@ -796,6 +796,9 @@
       e.stopPropagation();
       if (ccOpen === box) { closeCc(); return; }
       closeCc();
+      // Pastda joy yetmasa (masalan savat oynasida) — ro'yxat tepaga ochiladi
+      var r = box.getBoundingClientRect(), below = window.innerHeight - r.bottom;
+      box.classList.toggle('up', below < 320 && r.top > below);
       box.classList.add('open');
       this.setAttribute('aria-expanded', 'true');
       ccOpen = box;
