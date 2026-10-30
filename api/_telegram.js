@@ -38,6 +38,24 @@ async function tg(method, body) {
   }
 }
 
+/** Ariza holatlari va har bir holatdagi tugmalar */
+const STATUS = {
+  confirmed: { icon: '✅', label: 'Qabul qilindi', answer: 'Ariza qabul qilindi ✅' },
+  done:      { icon: '💰', label: 'Sotildi',       answer: 'Sotuv belgilandi 💰' },
+  canceled:  { icon: '✖️', label: 'Bekor qilindi', answer: 'Ariza bekor qilindi' },
+  new:       { icon: '↩️', label: 'Qayta ochildi', answer: 'Ariza qayta ochildi' },
+};
+function keyboard(status) {
+  const b = (text, st) => ({ text, callback_data: `st:${st}` });
+  const rows = {
+    new:       [[b('✅ Qabul qilish', 'confirmed'), b('✖️ Bekor qilish', 'canceled')]],
+    confirmed: [[b('💰 Sotildi', 'done'), b('✖️ Bekor qilish', 'canceled')]],
+    done:      [[b('↩️ Qayta ochish', 'confirmed')]],
+    canceled:  [[b('↩️ Qayta ochish', 'new')]],
+  };
+  return { inline_keyboard: rows[status] || [] };
+}
+
 /**
  * Arizani guruhga yuboradi.
  * lead: { type: order|form|chat, lang, name, phone (normallashgan), company, items:[{name,code,pack,qty,img}], product, volume, note }
@@ -65,13 +83,14 @@ async function sendLead(lead) {
   const text = lines.join('\n');
 
   let r = { ok: false };
+  const reply_markup = keyboard('new');
   const photo = items.find((it) => it.img);
   if (photo && text.length <= 1024) {
-    r = await tg('sendPhoto', { chat_id: chat, photo: photo.img, caption: text, parse_mode: 'HTML' });
+    r = await tg('sendPhoto', { chat_id: chat, photo: photo.img, caption: text, parse_mode: 'HTML', reply_markup });
   }
-  if (!r.ok) r = await tg('sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true });
+  if (!r.ok) r = await tg('sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true, reply_markup });
   if (!r.ok) console.error('Telegram:', r.description);
   return r.ok ? { ok: true, id } : { ok: false, error: r.description };
 }
 
-module.exports = { esc, clean, normPhone, sendLead, tg };
+module.exports = { esc, clean, normPhone, sendLead, tg, keyboard, STATUS, tashkentNow };
