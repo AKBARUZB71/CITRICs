@@ -37,12 +37,16 @@ module.exports = async (req, res) => {
 
   // Holatni tekshirish (xabar yubormaydi): /api/lead?check=1
   if (req.method === 'GET' && req.query && req.query.check) {
-    if (!token || !chat) return res.status(200).json({ ok: false, configured: false });
-    const c = await tg(token, 'getChat', { chat_id: chat });
-    return res.status(200).json({ ok: !!c.ok, configured: true, chat: c.ok ? c.result.title || c.result.type : c.description });
+    const out = { bot: false, chat: null, fallback: !!process.env.SITE_LEAD_API };
+    if (token && chat) {
+      const c = await tg(token, 'getChat', { chat_id: chat });
+      out.bot = !!c.ok;
+      out.chat = c.ok ? c.result.title || c.result.type : c.description;
+    }
+    out.ok = out.bot || out.fallback;
+    return res.status(200).json(out);
   }
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'method' });
-  if (!token || !chat) return res.status(500).json({ ok: false, error: 'not_configured' });
 
   let b = req.body || {};
   if (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { b = {}; } }
@@ -83,17 +87,39 @@ module.exports = async (req, res) => {
   lines.push('', `🌐 Sayt · ${type === 'order' ? 'Savat' : 'Aloqa formasi'} · ${LANGS[lang]} · ${tashkentNow()}`);
   const text = lines.join('\n');
 
-  let r;
-  const photo = items.find((it) => it.img);
-  if (photo && text.length <= 1024) {
-    r = await tg(token, 'sendPhoto', { chat_id: chat, photo: photo.img, caption: text, parse_mode: 'HTML' });
+  let r = { ok: false, description: 'not_configured' };
+  if (token && chat) {
+    const photo = items.find((it) => it.img);
+    if (photo && text.length <= 1024) {
+      r = await tg(token, 'sendPhoto', { chat_id: chat, photo: photo.img, caption: text, parse_mode: 'HTML' });
+    }
+    if (!r.ok) {
+      r = await tg(token, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true });
+    }
   }
-  if (!r || !r.ok) {
-    r = await tg(token, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true });
-  }
-  if (!r.ok) {
-    console.error('Telegram:', r.description);
-    return res.status(502).json({ ok: false, error: 'telegram' });
-  }
-  return res.status(200).json({ ok: true, id });
+  if (r.ok) return res.status(200).json({ ok: true, id });
+
+  // Zaxira yo'l: asosiy saytning API si (buyurtma bazaga yoziladi va operatorlar guruhiga yuboriladi)
+  console.error('Telegram:', r.description, '— zaxira API ishlatilmoqda');
+  const fb = await forwardToSite(b, type, lang, name, phone, items, company, product, note);
+  if (fb && fb.ok) return res.status(200).json({ ok: true, id: fb.id || id });
+  return res.status(502).json({ ok: false, error: 'telegram' });
 };
+
+async function forwardToSite(b, type, lang, name, phone, items, company, product, note) {
+  const url = process.env.SITE_LEAD_API;
+  if (!url) return null;
+  const body = { type, lang, name, phone, company, message: note,
+    items: (Array.isArray(b.items) ? b.items : []).map((it) => ({ id: it && it.id, qty: it && it.qty })) };
+  if (type === 'form' && b.product) body.product = b.product;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 15000);
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctrl.signal });
+    clearTimeout(timer);
+    return await r.json().catch(() => null);
+  } catch (e) {
+    console.error('Zaxira API:', e.message);
+    return null;
+  }
+}
