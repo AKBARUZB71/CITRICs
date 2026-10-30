@@ -1,0 +1,944 @@
+{
+    "categories": {
+        "acid": {
+            "uz": "Kislotalar",
+            "ru": "Кислоты",
+            "en": "Acids"
+        },
+        "sweet": {
+            "uz": "Shirinlashtiruvchilar",
+            "ru": "Подсластители",
+            "en": "Sweeteners"
+        },
+        "preserv": {
+            "uz": "Konservant va antioksidantlar",
+            "ru": "Консерванты и антиоксиданты",
+            "en": "Preservatives & Antioxidants"
+        },
+        "thick": {
+            "uz": "Quyuqlashtiruvchilar va kraxmallar",
+            "ru": "Загустители и крахмалы",
+            "en": "Thickeners & Starches"
+        },
+        "flavor": {
+            "uz": "Ta'm, aroma va bo'yoqlar",
+            "ru": "Вкус, аромат и красители",
+            "en": "Flavors, Aromas & Colors"
+        },
+        "tech": {
+            "uz": "Texnik kimyo",
+            "ru": "Техническая химия",
+            "en": "Industrial Chemicals"
+        },
+        "other": {
+            "uz": "Boshqa ingrediyentlar",
+            "ru": "Другие ингредиенты",
+            "en": "Other Ingredients"
+        }
+    },
+    "products": [
+        {
+            "id": 12,
+            "uz": "Trinatriy sitrat",
+            "ru": "Тринатрий цитрат",
+            "en": "Trisodium Citrate",
+            "desc": {
+                "uz": "Kislotalik regulyatori, stabilizator va antioksidant sinergisti. Ichimliklar, sut mahsulotlari, eritilgan pishloq va farmatsevtikada ishlatiladi.",
+                "ru": "Регулятор кислотности, стабилизатор и синергист антиоксидантов. Напитки, молочная продукция, плавленые сыры, фармацевтика.",
+                "en": "Acidity regulator, stabilizer and antioxidant synergist. Used in beverages, dairy products, processed cheese and pharmaceuticals."
+            },
+            "cat": "acid",
+            "code": "E331",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/01-trinatriy-sitrat.webp"
+        },
+        {
+            "id": 13,
+            "uz": "Natriy glutamat",
+            "ru": "Глутамат натрия",
+            "en": "Monosodium Glutamate (MSG)",
+            "desc": {
+                "uz": "Ta'm kuchaytiruvchi. Kolbasa, souslar, ziravorlar, chipslar va tayyor taomlar ishlab chiqarishda keng qo'llaniladi.",
+                "ru": "Усилитель вкуса. Колбасы, соусы, приправы, чипсы и готовые блюда.",
+                "en": "Flavor enhancer widely used in sausages, sauces, seasonings, chips and ready meals."
+            },
+            "cat": "flavor",
+            "code": "E621",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/02-natriy-glutamat.webp"
+        },
+        {
+            "id": 14,
+            "uz": "Agar-agar",
+            "ru": "Агар-агар",
+            "en": "Agar-Agar",
+            "desc": {
+                "uz": "Tabiiy quyuqlashtiruvchi va jele hosil qiluvchi. Marmelad, zefir, sufle, desert va qandolatchilik mahsulotlari uchun.",
+                "ru": "Натуральный загуститель и желирующий агент. Мармелад, зефир, суфле, десерты и кондитерские изделия.",
+                "en": "Natural thickener and gelling agent for marmalade, marshmallow, soufflé, desserts and confectionery."
+            },
+            "cat": "thick",
+            "code": "E406",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/03-agar-agar.webp"
+        },
+        {
+            "id": 15,
+            "uz": "Glitserin",
+            "ru": "Глицерин",
+            "en": "Glycerin",
+            "desc": {
+                "uz": "Namlikni saqlovchi modda va erituvchi. Oziq-ovqat, farmatsevtika, kosmetika va maishiy kimyo mahsulotlarida ishlatiladi.",
+                "ru": "Влагоудерживающий агент и растворитель. Пищевая промышленность, фармацевтика, косметика и бытовая химия.",
+                "en": "Humectant and solvent used in food, pharmaceutical, cosmetic and household chemical products."
+            },
+            "cat": "other",
+            "code": "E422",
+            "pack": "Bochka",
+            "origin": {
+                "uz": "Malayziya",
+                "ru": "Малайзия",
+                "en": "Malaysia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/04-glitserin.webp"
+        },
+        {
+            "id": 16,
+            "uz": "Suvsiz limon kislotasi",
+            "ru": "Лимонная кислота безводная",
+            "en": "Citric Acid Anhydrous",
+            "desc": {
+                "uz": "Kislotalik regulyatori va antioksidant. Ichimliklar, sharbatlar, qandolatchilik, konservalash va sut mahsulotlari uchun.",
+                "ru": "Регулятор кислотности и антиоксидант. Напитки, соки, кондитерские изделия, консервация и молочная продукция.",
+                "en": "Acidity regulator and antioxidant for beverages, juices, confectionery, canning and dairy products."
+            },
+            "cat": "acid",
+            "code": "E330",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/05-limon-kislotasi-anhidrid.webp"
+        },
+        {
+            "id": 17,
+            "uz": "Kaustik soda granulalangan 99%",
+            "ru": "Каустическая сода гранулированная 99%",
+            "en": "Granulated Caustic Soda 99%",
+            "desc": {
+                "uz": "Natriy gidroksidi (NaOH). Sovun, yuvish vositalari, tozalash, kimyo va to'qimachilik sanoati uchun.",
+                "ru": "Гидроксид натрия (NaOH). Мыловарение, моющие средства, очистка, химическая и текстильная промышленность.",
+                "en": "Sodium hydroxide (NaOH) for soap, detergents, cleaning products, chemical and textile industries."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/06-kaustik-soda-granula.webp"
+        },
+        {
+            "id": 18,
+            "uz": "Atsesulfam K",
+            "ru": "Ацесульфам K",
+            "en": "Acesulfame K",
+            "desc": {
+                "uz": "Intensiv shirinlashtiruvchi (shakardan ~200 marta shirin). Shakarsiz ichimliklar, saqich va dietik mahsulotlar uchun.",
+                "ru": "Интенсивный подсластитель (~в 200 раз слаще сахара). Напитки без сахара, жевательная резинка, диетические продукты.",
+                "en": "High-intensity sweetener (~200 times sweeter than sugar) for sugar-free beverages, chewing gum and dietary products."
+            },
+            "cat": "sweet",
+            "code": "E950",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/07-atsesulfam-k.webp"
+        },
+        {
+            "id": 19,
+            "uz": "Maltodekstrin",
+            "ru": "Мальтодекстрин",
+            "en": "Maltodextrin",
+            "desc": {
+                "uz": "Universal ingrediyent: to'ldiruvchi va tekstura beruvchi. Yogurt, muzqaymoq, quruq aralashmalar va sport ozuqasi uchun.",
+                "ru": "Универсальный ингредиент: наполнитель и текстуратор. Йогурты, мороженое, сухие смеси и спортивное питание.",
+                "en": "Versatile ingredient — bulking and texturizing agent for yogurt, ice cream, dry mixes and sports nutrition."
+            },
+            "cat": "thick",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/08-maltodekstrin.webp"
+        },
+        {
+            "id": 20,
+            "uz": "Natriy perkarbonat",
+            "ru": "Перкарбонат натрия",
+            "en": "Sodium Percarbonate",
+            "desc": {
+                "uz": "Kislorodli oqartiruvchi. Kir yuvish kukunlari, dog' ketkazgichlar va tozalash vositalari ishlab chiqarish uchun.",
+                "ru": "Кислородный отбеливатель. Стиральные порошки, пятновыводители и чистящие средства.",
+                "en": "Oxygen-based bleaching agent for laundry powders, stain removers and cleaning products."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/09-natriy-perkarbonat.webp"
+        },
+        {
+            "id": 21,
+            "uz": "Makkajo'xori kraxmali «Rustark»",
+            "ru": "Кукурузный крахмал «Рустарк»",
+            "en": "Corn Starch «Rustark»",
+            "desc": {
+                "uz": "Oliy navli makkajo'xori kraxmali. Souslar, qandolatchilik, non va go'sht mahsulotlarida quyuqlashtiruvchi sifatida.",
+                "ru": "Кукурузный крахмал высшего сорта. Загуститель для соусов, кондитерских, хлебобулочных и мясных изделий.",
+                "en": "Premium-grade corn starch used as a thickener in sauces, confectionery, bakery and meat products."
+            },
+            "cat": "thick",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/10-makkajoxori-kraxmali-rustark.webp"
+        },
+        {
+            "id": 22,
+            "uz": "Fenolftalein",
+            "ru": "Фенолфталеин",
+            "en": "Phenolphthalein",
+            "desc": {
+                "uz": "Kislota-asos indikatori. Laboratoriyalar va ishlab chiqarishda pH nazorati hamda titrlash uchun.",
+                "ru": "Кислотно-основный индикатор. Контроль pH и титрование в лабораториях и на производстве.",
+                "en": "Acid-base indicator for pH control and titration in laboratories and production."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "Baraban",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/11-fenolftalein.webp"
+        },
+        {
+            "id": 23,
+            "uz": "Aspartam",
+            "ru": "Аспартам",
+            "en": "Aspartame",
+            "desc": {
+                "uz": "Shakarning ishonchli o'rnini bosuvchi intensiv shirinlashtiruvchi. Ichimliklar, saqich va farmatsevtika uchun.",
+                "ru": "Надёжный заменитель сахара, интенсивный подсластитель. Напитки, жевательная резинка и фармацевтика.",
+                "en": "Reliable high-intensity sugar substitute for beverages, chewing gum and pharmaceuticals."
+            },
+            "cat": "sweet",
+            "code": "E951",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/12-aspartam.webp"
+        },
+        {
+            "id": 24,
+            "uz": "Ribonukleotid (I+G)",
+            "ru": "Рибонуклеотид (I+G)",
+            "en": "Ribonucleotides (I+G)",
+            "desc": {
+                "uz": "Ta'm kuchaytiruvchi, natriy glutamat bilan birga sinergik ta'sir beradi. Chips, ziravorlar, sho'rva va kolbasalar uchun.",
+                "ru": "Усилитель вкуса, синергист глутамата натрия. Чипсы, приправы, супы и колбасы.",
+                "en": "Flavor enhancer with a synergistic effect when combined with MSG. For chips, seasonings, soups and sausages."
+            },
+            "cat": "flavor",
+            "code": "E635",
+            "pack": "10 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/13-ribonukleotid-ig.webp"
+        },
+        {
+            "id": 25,
+            "uz": "SLES 70% (natriy lauril efir sulfat)",
+            "ru": "SLES 70% (лаурет сульфат натрия)",
+            "en": "SLES 70% (Sodium Laureth Sulfate)",
+            "desc": {
+                "uz": "Ko'pik hosil qiluvchi sirt-faol modda. Shampun, suyuq sovun, idish yuvish va kir yuvish vositalari uchun.",
+                "ru": "Пенообразующее ПАВ. Шампуни, жидкое мыло, средства для посуды и стирки.",
+                "en": "Foaming surfactant for shampoos, liquid soaps, dishwashing liquids and laundry detergents."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "170 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/14-sles-70.webp"
+        },
+        {
+            "id": 26,
+            "uz": "Kaliy sorbat",
+            "ru": "Сорбат калия",
+            "en": "Potassium Sorbate",
+            "desc": {
+                "uz": "Oziq-ovqat konservanti: mog'or va achitqilarga qarshi. Ichimliklar, qandolatchilik, pishloq va souslar uchun.",
+                "ru": "Пищевой консервант против плесени и дрожжей. Напитки, кондитерские изделия, сыры и соусы.",
+                "en": "Food preservative effective against mold and yeast. For beverages, confectionery, cheese and sauces."
+            },
+            "cat": "preserv",
+            "code": "E202",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/15-kaliy-sorbat.webp"
+        },
+        {
+            "id": 27,
+            "uz": "Sorbitol kukuni",
+            "ru": "Сорбитол порошок",
+            "en": "Sorbitol Powder",
+            "desc": {
+                "uz": "Shakar o'rnini bosuvchi va namlikni saqlovchi modda. Diabetik mahsulotlar, saqich, qandolatchilik va farmatsevtika uchun.",
+                "ru": "Заменитель сахара и влагоудерживающий агент. Диабетические продукты, жевательная резинка, кондитерка, фармацевтика.",
+                "en": "Sugar substitute and humectant for diabetic products, chewing gum, confectionery and pharmaceuticals."
+            },
+            "cat": "sweet",
+            "code": "E420",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/16-sorbitol-kukuni.webp"
+        },
+        {
+            "id": 28,
+            "uz": "Agar (oziq-ovqat)",
+            "ru": "Агар пищевой",
+            "en": "Food-Grade Agar",
+            "desc": {
+                "uz": "Tabiiy quyuqlashtiruvchi. Marmelad, jele, desert va qandolatchilik mahsulotlarida barqaror tekstura beradi.",
+                "ru": "Натуральный загуститель. Стабильная текстура мармелада, желе, десертов и кондитерских изделий.",
+                "en": "Natural thickener that provides a stable texture in marmalade, jelly, desserts and confectionery."
+            },
+            "cat": "thick",
+            "code": "E406",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/17-agar-oziq-ovqat.webp"
+        },
+        {
+            "id": 29,
+            "uz": "Qandolatchilik uchun ko'knori urug'i",
+            "ru": "Мак кондитерский",
+            "en": "Confectionery Poppy Seeds",
+            "desc": {
+                "uz": "Bulochka, rulet va pishiriqlar uchun saralangan oziq-ovqat ko'knori urug'i.",
+                "ru": "Отборный пищевой мак для булочек, рулетов и выпечки.",
+                "en": "Sorted food-grade poppy seeds for buns, rolls and baked goods."
+            },
+            "cat": "other",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Chexiya",
+                "ru": "Чехия",
+                "en": "Czech Republic"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/18-qandolatchilik-mak.webp"
+        },
+        {
+            "id": 30,
+            "uz": "Kakao kukuni",
+            "ru": "Какао-порошок",
+            "en": "Cocoa Powder",
+            "desc": {
+                "uz": "Boy shokolad ta'mi va to'q rang. Shokolad, konditer mahsulotlari, pishiriqlar va ichimliklar uchun.",
+                "ru": "Насыщенный шоколадный вкус и цвет. Шоколад, кондитерские изделия, выпечка и напитки.",
+                "en": "Rich chocolate flavor and deep color for chocolate, confectionery, baked goods and beverages."
+            },
+            "cat": "flavor",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/19-kakao-kukuni.webp"
+        },
+        {
+            "id": 31,
+            "uz": "Makkajo'xori kraxmali «Cargill»",
+            "ru": "Кукурузный крахмал «Cargill»",
+            "en": "Corn Starch «Cargill»",
+            "desc": {
+                "uz": "Oliy navli kraxmal (GOST 32159-2013). Oziq-ovqat, to'qimachilik va quruq qurilish aralashmalari sanoati uchun.",
+                "ru": "Крахмал высшего сорта (ГОСТ 32159-2013). Пищевая, текстильная промышленность и сухие строительные смеси.",
+                "en": "Premium-grade starch (GOST 32159-2013) for the food, textile and dry building mix industries."
+            },
+            "cat": "thick",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/20-makkajoxori-kraxmali-cargill.webp"
+        },
+        {
+            "id": 32,
+            "uz": "Ichimlik sodasi (natriy bikarbonat)",
+            "ru": "Пищевая сода (бикарбонат натрия)",
+            "en": "Baking Soda (Sodium Bicarbonate)",
+            "desc": {
+                "uz": "Qabartiruvchi va kislotalik regulyatori. Non, pechenye, qandolatchilik va ichimliklar ishlab chiqarish uchun.",
+                "ru": "Разрыхлитель и регулятор кислотности. Хлеб, печенье, кондитерские изделия и напитки.",
+                "en": "Leavening agent and acidity regulator for bread, biscuits, confectionery and beverages."
+            },
+            "cat": "other",
+            "code": "E500",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/21-ichimlik-sodasi.webp"
+        },
+        {
+            "id": 33,
+            "uz": "Maltodekstrin (Rossiya)",
+            "ru": "Мальтодекстрин (Россия)",
+            "en": "Maltodextrin (Russia)",
+            "desc": {
+                "uz": "Yogurt va muzqaymoq ishlab chiqarish uchun ideal mahsulot: mahsulotga quyuqlik va barqaror tekstura beradi.",
+                "ru": "Идеальный продукт для йогуртов и мороженого: придаёт продукту плотность и стабильную текстуру.",
+                "en": "Ideal for yogurt and ice cream production — adds body and a stable texture."
+            },
+            "cat": "thick",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/22-maltodekstrin-2.webp"
+        },
+        {
+            "id": 34,
+            "uz": "Tokoferol (Vitamin E)",
+            "ru": "Токоферол (Витамин E)",
+            "en": "Tocopherol (Vitamin E)",
+            "desc": {
+                "uz": "Kuchli tabiiy antioksidant. Yog'lar, chips, margarin va kosmetika mahsulotlarining saqlanish muddatini uzaytiradi.",
+                "ru": "Мощный натуральный антиоксидант. Продлевает срок хранения масел, чипсов, маргарина и косметики.",
+                "en": "Powerful natural antioxidant that extends the shelf life of oils, chips, margarine and cosmetics."
+            },
+            "cat": "preserv",
+            "code": "E306",
+            "pack": "Bochka",
+            "origin": {
+                "uz": "Ispaniya",
+                "ru": "Испания",
+                "en": "Spain"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/23-tokoferol-vitamin-e.webp"
+        },
+        {
+            "id": 35,
+            "uz": "EDTA-4Na (Trilon B)",
+            "ru": "EDTA-4Na (Трилон Б)",
+            "en": "EDTA-4Na (Trilon B)",
+            "desc": {
+                "uz": "Suvni yumshatuvchi va metall ionlarini bog'lovchi stabilizator. Yuvish vositalari va texnik jarayonlar uchun.",
+                "ru": "Умягчитель воды и комплексообразователь. Моющие средства и технологические процессы.",
+                "en": "Water softener and chelating stabilizer that binds metal ions. For detergents and technical processes."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/24-edta-4na.webp"
+        },
+        {
+            "id": 36,
+            "uz": "AOS 92% (alfa-olefin sulfonat)",
+            "ru": "AOS 92% (альфа-олефинсульфонат)",
+            "en": "AOS 92% (Alpha Olefin Sulfonate)",
+            "desc": {
+                "uz": "Kuchli ko'pik hosil qiluvchi komponent. Kir yuvish kukunlari, shampun va tozalash vositalari uchun.",
+                "ru": "Сильный пенообразующий компонент. Стиральные порошки, шампуни и чистящие средства.",
+                "en": "Powerful foaming component for laundry powders, shampoos and cleaning products."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/25-aos-92.webp"
+        },
+        {
+            "id": 37,
+            "uz": "Dekstroza monogidrat",
+            "ru": "Декстроза моногидрат",
+            "en": "Dextrose Monohydrate",
+            "desc": {
+                "uz": "Yuqori sifatli glyukoza. Qandolatchilik, ichimliklar, non va farmatsevtika mahsulotlarida shirinlik va energiya manbai.",
+                "ru": "Глюкоза высокого качества. Кондитерские изделия, напитки, хлеб и фармацевтика.",
+                "en": "High-quality glucose — a source of sweetness and energy in confectionery, beverages, bakery and pharmaceuticals."
+            },
+            "cat": "sweet",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/26-dekstroza-monogidrat.webp"
+        },
+        {
+            "id": 38,
+            "uz": "Gummi arabik",
+            "ru": "Гуммиарабик",
+            "en": "Gum Arabic",
+            "desc": {
+                "uz": "Konfet va saqich uchun quyuqlashtiruvchi va yaltiroq qoplama beruvchi tabiiy smola. Ichimlik emulsiyalarida ham ishlatiladi.",
+                "ru": "Натуральная камедь: загуститель и глазирователь для конфет и жевательной резинки, эмульсии для напитков.",
+                "en": "Natural resin used as a thickener and glazing agent for candies and chewing gum. Also used in beverage emulsions."
+            },
+            "cat": "thick",
+            "code": "E414",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Fransiya",
+                "ru": "Франция",
+                "en": "France"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/27-gummi-arabik.webp"
+        },
+        {
+            "id": 39,
+            "uz": "Karamel bo'yog'i (kolor)",
+            "ru": "Карамельный колер",
+            "en": "Caramel Color",
+            "desc": {
+                "uz": "To'yingan shokolad-jigarrang rang beruvchi bo'yoq. Ichimliklar, qandolatchilik va souslar uchun.",
+                "ru": "Насыщенный шоколадно-коричневый краситель. Напитки, кондитерские изделия и соусы.",
+                "en": "Colorant that gives a rich chocolate-brown shade to beverages, confectionery and sauces."
+            },
+            "cat": "flavor",
+            "code": "E150",
+            "pack": "Kanistr",
+            "origin": {
+                "uz": "Import",
+                "ru": "Импорт",
+                "en": "Imported"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/28-karamel-kolor.webp"
+        },
+        {
+            "id": 40,
+            "uz": "Kaustik soda tangacha 98%",
+            "ru": "Каустическая сода чешуированная 98%",
+            "en": "Caustic Soda Flakes 98%",
+            "desc": {
+                "uz": "Natriy gidroksidi (tangachali). Sovun, yuvish vositalari, tozalash va kimyo sanoati uchun.",
+                "ru": "Гидроксид натрия (чешуйки). Мыловарение, моющие средства, очистка и химическая промышленность.",
+                "en": "Sodium hydroxide (flakes) for soap, detergents, cleaning and the chemical industry."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/29-kaustik-soda-tangacha.webp"
+        },
+        {
+            "id": 41,
+            "uz": "Limon kislotasi monogidrat",
+            "ru": "Лимонная кислота моногидрат",
+            "en": "Citric Acid Monohydrate",
+            "desc": {
+                "uz": "Kislotalik regulyatori. Ichimliklar, qandolatchilik, konservalash va farmatsevtika uchun.",
+                "ru": "Регулятор кислотности. Напитки, кондитерские изделия, консервация и фармацевтика.",
+                "en": "Acidity regulator for beverages, confectionery, canning and pharmaceuticals."
+            },
+            "cat": "acid",
+            "code": "E330",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/30-limon-kislotasi-monogidrat.webp"
+        },
+        {
+            "id": 42,
+            "uz": "Limon kislotasi monogidrat (Xitoy ishlab chiqarishi)",
+            "ru": "Лимонная кислота моногидрат (производство Китая)",
+            "en": "Citric Acid Monohydrate (Made in China)",
+            "desc": {
+                "uz": "Kislotalik regulyatori va antioksidant. Ichimliklar, sharbatlar, qandolatchilik va sut mahsulotlari uchun.",
+                "ru": "Регулятор кислотности и антиоксидант. Напитки, соки, кондитерские изделия и молочная продукция.",
+                "en": "Acidity regulator and antioxidant for beverages, juices, confectionery and dairy products."
+            },
+            "cat": "acid",
+            "code": "E330",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/31-limon-kislotasi-monogidrat-2.webp"
+        },
+        {
+            "id": 43,
+            "uz": "Mentol",
+            "ru": "Ментол",
+            "en": "Menthol",
+            "desc": {
+                "uz": "Sovutuvchi ta'm va aroma beruvchi modda. Saqich, farmatsevtika, kosmetika va konfetlar uchun.",
+                "ru": "Охлаждающий вкус и аромат. Жевательная резинка, фармацевтика, косметика и конфеты.",
+                "en": "Cooling flavor and aroma agent for chewing gum, pharmaceuticals, cosmetics and candies."
+            },
+            "cat": "flavor",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/32-mentol.webp"
+        },
+        {
+            "id": 44,
+            "uz": "OEDF (HEDP)",
+            "ru": "ОЭДФ (HEDP)",
+            "en": "HEDP (Etidronic Acid)",
+            "desc": {
+                "uz": "Kuchli tozalovchi va kompleks hosil qiluvchi komponent. Suvni tayyorlash, yuvish vositalari va texnik tozalash uchun.",
+                "ru": "Сильный комплексообразователь. Водоподготовка, моющие средства и техническая очистка.",
+                "en": "Powerful cleaning and chelating component for water treatment, detergents and industrial cleaning."
+            },
+            "cat": "tech",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/33-oedf.webp"
+        },
+        {
+            "id": 45,
+            "uz": "Letsitin LASENOR",
+            "ru": "Лецитин LASENOR",
+            "en": "Lecithin LASENOR",
+            "desc": {
+                "uz": "Funksional emulgator. Shokolad, margarin, pishiriqlar va qandolatchilik mahsulotlarining barqaror sifatini ta'minlaydi.",
+                "ru": "Функциональный эмульгатор для стабильного качества шоколада, маргарина, выпечки и кондитерских изделий.",
+                "en": "Functional emulsifier that ensures consistent quality of chocolate, margarine, baked goods and confectionery."
+            },
+            "cat": "other",
+            "code": "E322",
+            "pack": "200 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/34-letsitin-lasenor.webp"
+        },
+        {
+            "id": 46,
+            "uz": "ROKO Agar",
+            "ru": "ROKO Агар",
+            "en": "ROKO Agar",
+            "desc": {
+                "uz": "Ispaniyaning yuqori sifatli agar quyuqlashtiruvchisi. Marmelad, desert va sut mahsulotlari uchun.",
+                "ru": "Высококачественный испанский агар-загуститель для мармелада, десертов и молочной продукции.",
+                "en": "High-quality Spanish agar thickener for marmalade, desserts and dairy products."
+            },
+            "cat": "thick",
+            "code": "E406",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Ispaniya",
+                "ru": "Испания",
+                "en": "Spain"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/35-roko-agar.webp"
+        },
+        {
+            "id": 47,
+            "uz": "SAPP 28 (natriy pirofosfat)",
+            "ru": "SAPP 28 (пирофосфат натрия)",
+            "en": "SAPP 28 (Sodium Acid Pyrophosphate)",
+            "desc": {
+                "uz": "Qandolatchilik va non ishlab chiqarish uchun qabartiruvchi. Pechenye, keks va pishiriqlar uchun.",
+                "ru": "Разрыхлитель для кондитерского и хлебопекарного производства: печенье, кексы, выпечка.",
+                "en": "Leavening agent for confectionery and bakery — biscuits, cakes and pastries."
+            },
+            "cat": "other",
+            "code": "E450",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/36-sapp-28.webp"
+        },
+        {
+            "id": 48,
+            "uz": "Atsesulfam K (JinHeSweet)",
+            "ru": "Ацесульфам K (JinHeSweet)",
+            "en": "Acesulfame K (JinHeSweet)",
+            "desc": {
+                "uz": "Intensiv shirinlashtiruvchi. Ichimliklar, saqich va shakarsiz mahsulotlar uchun.",
+                "ru": "Интенсивный подсластитель для напитков, жевательной резинки и продуктов без сахара.",
+                "en": "High-intensity sweetener for beverages, chewing gum and sugar-free products."
+            },
+            "cat": "sweet",
+            "code": "E950",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/37-atsesulfam-k-2.webp"
+        },
+        {
+            "id": 49,
+            "uz": "Natriy benzoat",
+            "ru": "Бензоат натрия",
+            "en": "Sodium Benzoate",
+            "desc": {
+                "uz": "Ichimliklar uchun ishonchli konservant. Kislotali muhitda samarali: sharbatlar, gazli ichimliklar, souslar.",
+                "ru": "Надёжный консервант для напитков. Эффективен в кислой среде: соки, газированные напитки, соусы.",
+                "en": "Reliable preservative for beverages, effective in acidic environments: juices, soft drinks, sauces."
+            },
+            "cat": "preserv",
+            "code": "E211",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/38-natriy-benzoat.webp"
+        },
+        {
+            "id": 50,
+            "uz": "Xantal kukuni «Gorlinka»",
+            "ru": "Горчичный порошок «Горлинка»",
+            "en": "Mustard Powder «Gorlinka»",
+            "desc": {
+                "uz": "Oziq-ovqat sanoati uchun tabiiy ingrediyent. Xantal, souslar, mayonez va ziravorlar ishlab chiqarish uchun.",
+                "ru": "Натуральный ингредиент для производства горчицы, соусов, майонеза и приправ.",
+                "en": "Natural ingredient for the food industry — for mustard, sauces, mayonnaise and seasonings."
+            },
+            "cat": "flavor",
+            "code": "",
+            "pack": "20 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/39-xantal-kukuni.webp"
+        },
+        {
+            "id": 51,
+            "uz": "Vanilin aromatizatori",
+            "ru": "Ванилиновый ароматизатор",
+            "en": "Vanillin Flavoring",
+            "desc": {
+                "uz": "Yoqimli aroma va shirin ta'm. Qandolatchilik, pishiriqlar, shokolad va muzqaymoq uchun.",
+                "ru": "Приятный аромат и сладкий вкус. Кондитерские изделия, выпечка, шоколад и мороженое.",
+                "en": "Pleasant aroma and sweet taste for confectionery, baked goods, chocolate and ice cream."
+            },
+            "cat": "flavor",
+            "code": "",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/40-vanilin.webp"
+        },
+        {
+            "id": 52,
+            "uz": "Askorbin kislotasi (Vitamin C)",
+            "ru": "Аскорбиновая кислота (Витамин C)",
+            "en": "Ascorbic Acid (Vitamin C)",
+            "desc": {
+                "uz": "Antioksidant va vitamin C manbai. Sharbatlar, ichimliklar, non va go'sht mahsulotlari uchun.",
+                "ru": "Антиоксидант и источник витамина C. Соки, напитки, хлеб и мясная продукция.",
+                "en": "Antioxidant and source of vitamin C for juices, beverages, bakery and meat products."
+            },
+            "cat": "acid",
+            "code": "E300",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/41-askorbin-kislotasi.webp"
+        },
+        {
+            "id": 53,
+            "uz": "Kraxmal patokasi (glyukoza siropi)",
+            "ru": "Патока крахмальная",
+            "en": "Glucose Syrup (Starch Syrup)",
+            "desc": {
+                "uz": "Qandolatchilik, muzqaymoq va ichimliklar uchun shirinlashtiruvchi va kristallanishga qarshi komponent.",
+                "ru": "Подсластитель и антикристаллизатор для кондитерских изделий, мороженого и напитков.",
+                "en": "Sweetener and anti-crystallization component for confectionery, ice cream and beverages."
+            },
+            "cat": "sweet",
+            "code": "",
+            "pack": "280 kg",
+            "origin": {
+                "uz": "Rossiya",
+                "ru": "Россия",
+                "en": "Russia"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/42-kraxmal-patokasi.webp"
+        },
+        {
+            "id": 54,
+            "uz": "Askorbin kislotasi (Vitamin C)",
+            "ru": "Аскорбиновая кислота (Витамин C)",
+            "en": "Ascorbic Acid (Vitamin C)",
+            "desc": {
+                "uz": "Vitamin C, antioksidant. Ichimliklarni boyitish, rangni saqlash va un sifatini yaxshilash uchun.",
+                "ru": "Витамин C, антиоксидант. Обогащение напитков, стабилизация цвета, улучшение муки.",
+                "en": "Vitamin C and antioxidant for fortifying beverages, preserving color and improving flour quality."
+            },
+            "cat": "acid",
+            "code": "E300",
+            "pack": "25 kg",
+            "origin": {
+                "uz": "Xitoy",
+                "ru": "Китай",
+                "en": "China"
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/43-askorbin-kislotasi-2.webp"
+        }
+    ]
+}

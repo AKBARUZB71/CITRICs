@@ -54,6 +54,9 @@
   // Boshqa domendagi nusxa (Vercel): API va sertifikatlar asosiy hostingdan olinadi
   var API = window.CITRIC_API || '';
   var SITE = window.CITRIC_SITE || '';
+  // Vercel nusxasi (STATIC): hostingsiz — chat va arizalar o'z funksiyalari orqali, sertifikatlar CDN dan
+  var STATIC = !!window.CITRIC_STATIC;
+  var CHAT_API = window.CITRIC_CHAT_API || (API + '?api=chat');
   document.addEventListener('error', function (e) {
     var img = e.target;
     if (img.tagName === 'IMG' && img.getAttribute('data-fallback') && img.src.indexOf(img.getAttribute('data-fallback')) === -1) {
@@ -61,7 +64,7 @@
     }
   }, true);
   var CERT_FILES = ['sertfikat1.webp', 'serfikat2.webp', 'sertfikat3.webp', 'sertfikat4.webp', 'serfikat5.webp', 'sertfikat6.webp'];
-  function certSrc(i) { return SITE + 'rasmlar/' + CERT_FILES[i]; }
+  function certSrc(i) { return STATIC ? certFallback(i) : SITE + 'rasmlar/' + CERT_FILES[i]; }
   function certFallback(i) { return ASSETS + 'certificates/cert-' + (i + 1) + '.webp'; }
   var CERTS = [
     { type: { uz: 'Ekologik sertifikat', ru: 'Экологический сертификат', en: 'Environmental certificate' },
@@ -616,7 +619,7 @@
   var viewQueue = [], viewTimer;
   function track(type, ids) {
     ids = ids.filter(function (id) { return typeof id === 'number'; });
-    if (!ids.length) return;
+    if (!ids.length || STATIC) return;
     post(API + '?api=track', { type: type, ids: ids }).catch(function () {});
   }
   var viewObs = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
@@ -898,7 +901,7 @@
     renderChat();
     $('#chatSend').disabled = true;
     var history = chat.msgs.filter(function (m) { return !m.error; }).map(function (m) { return { role: m.role, text: m.text }; });
-    post(API + '?api=chat', { lang: lang, session: chat.session, messages: history })
+    post(CHAT_API, { lang: lang, session: chat.session, messages: history, done: !!chat.done })
       .then(function (r) {
         chat.session = r.session || chat.session;
         chat.msgs.push({ role: 'model', text: r.reply || '', products: r.products || [] });

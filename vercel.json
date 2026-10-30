@@ -5,6 +5,10 @@
   "installCommand": "",
   "outputDirectory": "public",
   "cleanUrls": true,
+  "functions": {
+    "api/chat.js": { "maxDuration": 45 },
+    "api/lead.js": { "maxDuration": 20 }
+  },
   "headers": [
     {
       "source": "/(.*)",

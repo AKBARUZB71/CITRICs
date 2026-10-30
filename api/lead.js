@@ -1,50 +1,14 @@
-// CITRIC.UZ — Vercel serverless funksiya: savat buyurtmalari va aloqa formasi arizalarini Telegram guruhiga yuboradi.
-// Maxfiy sozlamalar Vercel muhit o'zgaruvchilarida: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (kodda saqlanmaydi).
-
-const TITLES = { order: '🛒 <b>YANGI BUYURTMA</b>', form: '📝 <b>YANGI ARIZA</b>' };
-const LANGS = { uz: "O'zbekcha", ru: 'Ruscha', en: 'Inglizcha' };
-
-function esc(s) {
-  return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-}
-function clean(s, max) {
-  return String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0, max);
-}
-function normPhone(v) {
-  const d = String(v || '').replace(/\D/g, '');
-  if (d.length !== 12 || !d.startsWith('998')) return null;
-  return `+998 ${d.slice(3, 5)} ${d.slice(5, 8)} ${d.slice(8, 10)} ${d.slice(10, 12)}`;
-}
-function tashkentNow() {
-  return new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-}
-function orderCode() {
-  const d = new Date(Date.now() + 5 * 3600 * 1000); // Toshkent vaqti
-  const ymd = d.toISOString().slice(2, 10).replace(/-/g, '');
-  return `CU${ymd}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
-}
-async function tg(token, method, body) {
-  const r = await fetch(`https://api.telegram.org/bot${token}/${method}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
-  });
-  return r.json().catch(() => ({ ok: false, description: `HTTP ${r.status}` }));
-}
+// CITRIC.UZ — savat buyurtmalari va aloqa formasi arizalarini Telegram guruhiga yuboradi.
+const { clean, normPhone, sendLead, tg } = require('./_telegram');
 
 module.exports = async (req, res) => {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chat = process.env.TELEGRAM_CHAT_ID;
   res.setHeader('Cache-Control', 'no-store');
 
   // Holatni tekshirish (xabar yubormaydi): /api/lead?check=1
   if (req.method === 'GET' && req.query && req.query.check) {
-    const out = { bot: false, chat: null, fallback: !!process.env.SITE_LEAD_API };
-    if (token && chat) {
-      const c = await tg(token, 'getChat', { chat_id: chat });
-      out.bot = !!c.ok;
-      out.chat = c.ok ? c.result.title || c.result.type : c.description;
-    }
-    out.ok = out.bot || out.fallback;
-    return res.status(200).json(out);
+    const chat = process.env.TELEGRAM_CHAT_ID;
+    const c = chat ? await tg('getChat', { chat_id: chat }) : { ok: false, description: 'TELEGRAM_CHAT_ID yo\'q' };
+    return res.status(200).json({ ok: !!c.ok, chat: c.ok ? c.result.title || c.result.type : c.description, gemini: !!process.env.GEMINI_API_KEY });
   }
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'method' });
 
@@ -63,63 +27,14 @@ module.exports = async (req, res) => {
 
   const items = (Array.isArray(b.items) ? b.items : []).slice(0, 50).map((it) => ({
     name: clean(it && it.name, 120), code: clean(it && it.code, 20), pack: clean(it && it.pack, 30),
-    qty: Math.max(1, Math.min(9999, parseInt(it && it.qty, 10) || 1)), img: /^https:\/\//.test(String(it && it.img)) ? String(it.img) : '',
+    qty: Math.max(1, Math.min(9999, parseInt(it && it.qty, 10) || 1)),
+    img: /^https:\/\//.test(String(it && it.img)) ? String(it.img) : '',
   })).filter((it) => it.name);
   if (type === 'order' && !items.length) return res.status(400).json({ ok: false, error: 'items' });
 
-  const id = orderCode();
-  const lines = [`${TITLES[type]}  ·  <code>#${id}</code>`, '',
-    `👤 <b>Ism:</b> ${esc(name)}`, `📞 <b>Telefon:</b> ${esc(phone)}`];
-  const company = clean(b.company, 100);
-  if (company) lines.push(`🏢 <b>Kompaniya:</b> ${esc(company)}`);
-
-  if (items.length) {
-    const total = items.reduce((s, it) => s + it.qty, 0);
-    lines.push('', `📦 <b>Mahsulotlar (${items.length} ta, ${total} qadoq):</b>`);
-    items.forEach((it, i) => {
-      lines.push(`${i + 1}. ${esc(it.name)}${it.code ? ` (${esc(it.code)})` : ''} — <b>${it.qty}</b> × ${esc(it.pack || 'qadoq')}`);
-    });
-  }
-  const product = clean(b.product_name, 150);
-  if (product) lines.push('', `📦 <b>Qiziqtirgan mahsulot:</b> ${esc(product)}`);
-  const note = clean(b.message || b.note, 1000);
-  if (note) lines.push('', `💬 <b>Izoh:</b> ${esc(note)}`);
-  lines.push('', `🌐 Sayt · ${type === 'order' ? 'Savat' : 'Aloqa formasi'} · ${LANGS[lang]} · ${tashkentNow()}`);
-  const text = lines.join('\n');
-
-  let r = { ok: false, description: 'not_configured' };
-  if (token && chat) {
-    const photo = items.find((it) => it.img);
-    if (photo && text.length <= 1024) {
-      r = await tg(token, 'sendPhoto', { chat_id: chat, photo: photo.img, caption: text, parse_mode: 'HTML' });
-    }
-    if (!r.ok) {
-      r = await tg(token, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true });
-    }
-  }
-  if (r.ok) return res.status(200).json({ ok: true, id });
-
-  // Zaxira yo'l: asosiy saytning API si (buyurtma bazaga yoziladi va operatorlar guruhiga yuboriladi)
-  console.error('Telegram:', r.description, '— zaxira API ishlatilmoqda');
-  const fb = await forwardToSite(b, type, lang, name, phone, items, company, product, note);
-  if (fb && fb.ok) return res.status(200).json({ ok: true, id: fb.id || id });
-  return res.status(502).json({ ok: false, error: 'telegram' });
+  const r = await sendLead({
+    type, lang, name, phone, items,
+    company: clean(b.company, 100), product: clean(b.product_name, 150), note: clean(b.message || b.note, 1000),
+  });
+  return r.ok ? res.status(200).json({ ok: true, id: r.id }) : res.status(502).json({ ok: false, error: 'telegram' });
 };
-
-async function forwardToSite(b, type, lang, name, phone, items, company, product, note) {
-  const url = process.env.SITE_LEAD_API;
-  if (!url) return null;
-  const body = { type, lang, name, phone, company, message: note,
-    items: (Array.isArray(b.items) ? b.items : []).map((it) => ({ id: it && it.id, qty: it && it.qty })) };
-  if (type === 'form' && b.product) body.product = b.product;
-  try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 15000);
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctrl.signal });
-    clearTimeout(timer);
-    return await r.json().catch(() => null);
-  } catch (e) {
-    console.error('Zaxira API:', e.message);
-    return null;
-  }
-}
