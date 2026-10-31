@@ -25,6 +25,21 @@
             "ru": "Вкус, аромат и красители",
             "en": "Flavors, Aromas & Colors"
         },
+        "color": {
+            "uz": "Ranglar",
+            "ru": "Красители",
+            "en": "Food Colors"
+        },
+        "surf": {
+            "uz": "PAV mahsulotlari",
+            "ru": "ПАВ",
+            "en": "Surfactants"
+        },
+        "build": {
+            "uz": "Qurilish xom-ashyosi",
+            "ru": "Строительное сырьё",
+            "en": "Construction Raw Materials"
+        },
         "tech": {
             "uz": "Texnik kimyo",
             "ru": "Техническая химия",
@@ -320,7 +335,7 @@
                 "ru": "Пенообразующее ПАВ. Шампуни, жидкое мыло, средства для посуды и стирки.",
                 "en": "Foaming surfactant for shampoos, liquid soaps, dishwashing liquids and laundry detergents."
             },
-            "cat": "tech",
+            "cat": "surf",
             "code": "",
             "pack": "170 kg",
             "origin": {
@@ -551,7 +566,7 @@
                 "ru": "Сильный пенообразующий компонент. Стиральные порошки, шампуни и чистящие средства.",
                 "en": "Powerful foaming component for laundry powders, shampoos and cleaning products."
             },
-            "cat": "tech",
+            "cat": "surf",
             "code": "",
             "pack": "25 kg",
             "origin": {
@@ -939,6 +954,174 @@
             },
             "price": null,
             "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/43-askorbin-kislotasi-2.webp"
+        },
+        {
+            "id": 56,
+            "uz": "Tartrazin — sariq",
+            "ru": "Тартразин — жёлтый",
+            "en": "Tartrazine — Yellow",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E102",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/44-boyoq-sariq.webp"
+        },
+        {
+            "id": 57,
+            "uz": "Sunset — oranj",
+            "ru": "Сансет — оранжевый",
+            "en": "Sunset Yellow — Orange",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E110",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/45-boyoq-toq-sariq.webp"
+        },
+        {
+            "id": 58,
+            "uz": "Green apple — yashil olma",
+            "ru": "Green apple — зелёное яблоко",
+            "en": "Green Apple — Green",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/46-boyoq-yashil.webp"
+        },
+        {
+            "id": 59,
+            "uz": "Brilliant blue — ko'k",
+            "ru": "Бриллиантовый синий",
+            "en": "Brilliant Blue",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E133",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/47-boyoq-kok.webp"
+        },
+        {
+            "id": 60,
+            "uz": "Allura red — yoqimli qizil",
+            "ru": "Аллюра красный",
+            "en": "Allura Red",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E129",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/48-boyoq-qizil.webp"
+        },
+        {
+            "id": 61,
+            "uz": "Ponso — qizil",
+            "ru": "Понсо — красный",
+            "en": "Ponceau — Red",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E124",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/49-boyoq-qizil-toq-sariq.webp"
+        },
+        {
+            "id": 62,
+            "uz": "Xinolin yellow — xinolin sariq",
+            "ru": "Хинолиновый жёлтый",
+            "en": "Quinoline Yellow",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E104",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/50-boyoq-limon-sariq.webp"
+        },
+        {
+            "id": 63,
+            "uz": "Brown chocolate — jigarrang",
+            "ru": "Коричневый шоколадный",
+            "en": "Chocolate Brown",
+            "desc": {
+                "uz": "Sintetik bo'yoq, suvda eruvchan. Oziq-ovqat va boshqa mahsulotlarni bo'yashda ishlatiladi.",
+                "ru": "Синтетический водорастворимый краситель для окрашивания пищевых и других продуктов.",
+                "en": "Water-soluble synthetic colorant for food and other products."
+            },
+            "cat": "color",
+            "code": "E155",
+            "pack": "",
+            "origin": {
+                "uz": "",
+                "ru": "",
+                "en": ""
+            },
+            "price": null,
+            "img": "https://cdn.jsdelivr.net/gh/AKBARUZB71/CITRIC@main/mahsulotlar/51-boyoq-jigarrang.webp"
         }
     ]
 }

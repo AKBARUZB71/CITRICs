@@ -19,8 +19,9 @@ const PHONE_FORMATS = [
 ];
 // Telefonni tekshiradi va "+998 90 123 45 67" ko'rinishiga keltiradi; 9 xonali raqam — O'zbekiston deb olinadi
 function normPhone(v) {
-  let d = String(v || '').replace(/\D/g, '').replace(/^00/, '');
-  if (d.length === 9) d = '998' + d;
+  const raw = String(v || '').trim();
+  let d = raw.replace(/\D/g, '').replace(/^00/, '');
+  if (d.length === 9 && !raw.startsWith('+')) d = '998' + d;
   for (const [code, mask] of PHONE_FORMATS) {
     const len = mask.replace(/[^X]/g, '').length;
     if (d.startsWith(code) && d.length === code.length + len) {
@@ -28,6 +29,10 @@ function normPhone(v) {
       for (const ch of mask) out += ch === 'X' ? d[i++] : ch;
       return `+${code} ${out}`;
     }
+  }
+  // "Boshqa raqam": ro'yxatda yo'q davlat — xalqaro format, 8–15 raqam
+  if ((raw.startsWith('+') || raw.startsWith('00')) && d.length >= 8 && d.length <= 15) {
+    return '+' + d.replace(/(\d{3})(?=\d)/g, '$1 ');
   }
   return null;
 }

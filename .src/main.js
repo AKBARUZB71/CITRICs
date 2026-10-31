@@ -177,13 +177,19 @@
     'about.p2': 'Благодаря развитой дистрибьюторской сети и хорошо организованной логистике мы бесперебойно обеспечиваем пищевые предприятия высококачественными ингредиентами и сырьём.',
     'about.l1': 'Прямой импорт из Китая, Турции, Индии и Европы', 'about.l2': 'Быстрая отгрузка с собственного склада в Ташкенте',
     'about.l3': 'Сертификаты качества на каждую партию',
-    'p.eyebrow': 'Продукция', 'p.title': 'Широкий ассортимент пищевых ингредиентов и промышленной химии', 'p.all': 'Полный прайс-лист',
-    'p.note': 'Не нашли нужный продукт? Напишите нам — мы подберём нужный ингредиент.',
+    'p.eyebrow': 'Продукция', 'p.title': 'Широкий ассортимент пищевых ингредиентов и промышленной химии', 'p.all': 'Полный список продукции',
+    'p.note': 'Не нашли нужный продукт? Напишите нам, мы подберём нужный ингредиент.',
     'p.onRequest': 'Цена по запросу', 'p.more': 'Показать ещё', 'p.loadErr': 'Не удалось загрузить каталог. Обновите страницу.',
     'ind.eyebrow': 'Сферы применения', 'ind.title': 'Для каких отраслей мы работаем',
     'ind.sub': 'Наша продукция применяется практически во всех отраслях пищевой промышленности.',
     'ind.1': 'Молочная продукция', 'ind.2': 'Хлебобулочные изделия', 'ind.3': 'Мясная продукция', 'ind.4': 'Напитки',
-    'ind.5': 'Кондитерские изделия', 'ind.6': 'Фармацевтика и косметика',
+    'ind.5': 'Кондитерские изделия', 'ind.6': 'Фармацевтика и косметика', 'ind.7': 'Бытовая химия',
+    'st.1': 'На рынке с', 'st.2': 'Видов продукции', 'st.3': 'Крупных брендов выбрали нас', 'st.4': 'Регионов доставки',
+    'hw.eyebrow': 'Порядок сотрудничества', 'hw.title': 'Заказ в 4 шага',
+    'hw.1t': 'Выберите продукт', 'hw.1': 'В каталоге или с помощью ИИ-консультанта.',
+    'hw.2t': 'Оставьте заявку', 'hw.2': 'Через корзину или форму — за минуту.',
+    'hw.3t': 'Менеджер свяжется', 'hw.3': 'Согласуем цену, объём и документы.',
+    'hw.4t': 'Доставим заказ', 'hw.4': 'По всему Узбекистану, с сертификатами.',
     'w.eyebrow': 'Почему мы?', 'w.title': 'Почему именно CITRIC.UZ?',
     'w.1t': 'Качество и доверие', 'w.1': 'Только продукция от надёжных производителей.',
     'w.2t': 'Опытная команда', 'w.2': 'Профессионалы пищевой промышленности.',
@@ -203,7 +209,7 @@
     'ct.eyebrow': 'Контакты', 'ct.title': 'Начнём сотрудничество',
     'ct.sub': 'Оставьте заявку — наш менеджер свяжется с вами и расскажет о ценах и условиях доставки.',
     'ct.phone': 'Телефон', 'ct.addr': 'Адрес', 'ct.addrv': 'Ташкент, Узбекистан', 'ct.hours': 'Время работы', 'ct.hoursv': 'Пн–Сб, 9:00 – 18:00',
-    'ft.about': 'Лучшие ингредиенты для лучшей жизни. Надёжный поставщик для пищевой промышленности.',
+    'ft.about': 'Лучшие ингредиенты для лучшей жизни. Надёжный поставщик для производителей.',
     'ft.links': 'Быстрые ссылки', 'ft.contact': 'Связь',
     'ft.rights': 'Все права защищены.', 'ft.privacy': 'Политика конфиденциальности', 'ft.terms': 'Условия использования',
     'fm.title': 'Оставить заявку', 'fm.sub': 'Оставьте свои данные, мы свяжемся с вами в течение 1 рабочего дня.',
@@ -220,7 +226,7 @@
     'chat.busy': 'Слишком много запросов. Подождите немного или позвоните: **+998 95 154 88 88**',
     'chat.done': 'Заявка отправлена операторам', 'chat.add': 'В корзину', 'chat.added': 'В корзине',
     'ok.btn': 'Хорошо', 'err.title': 'Не удалось отправить',
-    'err.name': 'Введите ваше имя', 'err.phone': 'Введите номер полностью — {n} цифр',
+    'err.name': 'Введите ваше имя', 'err.phone': 'Введите номер полностью — {n} цифр', 'err.phoneIntl': 'Введите полный номер с кодом страны, например +44 20 1234 5678',
     'a.cart': 'Корзина', 'a.menu': 'Меню', 'a.video': 'Смотреть видео', 'a.send': 'Отправить', 'a.close': 'Закрыть', 'a.delete': 'Удалить',
     'a.why': 'Лимонная кислота и пищевые ингредиенты', 'a.map': 'CITRIC.UZ — Яндекс Карты',
     'a.prev': 'Предыдущий', 'a.next': 'Следующий', 'a.top': 'Наверх', 'a.ai': 'ИИ-консультант', 'a.clients': 'Логотипы клиентов', 'a.msg': 'Сообщение'
@@ -269,13 +275,19 @@
     'about.p2': 'Thanks to a developed distribution network and well-organized logistics, we reliably supply food manufacturers with high-quality ingredients and raw materials.',
     'about.l1': 'Direct imports from China, Turkey, India and Europe', 'about.l2': 'Fast shipping from our own warehouse in Tashkent',
     'about.l3': 'Quality certificates for every batch',
-    'p.eyebrow': 'Products', 'p.title': 'A wide range of food ingredients and industrial chemicals', 'p.all': 'Full price list',
-    'p.note': "Didn't find the product you need? Write to us — we will find the right ingredient.",
+    'p.eyebrow': 'Products', 'p.title': 'A wide range of food ingredients and industrial chemicals', 'p.all': 'Full product list',
+    'p.note': "Didn't find the product you need? Write to us, and we will find the right ingredient.",
     'p.onRequest': 'Price on request', 'p.more': 'Show more', 'p.loadErr': 'Failed to load the catalog. Please refresh the page.',
     'ind.eyebrow': 'Applications', 'ind.title': 'Industries we serve',
     'ind.sub': 'Our products are used in almost every sector of the food industry.',
     'ind.1': 'Dairy products', 'ind.2': 'Bakery products', 'ind.3': 'Meat products', 'ind.4': 'Beverages',
-    'ind.5': 'Confectionery', 'ind.6': 'Pharmaceuticals & cosmetics',
+    'ind.5': 'Confectionery', 'ind.6': 'Pharmaceuticals & cosmetics', 'ind.7': 'Household chemicals',
+    'st.1': 'On the market since', 'st.2': 'Product types', 'st.3': 'Major brands chose us', 'st.4': 'Delivery regions',
+    'hw.eyebrow': 'How we work', 'hw.title': 'Order in 4 steps',
+    'hw.1t': 'Choose a product', 'hw.1': 'From the catalog or with the AI consultant.',
+    'hw.2t': 'Send a request', 'hw.2': 'Via the cart or the form, in a minute.',
+    'hw.3t': 'A manager contacts you', 'hw.3': 'We agree on price, volume and documents.',
+    'hw.4t': 'We deliver', 'hw.4': 'Across Uzbekistan, with certificates.',
     'w.eyebrow': 'Why us?', 'w.title': 'Why CITRIC.UZ?',
     'w.1t': 'Quality and trust', 'w.1': 'Only products from reliable manufacturers.',
     'w.2t': 'Experienced team', 'w.2': 'Food industry professionals.',
@@ -295,7 +307,7 @@
     'ct.eyebrow': 'Contacts', 'ct.title': "Let's start working together",
     'ct.sub': 'Submit an inquiry — our manager will contact you with information on prices and delivery terms.',
     'ct.phone': 'Phone', 'ct.addr': 'Address', 'ct.addrv': 'Tashkent, Uzbekistan', 'ct.hours': 'Working hours', 'ct.hoursv': 'Mon–Sat, 9:00 – 18:00',
-    'ft.about': 'The best ingredients for a better life. A reliable supplier for the food industry.',
+    'ft.about': 'The best ingredients for a better life. A reliable supplier for manufacturers.',
     'ft.links': 'Quick links', 'ft.contact': 'Contact',
     'ft.rights': 'All rights reserved.', 'ft.privacy': 'Privacy policy', 'ft.terms': 'Terms of use',
     'fm.title': 'Submit an inquiry', 'fm.sub': 'Leave your details and we will contact you within 1 business day.',
@@ -312,7 +324,7 @@
     'chat.busy': 'Too many requests. Please wait a moment or call: **+998 95 154 88 88**',
     'chat.done': 'Your request has been sent to our team', 'chat.add': 'Add to cart', 'chat.added': 'In cart',
     'ok.btn': 'OK', 'err.title': 'Sending failed',
-    'err.name': 'Please enter your name', 'err.phone': 'Please enter the full number — {n} digits',
+    'err.name': 'Please enter your name', 'err.phone': 'Please enter the full number — {n} digits', 'err.phoneIntl': 'Enter the full number with country code, e.g. +44 20 1234 5678',
     'a.cart': 'Cart', 'a.menu': 'Menu', 'a.video': 'Watch video', 'a.send': 'Send', 'a.close': 'Close', 'a.delete': 'Remove',
     'a.why': 'Citric acid and food ingredients', 'a.map': 'CITRIC.UZ on Yandex Maps',
     'a.prev': 'Previous', 'a.next': 'Next', 'a.top': 'Back to top', 'a.ai': 'AI consultant', 'a.clients': 'Client logos', 'a.msg': 'Message'
@@ -343,7 +355,7 @@
     'pm.ai': 'AI maslahatchi', 'pm.call': "Qo'ng'iroq qilish",
     'pm.f1': 'Sertifikatlangan sifat', 'pm.f2': "O'zbekiston bo'ylab yetkazib berish", 'pm.f3': 'Ulgurji narxlar',
     'ok.btn': 'Yaxshi', 'err.title': "Yuborib bo'lmadi",
-    'err.name': 'Ismingizni kiriting', 'err.phone': "Raqamni to'liq kiriting — {n} ta raqam",
+    'err.name': 'Ismingizni kiriting', 'err.phone': "Raqamni to'liq kiriting — {n} ta raqam", 'err.phoneIntl': "Raqamni davlat kodi bilan to'liq kiriting, masalan +44 20 1234 5678",
     'a.close': 'Yopish', 'a.delete': "O'chirish"
   };
   var lang = store('local', 'citric-lang') || 'uz';
@@ -399,6 +411,11 @@
       return '<button type="button" class="filter' + (c.id === activeCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c[lang] + '</button>';
     }).join('');
   }
+  // Qurilish xom-ashyosi: quruq qurilish aralashmalarida ishlatiladigan mahsulotlar
+  var EXTRA_CATS = { build: ['cargill'] };
+  function inExtraCat(p, cat) {
+    return (EXTRA_CATS[cat] || []).some(function (k) { return String(p.img || '').indexOf(k) !== -1; });
+  }
   function renderProducts() {
     var grid = $('#productsGrid');
     if (!productsLoaded) {
@@ -411,7 +428,7 @@
     }
     var shown = 0, total = 0;
     var html = PRODUCTS.map(function (p) {
-      var match = activeCat === 'all' || p.cat === activeCat;
+      var match = activeCat === 'all' || p.cat === activeCat || inExtraCat(p, activeCat);
       if (match) total++;
       var hidden = !match || (activeCat === 'all' && !showAll && shown >= PAGE);
       if (!hidden) shown++;
@@ -431,10 +448,10 @@
       '<div class="product-body"><h3>' + esc(p[lang]) + '</h3>' +
       (p.desc && p.desc[lang] ? '<p class="product-desc">' + esc(p.desc[lang]) + '</p>' : '') +
       '<div class="product-meta">' +
-        '<span><svg class="i"><use href="#i-box"/></svg>' + esc(packText(p.pack)) + '</span>' +
-        '<span><svg class="i"><use href="#i-globe"/></svg>' + esc(p.origin[lang]) + '</span>' +
+        (p.pack ? '<span><svg class="i"><use href="#i-box"/></svg>' + esc(packText(p.pack)) + '</span>' : '') +
+        (p.origin && p.origin[lang] ? '<span><svg class="i"><use href="#i-globe"/></svg>' + esc(p.origin[lang]) + '</span>' : '') +
       '</div>' +
-      '<div class="product-price' + (p.price ? '' : ' on-request') + '">' + esc(p.price || t('p.onRequest')) + '</div>' +
+      (p.price ? '<div class="product-price">' + esc(p.price) + '</div>' : '') +
       productBtn(p.id) + '</div></article>';
   }
   function catName(id) {
@@ -485,7 +502,7 @@
       '<div class="pm-info">' +
         '<div class="pm-chips"><span class="pm-chip">' + esc(catName(p.cat)) + '</span>' + (p.code ? '<span class="pm-chip code">' + esc(p.code) + '</span>' : '') + '</div>' +
         '<h2 class="pm-title">' + esc(p[lang]) + '</h2>' +
-        '<div class="pm-price' + (p.price ? '' : ' on-request') + '">' + esc(p.price || t('p.onRequest')) + (p.price ? '<small> / ' + esc(packText(p.pack)) + '</small>' : '') + '</div>' +
+        (p.price ? '<div class="pm-price">' + esc(p.price) + '<small> / ' + esc(packText(p.pack)) + '</small></div>' : '') +
         '<dl class="pm-specs">' +
           (p.pack ? '<div><dt><svg class="i"><use href="#i-box"/></svg>' + t('pm.pack') + '</dt><dd>' + esc(packText(p.pack)) + '</dd></div>' : '') +
           (p.origin[lang] ? '<div><dt><svg class="i"><use href="#i-globe"/></svg>' + t('pm.origin') + '</dt><dd>' + esc(p.origin[lang]) + '</dd></div>' : '') +
@@ -665,8 +682,7 @@
   function updateCartUI() {
     var count = cart.reduce(function (s, c) { return s + c.qty; }, 0);
     var badge = $('#cartCount');
-    badge.textContent = count;
-    badge.classList.toggle('show', count > 0);
+    if (badge) { badge.textContent = count; badge.classList.toggle('show', count > 0); }
     cartEl.classList.toggle('is-empty', cart.length === 0);
     $('#cartList').innerHTML = cart.map(function (c) {
       var p = BY_ID[c.id];
@@ -674,7 +690,7 @@
       return '<li class="cart-item" data-id="' + esc(c.id) + '">' +
         '<img src="' + esc(p.img) + '" alt="">' +
         '<div><h4>' + esc(p[lang]) + (p.code ? ' ' + esc(p.code) : '') + '</h4>' +
-        '<small>' + esc(packText(p.pack)) + ' / ' + t('cart.packs') + ' · ' + esc(p.price || t('p.onRequest')) + '</small>' +
+        '<small>' + esc(packText(p.pack)) + ' / ' + t('cart.packs') + (p.price ? ' · ' + esc(p.price) : '') + '</small>' +
         '<div class="qty"><button type="button" data-qty="-1" aria-label="-"><svg class="i"><use href="#i-minus"/></svg></button>' +
         '<input type="number" min="1" max="999" value="' + c.qty + '" aria-label="qty">' +
         '<button type="button" data-qty="1" aria-label="+"><svg class="i"><use href="#i-plus"/></svg></button></div></div>' +
@@ -710,7 +726,7 @@
       track('cart', [id]);
     }
     var btn = $('.cart-btn');
-    btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
+    if (btn) { btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump'); }
     if (open !== false) openCart();
   }
   $('#cartList').addEventListener('click', function (e) {
@@ -730,20 +746,31 @@
   function validName(v) { return v.trim().length > 1; }
   // ---------- Telefon: davlat tanlash (bayroq) + har bir davlat formatidagi raqam ----------
   // mask: X — raqam; uzunlik maskadagi X lar soniga teng
+  // Tartib: O'zbekiston (asosiy), keyin maydoni bo'yicha kattadan kichikka, oxirida "Boshqa raqam"
   var COUNTRIES = [
     { iso: 'uz', code: '998', mask: 'XX XXX XX XX',  ph: '90 123 45 67',   uz: "O'zbekiston",  ru: 'Узбекистан',   en: 'Uzbekistan' },
-    { iso: 'kz', code: '7',   mask: 'XXX XXX XX XX', ph: '701 234 56 78',  uz: "Qozog'iston",  ru: 'Казахстан',    en: 'Kazakhstan' },
     { iso: 'ru', code: '7',   mask: 'XXX XXX XX XX', ph: '912 345 67 89',  uz: 'Rossiya',      ru: 'Россия',       en: 'Russia' },
-    { iso: 'kg', code: '996', mask: 'XXX XXX XXX',   ph: '700 123 456',    uz: "Qirg'iziston", ru: 'Кыргызстан',   en: 'Kyrgyzstan' },
-    { iso: 'tj', code: '992', mask: 'XX XXX XXXX',   ph: '90 123 4567',    uz: 'Tojikiston',   ru: 'Таджикистан',  en: 'Tajikistan' },
-    { iso: 'tm', code: '993', mask: 'XX XX XX XX',   ph: '65 12 34 56',    uz: 'Turkmaniston', ru: 'Туркменистан', en: 'Turkmenistan' },
-    { iso: 'af', code: '93',  mask: 'XX XXX XXXX',   ph: '70 123 4567',    uz: "Afg'oniston",  ru: 'Афганистан',   en: 'Afghanistan' },
-    { iso: 'az', code: '994', mask: 'XX XXX XX XX',  ph: '50 123 45 67',   uz: 'Ozarbayjon',   ru: 'Азербайджан',  en: 'Azerbaijan' },
-    { iso: 'tr', code: '90',  mask: 'XXX XXX XX XX', ph: '532 123 45 67',  uz: 'Turkiya',      ru: 'Турция',       en: 'Turkey' },
     { iso: 'cn', code: '86',  mask: 'XXX XXXX XXXX', ph: '131 2345 6789',  uz: 'Xitoy',        ru: 'Китай',        en: 'China' },
     { iso: 'in', code: '91',  mask: 'XXXXX XXXXX',   ph: '98765 43210',    uz: 'Hindiston',    ru: 'Индия',        en: 'India' },
-    { iso: 'ae', code: '971', mask: 'XX XXX XXXX',   ph: '50 123 4567',    uz: 'BAA',          ru: 'ОАЭ',          en: 'UAE' }
+    { iso: 'kz', code: '7',   mask: 'XXX XXX XX XX', ph: '701 234 56 78',  uz: "Qozog'iston",  ru: 'Казахстан',    en: 'Kazakhstan' },
+    { iso: 'tr', code: '90',  mask: 'XXX XXX XX XX', ph: '532 123 45 67',  uz: 'Turkiya',      ru: 'Турция',       en: 'Turkey' },
+    { iso: 'af', code: '93',  mask: 'XX XXX XXXX',   ph: '70 123 4567',    uz: "Afg'oniston",  ru: 'Афганистан',   en: 'Afghanistan' },
+    { iso: 'tm', code: '993', mask: 'XX XX XX XX',   ph: '65 12 34 56',    uz: 'Turkmaniston', ru: 'Туркменистан', en: 'Turkmenistan' },
+    { iso: 'kg', code: '996', mask: 'XXX XXX XXX',   ph: '700 123 456',    uz: "Qirg'iziston", ru: 'Кыргызстан',   en: 'Kyrgyzstan' },
+    { iso: 'tj', code: '992', mask: 'XX XXX XXXX',   ph: '90 123 4567',    uz: 'Tojikiston',   ru: 'Таджикистан',  en: 'Tajikistan' },
+    { iso: 'az', code: '994', mask: 'XX XXX XX XX',  ph: '50 123 45 67',   uz: 'Ozarbayjon',   ru: 'Азербайджан',  en: 'Azerbaijan' },
+    { iso: 'ae', code: '971', mask: 'XX XXX XXXX',   ph: '50 123 4567',    uz: 'BAA',          ru: 'ОАЭ',          en: 'UAE' },
+    // Ro'yxatda yo'q davlat — mijoz raqamini kodi bilan o'zi yozadi
+    { iso: 'other', code: '', mask: '', ph: '+44 20 1234 5678', uz: 'Boshqa raqam', ru: 'Другой номер', en: 'Other number' }
   ];
+  var GLOBE = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18"><rect width="24" height="18" rx="3" fill="#f1f8ea"/><g fill="none" stroke="#70b32f" stroke-width="1.4"><circle cx="12" cy="9" r="6"/><path d="M6 9h12M12 3c-2.2 2.3-2.2 9.7 0 12M12 3c2.2 2.3 2.2 9.7 0 12"/></g></svg>');
+  function isOther(c) { return c.iso === 'other'; }
+  function flagSrc(c) { return isOther(c) ? GLOBE : FLAG_CDN + c.iso + '.svg'; }
+  // Xalqaro raqam: "+" va 15 tagacha raqam, 3 tadan guruhlab
+  function fmtIntl(v) {
+    var d = String(v).replace(/\D/g, '').replace(/^00/, '').slice(0, 15);
+    return d ? '+' + d.replace(/(\d{3})(?=\d)/g, '$1 ') : '';
+  }
   var FLAG_CDN = 'https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/flags/4x3/';
   function ccByIso(iso) { return COUNTRIES.filter(function (c) { return c.iso === iso; })[0] || COUNTRIES[0]; }
   function maskLen(c) { return c.mask.replace(/[^X]/g, '').length; }
@@ -761,24 +788,33 @@
     if (msg) { if (!s) { s = document.createElement('small'); s.className = 'field-msg'; s.setAttribute('role', 'alert'); f.appendChild(s); } s.textContent = msg; }
     else if (s) s.remove();
   }
-  function phoneError(inp) { return t('err.phone').replace('{n}', maskLen(ccByIso(inp.dataset.cc))); }
-  function fullPhone(inp) { var c = ccByIso(inp.dataset.cc); return '+' + c.code + ' ' + fmtNational(c, inp.value); }
+  function phoneError(inp) {
+    var c = ccByIso(inp.dataset.cc);
+    return isOther(c) ? t('err.phoneIntl') : t('err.phone').replace('{n}', maskLen(c));
+  }
+  function fullPhone(inp) {
+    var c = ccByIso(inp.dataset.cc);
+    return isOther(c) ? fmtIntl(inp.value) : '+' + c.code + ' ' + fmtNational(c, inp.value);
+  }
   function validPhone(inp) {
     if (typeof inp === 'string') { var d = inp.replace(/\D/g, ''); return d.length >= 8 && d.length <= 15; }
-    var c = ccByIso(inp.dataset.cc);
-    return inp.value.replace(/\D/g, '').length === maskLen(c);
+    var c = ccByIso(inp.dataset.cc), n = inp.value.replace(/\D/g, '').length;
+    return isOther(c) ? n >= 8 && n <= 15 : n === maskLen(c);
   }
   var ccOpen = null;
   function closeCc() { if (ccOpen) { ccOpen.classList.remove('open'); $('.cc-btn', ccOpen).setAttribute('aria-expanded', 'false'); ccOpen = null; } }
   function setCc(inp, iso, focus) {
     var c = ccByIso(iso), box = inp.closest('.phone-box');
+    // "Boshqa raqam" ga o'tganda/qaytganda eski raqam aralashmasin
+    if (inp.dataset.cc && (inp.dataset.cc === 'other') !== isOther(c)) inp.value = '';
     inp.dataset.cc = c.iso;
-    $('.cc-flag', box).src = FLAG_CDN + c.iso + '.svg';
+    box.classList.toggle('is-other', isOther(c));
+    $('.cc-flag', box).src = flagSrc(c);
     $('.cc-flag', box).alt = c[lang] || c.uz;
-    $('.cc-code', box).textContent = '+' + c.code;
+    $('.cc-code', box).textContent = isOther(c) ? '' : '+' + c.code;
     inp.placeholder = c.ph;
-    inp.setAttribute('maxlength', String(c.mask.length + 4)); // ortiqcha kod/8 ni tozalash uchun joy
-    inp.value = fmtNational(c, inp.value);
+    inp.setAttribute('maxlength', isOther(c) ? '24' : String(c.mask.length + 4)); // ortiqcha kod/8 ni tozalash uchun joy
+    inp.value = isOther(c) ? fmtIntl(inp.value) : fmtNational(c, inp.value);
     $$('.cc-item', box).forEach(function (li) { li.setAttribute('aria-selected', li.getAttribute('data-iso') === c.iso ? 'true' : 'false'); });
     store('local', 'citric-cc', c.iso);
     if (focus) inp.focus();
@@ -786,8 +822,8 @@
   function renderCcMenu(box) {
     $('.cc-menu', box).innerHTML = COUNTRIES.map(function (c) {
       return '<li class="cc-item" role="option" tabindex="-1" data-iso="' + c.iso + '">' +
-        '<img src="' + FLAG_CDN + c.iso + '.svg" alt="" width="24" height="18" loading="lazy">' +
-        '<span class="cc-name">' + esc(c[lang] || c.uz) + '</span><span class="cc-dial">+' + c.code + '</span></li>';
+        '<img src="' + flagSrc(c) + '" alt="" width="24" height="18" loading="lazy">' +
+        '<span class="cc-name">' + esc(c[lang] || c.uz) + '</span><span class="cc-dial">' + (isOther(c) ? '+…' : '+' + c.code) + '</span></li>';
     }).join('');
     var inp = $('input[type="tel"]', box);
     $$('.cc-item', box).forEach(function (li) { li.setAttribute('aria-selected', li.getAttribute('data-iso') === inp.dataset.cc ? 'true' : 'false'); });
@@ -830,8 +866,11 @@
       if (e.key === 'Enter' && i >= 0) { e.preventDefault(); setCc(inp, items[i].getAttribute('data-iso'), true); closeCc(); }
       if (e.key === 'Escape') { e.stopPropagation(); closeCc(); $('.cc-btn', box).focus(); }
     });
+    inp.addEventListener('focus', function () { if (inp.dataset.cc === 'other' && !inp.value) inp.value = '+'; });
+    inp.addEventListener('blur', function () { if (inp.value === '+') inp.value = ''; });
     inp.addEventListener('input', function () {
       var v = inp.value, c = ccByIso(inp.dataset.cc);
+      if (isOther(c)) { inp.value = fmtIntl(v) || (v.indexOf('+') >= 0 ? '+' : ''); setFieldError(inp, false); return; }
       var d = v.replace(/\D/g, '');
       // To'liq raqam nusxa qilib qo'yilsa (+7..., +998..., 00...) — davlatni o'zi aniqlaydi
       if (/^\s*(\+|00)/.test(v)) {
@@ -976,7 +1015,7 @@
         '<img src="' + esc(p.img) + '" alt="">' +
         '<div class="chat-prod-info"><b>' + esc(p.name) + '</b>' +
         '<small>' + esc([p.code, packText(p.pack), p.origin].filter(Boolean).join(' · ')) + '</small>' +
-        '<span class="chat-prod-price' + (p.price ? '' : ' muted') + '">' + esc(p.price || t('p.onRequest')) + '</span></div>' +
+        (p.price ? '<span class="chat-prod-price">' + esc(p.price) + '</span>' : '') + '</div>' +
         (BY_ID[p.id] ? '<button type="button" class="chat-prod-btn' + (q ? ' added' : '') + '" data-add="' + p.id + '">' + (q ? t('chat.added') + ' ✓' : t('chat.add')) + '</button>' : '') +
         '</div>';
     }).join('') + '</div>';
@@ -1172,7 +1211,44 @@
   });
   var header = $('#header');
   var toTop = $('#toTop');
+  // ---------- Raqamlarni sanab chiqish (ko'rinish maydoniga kirganda bir marta) ----------
+  var REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function statTarget(el) {
+    var v = el.getAttribute('data-count');
+    if (v === 'products') return PRODUCTS.length || (window.CITRIC_PRODUCTS || []).length || 50;
+    if (v === 'clients') return CLIENTS.length - 1;
+    return +v;
+  }
+  function runCounter(el) {
+    var to = statTarget(el), from = +(el.getAttribute('data-from') || 0), suf = el.getAttribute('data-suffix') || '';
+    if (REDUCE) { el.textContent = to + suf; return; }
+    var t0 = null, dur = 1600, done = false;
+    function frame(ts) {
+      if (done) return;
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(from + (to - from) * e) + (k === 1 ? suf : '');
+      if (k < 1) requestAnimationFrame(frame); else done = true;
+    }
+    requestAnimationFrame(frame);
+    // Kafolat: animatsiya kadrlari to'xtatilsa ham yakuniy qiymat yoziladi
+    setTimeout(function () { done = true; el.textContent = to + suf; }, dur + 250);
+  }
+  var statEls = $$('.stat-num[data-count]');
+  // Sahifa ochilganda darhol to'g'ri qiymat (sanash ko'rinishga kirganda boshlanadi)
+  statEls.forEach(function (el) { el.textContent = statTarget(el) + (el.getAttribute('data-suffix') || ''); });
+  if ('IntersectionObserver' in window) {
+    var statObs = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { statObs.unobserve(x.target); runCounter(x.target); } });
+    }, { threshold: 0.5 });
+    statEls.forEach(function (el) { statObs.observe(el); });
+  } else statEls.forEach(runCounter);
+  var progressEl = $('#scrollProgress');
   function onScroll() {
+    if (progressEl) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progressEl.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    }
     var y = window.scrollY;
     header.classList.toggle('scrolled', y > 10);
     toTop.classList.toggle('show', y > 600);

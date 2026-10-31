@@ -205,3 +205,60 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 .field-msg { display: flex; align-items: center; gap: 6px; color: #d64545; font-size: 12.5px; font-weight: 600; margin-top: 2px; animation: fieldMsgIn .2s ease-out; }
 .field-msg::before { content: "!"; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #d64545; color: #fff; font-size: 10px; font-weight: 800; flex-shrink: 0; }
 @keyframes fieldMsgIn { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+/* ---------- Scroll chizig'i ---------- */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 300; transform-origin: 0 50%; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--green), var(--orange)); box-shadow: 0 0 10px rgba(112,179,47,.45); pointer-events: none; }
+
+/* ---------- Statistika bandi ---------- */
+.stats-band { position: relative; overflow: hidden; padding: 56px 0; color: #fff;
+  background: radial-gradient(1200px 400px at 10% 0%, rgba(112,179,47,.35), transparent 60%),
+              radial-gradient(900px 380px at 100% 100%, rgba(255,168,0,.22), transparent 60%), #10220f; }
+.stats-band::before { content: ""; position: absolute; inset: 0; opacity: .12; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px);
+  background-size: 44px 44px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); }
+.stats-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stat { text-align: center; padding: 18px 10px; border-radius: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(4px); transition: opacity .8s var(--ease), transform .35s var(--ease), background .35s, border-color .35s; }
+.stat:hover { transform: translateY(-4px); background: rgba(255,255,255,.07); border-color: rgba(112,179,47,.45); }
+.stat-num { display: block; font-size: clamp(36px, 4.4vw, 56px); font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, #fff 30%, #c8eaa5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.stat span { display: block; margin-top: 10px; font-size: 14.5px; font-weight: 600; color: rgba(255,255,255,.75); }
+@media (max-width: 860px) { .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .stats-band { padding: 40px 0; } }
+
+/* ---------- Buyurtma bosqichlari ---------- */
+.steps-sec { background: linear-gradient(180deg, #fff, var(--green-softer)); }
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: s; }
+.step { position: relative; padding: 30px 22px 26px; border-radius: 20px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+  transition: opacity .8s var(--ease), transform .4s var(--ease), box-shadow .4s, border-color .4s; }
+.step:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: rgba(112,179,47,.4); }
+.step-n { position: absolute; top: 18px; right: 20px; font-size: 44px; font-weight: 800; line-height: 1; color: var(--green-soft);
+  -webkit-text-stroke: 1px rgba(112,179,47,.35); transition: color .4s; }
+.step:hover .step-n { color: rgba(112,179,47,.18); }
+.step-ic { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; color: #fff; margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--green), #8fcb4c); box-shadow: 0 10px 22px rgba(112,179,47,.32); transition: transform .4s var(--ease); }
+.step:hover .step-ic { transform: rotate(-8deg) scale(1.06); }
+.step-ic .i { width: 26px; height: 26px; }
+.step h3 { margin: 0 0 8px; font-size: 18px; color: var(--ink); }
+.step p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+/* Bosqichlar orasidagi chiziq — ko'rinishga kirganda chiziladi */
+.step:not(:last-child)::after { content: ""; position: absolute; top: 58px; right: -22px; width: 22px; height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--orange)); transform: scaleX(0); transform-origin: 0 50%; transition: transform .6s var(--ease) .5s; }
+.step.in::after { transform: scaleX(1); }
+@media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } .step:nth-child(2)::after { display: none; } }
+@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } .step::after { display: none; } }
+
+/* ---------- Mahsulot kartasi: yaltirash effekti ---------- */
+.product-img::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.45) 50%, transparent 65%); transform: translateX(-120%); }
+.product:hover .product-img::after { transform: translateX(120%); transition: transform .9s var(--ease); }
+
+/* ---------- Sohalar: ikonkalar jonlanadi ---------- */
+.industry { transition: opacity .8s var(--ease), transform .35s var(--ease), box-shadow .35s, border-color .35s; }
+.industry:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: rgba(112,179,47,.35); }
+.industry:hover .industry-ic { animation: icPop .6s var(--ease); }
+@keyframes icPop { 0% { transform: scale(1); } 40% { transform: scale(1.15) rotate(-6deg); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .step::after { transform: scaleX(1); transition: none; }
+  .product:hover .product-img::after, .industry:hover .industry-ic { animation: none; transition: none; }
+}
