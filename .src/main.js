@@ -138,7 +138,7 @@
     'nav.contacts': 'Контакты', 'nav.partners': 'Наши клиенты',
     'cta.manager': 'Связаться с менеджером', 'cta.toCatalog': 'Перейти в каталог', 'cta.ai': 'ИИ-консультант',
     'cta.askAi': 'Спросить у ИИ-консультанта', 'cta.contact': 'Связаться',
-    'p.cats': 'Категории', 'hv.k1': 'Для вашего продукта', 'hv.k2': 'Добавим вашему продукту', 'hv.k3': 'Для срока хранения', 'hv.k4': 'Вкус и аромат', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
+    'p.cats': 'Категории', 'hv.k1': 'Для вашего продукта', 'hv.k2': 'Добавим вашему продукту', 'hv.k3': 'Для срока хранения', 'hv.k4': 'Вкус и аромат', 'hv.k5': 'Для текстуры продукта', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
     'hero.badge': 'С 2013 года · Ташкент',
     'hero.title': 'Поставка пищевых ингредиентов',
     'hero.text': 'Качественные ингредиенты и сырьё для кондитерских и пищевых предприятий, а также предприятий по производству напитков. Доставляем по всему Узбекистану.',
@@ -237,7 +237,7 @@
     'nav.contacts': 'Contacts', 'nav.partners': 'Our Clients',
     'cta.manager': 'Contact a manager', 'cta.toCatalog': 'Go to catalog', 'cta.ai': 'AI consultant',
     'cta.askAi': 'Ask the AI consultant', 'cta.contact': 'Contact us',
-    'p.cats': 'Categories', 'hv.k1': 'For your product', 'hv.k2': 'Add to your product', 'hv.k3': 'For shelf life', 'hv.k4': 'Taste and aroma', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
+    'p.cats': 'Categories', 'hv.k1': 'For your product', 'hv.k2': 'Add to your product', 'hv.k3': 'For shelf life', 'hv.k4': 'Taste and aroma', 'hv.k5': 'For product texture', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
     'hero.badge': 'Since 2013 · Tashkent',
     'hero.title': 'Supply of Food Ingredients',
     'hero.text': 'High-quality ingredients and raw materials for confectionery, beverage and food manufacturers. Delivered across Uzbekistan.',
@@ -408,10 +408,8 @@
       if (j && j.products && j.products.length) setProducts(j.products);
     }).catch(function () {});
   }
-  var heroRelabel = function () {};
   function renderHeroTags() {
     $$('[data-cat-name]').forEach(function (el) { var n = catName(el.getAttribute('data-cat-name')); if (n) el.textContent = n; });
-    heroRelabel();
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-goto-cat]');
@@ -1274,90 +1272,6 @@
     }, { threshold: 0.5 });
     statEls.forEach(function (el) { statObs.observe(el); });
   } else statEls.forEach(runCounter);
-  // ---------- Bosh ekran animatsiyasi: parallax va kukun zarrachalari ----------
-  (function heroMotion() {
-    var stage = $('.hv-stage');
-    if (!stage) return;
-    var reduce = REDUCE, visible = true, raf = 0;
-    var orbs = $$('.hv-orb', stage), mx = 0, my = 0, cx = 0, cy = 0;
-    // Doiralarda katalog mahsulotlari: har 2.4 soniyada bittasi silliq almashadi
-    var deck = [], deckPos = 0, swapIdx = 0, swapTimer = 0;
-    function pool() { return PRODUCTS.length ? PRODUCTS : (window.CITRIC_PRODUCTS || []); }
-    function nextProduct() {
-      if (deckPos >= deck.length) {
-        deck = pool().filter(function (p) { return p.img; }).slice();
-        for (var i = deck.length - 1; i > 0; i--) { var k = Math.floor(Math.random() * (i + 1)), t = deck[i]; deck[i] = deck[k]; deck[k] = t; }
-        deckPos = 0;
-      }
-      var shown = orbs.map(function (o) { return o._pid; });
-      for (var n = 0; n < deck.length; n++) { var p = deck[deckPos++ % deck.length]; if (shown.indexOf(p.id) === -1) return p; }
-      return deck[0];
-    }
-    function findP(id) { return BY_ID[id] || pool().filter(function (p) { return p.id === id; })[0]; }
-    function setLabel(o) { var p = findP(o._pid); $('.hv-label', o).textContent = p ? (p[lang] || p.uz || '') : ''; }
-    heroRelabel = function () { orbs.forEach(setLabel); };
-    function putProduct(o, p, animate) {
-      var fl = $('.hv-float', o), img = $('img', fl);
-      o._pid = p.id;
-      if (!animate) { img.src = p.img; setLabel(o); return; }
-      var pre = new Image();
-      pre.onload = pre.onerror = function () {
-        o.classList.add('swap');
-        setTimeout(function () { img.src = p.img; setLabel(o); o.classList.remove('swap'); }, 450);
-      };
-      pre.src = p.img;
-    }
-    if (pool().length) orbs.forEach(function (o) { putProduct(o, nextProduct(), false); });
-    function swapLoop() {
-      clearTimeout(swapTimer);
-      if (reduce || !visible || document.hidden) return;
-      swapTimer = setTimeout(function () {
-        if (!orbs[0]._pid && pool().length) orbs.forEach(function (o) { putProduct(o, nextProduct(), false); });
-        else { putProduct(orbs[swapIdx % orbs.length], nextProduct(), true); swapIdx += 5; } // har safar boshqa joydagi doira
-        swapLoop();
-      }, 2400);
-    }
-    var cv = $('.hv-particles', stage), ctx = cv.getContext('2d'), parts = [], W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1);
-    function size() {
-      var r = stage.getBoundingClientRect(); W = r.width; H = r.height;
-      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.round(Math.min(70, W * H / 9000));
-      parts = [];
-      for (var i = 0; i < n; i++) parts.push({ x: Math.random() * W, y: Math.random() * H, r: .6 + Math.random() * 2.2, v: .15 + Math.random() * .45, a: .15 + Math.random() * .5, d: Math.random() * 6.28 });
-    }
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      for (var i = 0; i < parts.length; i++) {
-        var p = parts[i];
-        if (!reduce) { p.y -= p.v; p.d += .01; p.x += Math.sin(p.d) * .25; if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; } }
-        ctx.beginPath(); ctx.arc(p.x + cx * p.r * 2, p.y + cy * p.r * 2, p.r, 0, 6.283); ctx.fillStyle = 'rgba(255,255,255,' + p.a + ')'; ctx.fill();
-      }
-      // Parallax: sichqoncha tomon sekin ergashadi
-      cx += (mx - cx) * .06; cy += (my - cy) * .06;
-      for (var j = 0; j < orbs.length; j++) {
-        var dpt = +orbs[j].getAttribute('data-depth') || 1;
-        orbs[j].style.transform = 'translate3d(' + (cx * dpt * 14).toFixed(2) + 'px,' + (cy * dpt * 14).toFixed(2) + 'px,0)';
-      }
-      if (visible && !reduce) raf = requestAnimationFrame(draw);
-    }
-    size();
-    window.addEventListener('resize', function () { size(); if (reduce) draw(); });
-    stage.closest('.hero').addEventListener('mousemove', function (e) {
-      var r = stage.getBoundingClientRect();
-      mx = ((e.clientX - r.left) / r.width - .5) * 2; my = ((e.clientY - r.top) / r.height - .5) * 2;
-    });
-    if (reduce) { draw(); return; }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en) {
-        visible = en[0].isIntersecting;
-        cancelAnimationFrame(raf);
-        if (visible) raf = requestAnimationFrame(draw);
-        swapLoop();
-      }).observe(stage);
-    } else raf = requestAnimationFrame(draw);
-    swapLoop();
-    document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden && visible) raf = requestAnimationFrame(draw); swapLoop(); });
-  })();
   var progressEl = $('#scrollProgress');
   function onScroll() {
     if (progressEl) {
