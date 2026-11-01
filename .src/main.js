@@ -137,7 +137,7 @@
     'nav.company': 'Компания', 'nav.catalog': 'Каталог', 'nav.certs': 'Сертификаты', 'nav.delivery': 'Доставка',
     'nav.contacts': 'Контакты', 'nav.partners': 'Наши клиенты',
     'cta.manager': 'Связаться с менеджером', 'cta.toCatalog': 'Перейти в каталог', 'cta.ai': 'ИИ-консультант',
-    'cta.askAi': 'Спросить у ИИ-консультанта', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
+    'cta.askAi': 'Спросить у ИИ-консультанта', 'cta.contact': 'Связаться', 'cta.catalog': 'Каталог продукции', 'cta.more': 'Подробнее',
     'hero.badge': 'С 2013 года · Ташкент',
     'hero.title': 'Поставка пищевых ингредиентов',
     'hero.text': 'Качественные ингредиенты и сырьё для кондитерских и пищевых предприятий, а также предприятий по производству напитков. Доставляем по всему Узбекистану.',
@@ -235,7 +235,7 @@
     'nav.company': 'Company', 'nav.catalog': 'Catalog', 'nav.certs': 'Certificates', 'nav.delivery': 'Delivery',
     'nav.contacts': 'Contacts', 'nav.partners': 'Our Clients',
     'cta.manager': 'Contact a manager', 'cta.toCatalog': 'Go to catalog', 'cta.ai': 'AI consultant',
-    'cta.askAi': 'Ask the AI consultant', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
+    'cta.askAi': 'Ask the AI consultant', 'cta.contact': 'Contact us', 'cta.catalog': 'Product catalog', 'cta.more': 'Learn more',
     'hero.badge': 'Since 2013 · Tashkent',
     'hero.title': 'Supply of Food Ingredients',
     'hero.text': 'High-quality ingredients and raw materials for confectionery, beverage and food manufacturers. Delivered across Uzbekistan.',
@@ -716,6 +716,7 @@
     lockScroll(true);
   }
   function closeCart() {
+    if (!cartEl.classList.contains('open')) return;
     cartEl.classList.remove('open');
     cartEl.setAttribute('aria-hidden', 'true');
     lockScroll(false);
@@ -1110,7 +1111,15 @@
     $('#lbCap').textContent = CERTS[lbIdx].type[lang] + ' — ' + CERTS[lbIdx].name[lang];
   }
   function openLb(i) { showCert(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); lockScroll(true); }
-  function closeLb() { if (!lb.classList.contains('open')) return; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lockScroll(false); }
+  function closeLb() { if (!lb.classList.contains('open')) return; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); if (!certsModal.classList.contains('open')) lockScroll(false); }
+  // ---------- Sertifikatlar oynasi ----------
+  var certsModal = $('#certificates');
+  function openCerts() { certsModal.classList.add('open'); certsModal.setAttribute('aria-hidden', 'false'); lockScroll(true); setTimeout(function () { $('.certs-close', certsModal).focus(); }, 300); }
+  function closeCerts() { if (!certsModal.classList.contains('open')) return; certsModal.classList.remove('open'); certsModal.setAttribute('aria-hidden', 'true'); lockScroll(false); }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-open-certs]')) { e.preventDefault(); openCerts(); }
+    if (e.target.closest('[data-close-certs]')) closeCerts();
+  });
   $('#certsGrid').addEventListener('click', function (e) {
     var c = e.target.closest('.cert');
     if (c) openLb(+c.getAttribute('data-cert'));
@@ -1199,7 +1208,13 @@
     if (e.target.closest('[data-close-cart]')) closeCart();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closePm(); closeChat(); closeCart(); closeLb(); langDd.classList.remove('open'); }
+    // Esc: faqat eng ustdagi oyna yopiladi
+    if (e.key === 'Escape') {
+      if (lb.classList.contains('open')) closeLb();
+      else if (certsModal.classList.contains('open')) closeCerts();
+      else { closePm(); closeChat(); closeCart(); }
+      langDd.classList.remove('open');
+    }
     if (e.key === 'Enter' && e.target.matches && e.target.matches('.product[data-pid]')) {
       if (e.target.closest('#pm')) { openPm(+e.target.getAttribute('data-pid')); pmScroll.scrollTop = 0; }
       else openPm(+e.target.getAttribute('data-pid'));

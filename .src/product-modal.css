@@ -262,3 +262,34 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
   .step::after { transform: scaleX(1); transition: none; }
   .product:hover .product-img::after, .industry:hover .industry-ic { animation: none; transition: none; }
 }
+/* ---------- Katalog: Sertifikatlar tugmasi ---------- */
+.products-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.btn-certs { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid rgba(112,179,47,.45); background: var(--green-softer); color: var(--green-dark); font: inherit; font-weight: 700; font-size: 14.5px;
+  transition: background .25s, color .25s, border-color .25s, transform .25s var(--ease), box-shadow .25s; }
+.btn-certs .i { width: 18px; height: 18px; }
+.btn-certs:hover { background: var(--green); color: #fff; border-color: var(--green); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(112,179,47,.3); }
+
+/* ---------- Sertifikatlar oynasi ---------- */
+.certs-modal { position: fixed; inset: 0; z-index: 260; display: flex; align-items: center; justify-content: center; padding: 24px;
+  visibility: hidden; opacity: 0; transition: opacity .3s, visibility .3s; }
+.certs-modal.open { visibility: visible; opacity: 1; }
+.certs-backdrop { position: absolute; inset: 0; background: rgba(10,24,15,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.certs-panel { position: relative; width: 100%; max-width: 1180px; max-height: calc(100vh - 48px); overflow-y: auto; overscroll-behavior: contain;
+  background: #fff; border-radius: 24px; padding: 40px 40px 36px; box-shadow: 0 30px 80px rgba(10,24,15,.3);
+  transform: translateY(20px) scale(.97); transition: transform .4s var(--ease); scrollbar-width: none; }
+.certs-panel::-webkit-scrollbar { display: none; }
+.certs-modal.open .certs-panel { transform: none; }
+.certs-panel .section-head { margin-bottom: 28px; padding-right: 50px; }
+.certs-close { position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer; z-index: 2;
+  background: var(--green-soft); color: var(--ink); display: grid; place-items: center; transition: background .25s, color .25s, transform .3s; }
+.certs-close:hover { background: var(--green); color: #fff; transform: rotate(90deg); }
+.certs-close .i { width: 20px; height: 20px; }
+@media (max-width: 760px) {
+  .certs-modal { padding: 0; }
+  .certs-panel { max-height: 100vh; height: 100%; border-radius: 0; padding: 64px 16px 28px; }
+  .products-actions { gap: 12px; }
+}
+/* Footer manzil havolasi */
+.footer li a { color: inherit; display: inline-flex; align-items: center; gap: inherit; text-decoration: none; }
+.footer li a:hover { color: var(--green); }
