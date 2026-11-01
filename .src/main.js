@@ -1278,6 +1278,7 @@
     if (!stage) return;
     var items = $$('.hx-item', stage), dots = $$('.hx-nav button'), cur = 0, timer = 0, DUR = 6500;
     function go(n) {
+      if (stage.classList.contains('gl')) return; // 3D modellar yuklangan — boshqaruv hero3d.js da
       n = (n + items.length) % items.length;
       if (n === cur) return;
       var old = items[cur];
@@ -1288,7 +1289,7 @@
       dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
       plan();
     }
-    function plan() { clearTimeout(timer); if (!REDUCE && !document.hidden) timer = setTimeout(function () { go(cur + 1); }, DUR); }
+    function plan() { clearTimeout(timer); if (!REDUCE && !document.hidden && !stage.classList.contains('gl')) timer = setTimeout(function () { go(cur + 1); }, DUR); }
     dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
     document.addEventListener('visibilitychange', plan);
     // Chuqurlik effekti: render sichqoncha tomon, yorug'lik teskari tomonga siljiydi
