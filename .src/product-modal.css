@@ -361,10 +361,22 @@ h1, h2, h3, h4 { font-weight: 700; }
 .hero-3d .hero-visual { position: absolute; z-index: 0; top: var(--header-h); right: 0; bottom: 0; width: 40%; background: radial-gradient(90% 70% at 30% 45%, #ffbf3a 0%, var(--orange) 45%, #f07a00 100%); }
 .hero-3d .hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 0% 50%, rgba(255,255,255,.22), transparent 70%); }
 
-/* 3D kanvas — panel chegarasini kesib o'tadi */
-.h3d { position: absolute; z-index: 2; top: var(--header-h); bottom: 0; left: 34%; right: 0; --anchor: .4; pointer-events: none; opacity: 0; transition: opacity 1s ease; }
-.h3d.ready { opacity: 1; }
-.h3d canvas { display: block; width: 100%; height: 100%; }
+/* Mahsulot renderlari — panel chegarasini kesib o'tadi, navbatma-navbat almashadi */
+.hx { position: absolute; z-index: 2; top: var(--header-h); bottom: 0; left: 34%; right: 0; --anchor: 40%; pointer-events: none; }
+.hx-glow { position: absolute; left: var(--anchor); top: 52%; width: 62%; aspect-ratio: 1; transform: translate(-50%, -50%) translate(calc(var(--px, 0px) * -1), calc(var(--py, 0px) * -1)); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,214,120,.25) 45%, transparent 75%); filter: blur(6px); animation: hpGlow 7s ease-in-out infinite; }
+.hx-move { position: absolute; inset: 0; transform: translate(var(--px, 0px), var(--py, 0px)); }
+.hx-item { position: absolute; left: var(--anchor); top: 50%; height: 96%; aspect-ratio: 2 / 3; margin: 0; opacity: 0; filter: blur(10px); transform: translate(-50%, -46%) scale(.84) rotate(-7deg); transition: opacity .9s ease, filter .9s ease, transform 1.2s cubic-bezier(.16,.9,.24,1); will-change: transform, opacity; }
+.hx-item.is-on { opacity: 1; filter: none; transform: translate(-50%, -50%); }
+.hx-item.is-out { opacity: 0; filter: blur(12px); transform: translate(-50%, -57%) scale(1.1) rotate(6deg); transition-duration: .7s, .7s, .9s; }
+.hx-item img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 34px 38px rgba(120, 58, 0, .22)); animation: hpFloat 6.5s ease-in-out infinite; }
+.hx-nav { position: absolute; z-index: 4; right: 40px; bottom: 30px; display: flex; gap: 8px; }
+.hx-nav button { position: relative; width: 44px; height: 4px; padding: 0; border: 0; border-radius: 2px; background: rgba(255,255,255,.4); cursor: pointer; overflow: hidden; }
+.hx-nav button::before { content: ""; position: absolute; inset: -10px 0; }
+.hx-nav button::after { content: ""; position: absolute; inset: 0; transform: scaleX(0); transform-origin: 0 50%; background: #fff; }
+.hx-nav button.on::after { animation: hpProg 6.5s linear forwards; }
+@keyframes hpFloat { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(1.2deg); } }
+@keyframes hpGlow { 0%, 100% { opacity: .85; } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); } }
+@keyframes hpProg { to { transform: scaleX(1); } }
 
 /* Izohlar */
 .hero-tags { position: absolute; z-index: 3; top: var(--header-h); left: 0; right: 0; bottom: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
@@ -401,16 +413,19 @@ h1, h2, h3, h4 { font-weight: 700; }
   .hero-tags { display: none; }
   .hero-3d .hero-inner { max-width: min(460px, 44vw); }
   .hero-3d .hero-visual { width: 44%; }
-  .h3d { left: 42%; --anchor: .55; }
+  .hx { left: 40%; --anchor: 55%; }
 }
 @media (max-width: 900px) {
-  .hero-3d .hero-wrap { display: block; min-height: 0; padding: 0 0 380px; }
+  .hero-3d .hero-wrap { display: block; min-height: 0; padding: 0 0 400px; }
   .hero-3d .hero-inner { max-width: none; padding: 34px 16px 30px; }
-  .hero-3d .hero-visual { top: auto; bottom: 0; width: 100%; height: 380px; }
-  .h3d { top: auto; bottom: 0; left: 0; height: 380px; --anchor: .5; }
+  .hero-3d .hero-visual { top: auto; bottom: 0; width: 100%; height: 400px; }
+  .hx { top: auto; bottom: 0; left: 0; height: 400px; --anchor: 50%; }
+  .hx-nav { right: 50%; transform: translateX(50%); bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-tag, .tag-ln path, .tag-ln circle { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  .hx-item img, .hx-glow { animation: none; }
+  .hx-item { transition: opacity .4s; }
 }
 
 /* Katta ekranlarda sayt biroz uzoqroqdan ko'rinadi (umumiy masshtab 90%) */
