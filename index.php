@@ -3402,7 +3402,7 @@ h1, h2, h3, h4 { font-weight: 700; }
 
 <section class="section why">
   <div class="container">
-    <div class="why-media reveal"><img src="<?= ASSETS ?>why.webp" alt="Limon kislotasi va oziq-ovqat ingrediyentlari" data-i18n-alt="a.why" loading="lazy"></div>
+    <div class="why-media reveal"><img src="/img/why.webp" alt="Limon kislotasi va oziq-ovqat ingrediyentlari" data-i18n-alt="a.why" loading="lazy"></div>
     <div class="reveal d1">
       <span class="eyebrow" data-i18n="w.eyebrow">Nima uchun biz?</span>
       <h2 class="section-title" data-i18n="w.title">Nega aynan CITRIC.UZ?</h2>
@@ -3487,7 +3487,7 @@ h1, h2, h3, h4 { font-weight: 700; }
           <button type="button" class="t-arrow" id="tNext" aria-label="Keyingi" data-i18n-aria="a.next"><svg class="i"><use href="#i-right"/></svg></button>
         </div>
       </div>
-      <div class="t-photo reveal d2"><img src="<?= ASSETS ?>testimonial.webp" alt="" loading="lazy"></div>
+      <div class="t-photo reveal d2"><img src="/img/testimonial.webp" alt="" loading="lazy"></div>
     </div>
   </div>
 </section>
