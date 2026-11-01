@@ -60,7 +60,7 @@ function cfg(?string $key = null)
             'company' => [
                 'name'    => 'CITRIC.UZ',
                 'phone'   => '+998 95 154 88 88',
-                'email'   => 'sales@citric.uz',
+                'email'   => 'info@citric.uz',
                 'address' => "Toshkent, O'zbekiston",
                 'hours'   => 'Dushanba–Shanba, 9:00–18:00',
             ],
@@ -1426,7 +1426,7 @@ function render_report_pdf(array $d): string
     $M = 40; $W = CitricPdf::W - 2 * $M;
     $footer = function () use ($pdf, $M, $W, $MUT, $LINE, $d) {
         $pdf->line($M, 806, $M + $W, 806, $LINE);
-        $pdf->text($M, 820, 'CITRIC.UZ  ·  +998 95 154 88 88  ·  sales@citric.uz  ·  t.me/citricuz', 8, false, $MUT);
+        $pdf->text($M, 820, 'CITRIC.UZ  ·  +998 95 154 88 88  ·  info@citric.uz  ·  t.me/citricuz', 8, false, $MUT);
         $pdf->text($M + $W, 820, 'Sahifa ' . $pdf->pageNo(), 8, false, $MUT, 'R');
     };
     $pdf->addPage();
@@ -3516,7 +3516,7 @@ h1, h2, h3, h4 { font-weight: 700; }
       <p class="section-sub" data-i18n="ct.sub">Ariza qoldiring — menejerimiz tez orada siz bilan bog'lanib, narxlar va yetkazib berish shartlari haqida ma'lumot beradi.</p>
       <div class="contact-info">
         <a class="contact-row" href="tel:+998951548888"><div class="ic"><svg class="i"><use href="#i-phone"/></svg></div><div><small data-i18n="ct.phone">Telefon</small><strong>+998 95 154 88 88</strong></div></a>
-        <a class="contact-row" href="mailto:sales@citric.uz"><div class="ic"><svg class="i"><use href="#i-mail"/></svg></div><div><small>Email</small><strong>sales@citric.uz</strong></div></a>
+        <a class="contact-row" href="mailto:info@citric.uz"><div class="ic"><svg class="i"><use href="#i-mail"/></svg></div><div><small>Email</small><strong>info@citric.uz</strong></div></a>
         <a class="contact-row" href="https://yandex.uz/maps/?ll=69.243529%2C41.363975&amp;z=16&amp;oid=144953549297&amp;ol=biz" target="_blank" rel="noopener"><div class="ic"><svg class="i"><use href="#i-pin"/></svg></div><div><small data-i18n="ct.addr">Manzil</small><strong data-i18n="ct.addrv">Toshkent, O'zbekiston</strong></div></a>
         <div class="contact-row"><div class="ic"><svg class="i"><use href="#i-clock"/></svg></div><div><small data-i18n="ct.hours">Ish vaqti</small><strong data-i18n="ct.hoursv">Du–Sha, 9:00 – 18:00</strong></div></div>
       </div>
@@ -3551,7 +3551,7 @@ h1, h2, h3, h4 { font-weight: 700; }
       <h4 data-i18n="ft.contact">Bog'lanish</h4>
       <ul class="footer-contact">
         <li><svg class="i"><use href="#i-phone"/></svg><a href="tel:+998951548888">+998 95 154 88 88</a></li>
-        <li><svg class="i"><use href="#i-mail"/></svg><a href="mailto:sales@citric.uz">sales@citric.uz</a></li>
+        <li><svg class="i"><use href="#i-mail"/></svg><a href="mailto:info@citric.uz">info@citric.uz</a></li>
         <li><a href="https://yandex.uz/maps/?ll=69.243529%2C41.363975&amp;z=16&amp;oid=144953549297&amp;ol=biz" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg><span data-i18n="ct.addrv">Toshkent, O'zbekiston</span></a></li>
         <li><svg class="i"><use href="#i-clock"/></svg><span data-i18n="ct.hoursv">Du–Sha, 9:00 – 18:00</span></li>
       </ul>

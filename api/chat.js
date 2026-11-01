@@ -5,7 +5,7 @@ const { clean, normPhone, sendLead } = require('./_telegram');
 const CATALOG = require('./_catalog.json'); // .src/build-vercel.php yaratadi
 
 const COMPANY = {
-  phone: '+998 95 154 88 88', email: 'sales@citric.uz', address: "Toshkent, O'zbekiston", hours: 'Dushanba–Shanba, 9:00–18:00',
+  phone: '+998 95 154 88 88', email: 'info@citric.uz', address: "Toshkent, O'zbekiston", hours: 'Dushanba–Shanba, 9:00–18:00',
 };
 const BY_ID = new Map(CATALOG.products.map((p) => [p.id, p]));
 const CATALOG_JSON = JSON.stringify(CATALOG.products.map((p) => ({
