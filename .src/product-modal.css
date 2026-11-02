@@ -437,3 +437,34 @@ h1, h2, h3, h4 { font-weight: 700; }
   .lightbox img { max-height: calc(100vh / .9 - 110px); }
   .certs-panel { max-height: calc(100vh / .9 - 48px); }
 }
+
+/* ---------- Biz haqimizda: jonli import xaritasi ---------- */
+.about-media .main-map { position: relative; aspect-ratio: 5 / 4; background: radial-gradient(120% 100% at 58% 58%, #ffffff 0%, #f4faee 55%, #e7f2da 100%); border: 1px solid var(--line); }
+.imap { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.imap-head { position: absolute; z-index: 1; left: 22px; top: 18px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green-dark, #4f8a1c); }
+.imap-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(255,168,0,.6); animation: imapBeat 2s ease-out infinite; }
+.imap-grid { fill: rgba(112,179,47,.28); }
+.imap .route-base { fill: none; stroke: rgba(255,168,0,.28); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 420; stroke-dashoffset: 420; transition: stroke-dashoffset 1.4s cubic-bezier(.6,0,.2,1); }
+.imap .route { fill: none; stroke: var(--orange); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 8; opacity: 0; transition: opacity .6s; animation: imapFlow 1.1s linear infinite; }
+.imap .pkt { fill: var(--green); stroke: #fff; stroke-width: 1.5; opacity: 0; transition: opacity .5s; filter: drop-shadow(0 0 4px rgba(112,179,47,.7)); }
+.imap .node { opacity: 0; transition: opacity .5s; }
+.imap .node > * { transform-box: fill-box; }
+.imap .node-ring { fill: #fff; stroke: var(--orange); stroke-width: 2; filter: drop-shadow(0 4px 8px rgba(120,60,0,.18)); }
+.imap .node text { font: 700 12.5px Manrope, system-ui, sans-serif; fill: var(--ink); text-anchor: middle; dominant-baseline: middle; }
+.imap .hub-ring { fill: #fff; stroke: var(--green); stroke-width: 3; filter: drop-shadow(0 6px 14px rgba(79,138,28,.3)); }
+.imap .hub-pulse { fill: rgba(112,179,47,.35); transform-box: fill-box; transform-origin: center; animation: imapPulse 2.6s ease-out infinite; }
+.imap .hub-pulse.d2 { animation-delay: 1.3s; }
+.imap .hub-name { font: 800 14px Manrope, system-ui, sans-serif; fill: var(--ink); text-anchor: middle; }
+.imap .hub-sub { font: 800 10px Manrope, system-ui, sans-serif; letter-spacing: .2em; fill: var(--orange); text-anchor: middle; }
+.about-media.in .imap .route-base { stroke-dashoffset: 0; }
+.about-media.in .imap .route { opacity: .95; }
+.about-media.in .imap .pkt { opacity: 1; }
+.about-media.in .imap .node { opacity: 1; }
+.imap .r1, .imap .n1, .imap .p1 { transition-delay: .15s; } .imap .r2, .imap .n2, .imap .p2 { transition-delay: .3s; }
+.imap .r3, .imap .n3, .imap .p3 { transition-delay: .45s; } .imap .r4, .imap .n4, .imap .p4 { transition-delay: .6s; }
+.imap .route.r0, .imap .route.r1, .imap .route.r2, .imap .route.r3, .imap .route.r4, .imap .pkt { transition-delay: 1.2s; }
+@keyframes imapFlow { to { stroke-dashoffset: -20; } }
+@keyframes imapPulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes imapBeat { 0% { box-shadow: 0 0 0 0 rgba(255,168,0,.6); } 100% { box-shadow: 0 0 0 10px rgba(255,168,0,0); } }
+@media (prefers-reduced-motion: reduce) { .imap .route, .imap .hub-pulse, .imap-dot { animation: none; } .imap .pkt { display: none; } }
+@media (max-width: 760px) { .about-media .about-badge { top: -18px; bottom: auto; right: 12px; } }
