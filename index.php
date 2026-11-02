@@ -3064,8 +3064,8 @@ h1, h2, h3, h4 { font-weight: 700; }
 .hero-3d .btn-ghost-light:hover { color: #fff; background: var(--green); border-color: var(--green); }
 
 /* To'q sariq panel */
-.hero-3d .hero-visual { position: absolute; z-index: 0; top: var(--header-h); right: 0; bottom: 0; width: 40%; background: radial-gradient(90% 70% at 30% 45%, #ffbf3a 0%, var(--orange) 45%, #f07a00 100%); }
-.hero-3d .hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 0% 50%, rgba(255,255,255,.22), transparent 70%); }
+.hero-3d .hero-visual { position: absolute; z-index: 0; top: var(--header-h); right: 0; bottom: 0; width: 40%; background: linear-gradient(180deg, #b84505 0%, #cd5609 38%, #e0700f 72%, #ec8a17 100%); }
+.hero-3d .hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 55% at 85% 0%, rgba(120,35,0,.28), transparent 70%); }
 
 /* Mahsulot renderlari — panel chegarasini kesib o'tadi, navbatma-navbat almashadi */
 .hx { position: absolute; z-index: 2; top: var(--header-h); bottom: 0; left: 34%; right: 0; --anchor: 40%; pointer-events: none; }
