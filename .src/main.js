@@ -1274,41 +1274,6 @@
     }, { threshold: 0.5 });
     statEls.forEach(function (el) { statObs.observe(el); });
   } else statEls.forEach(runCounter);
-  // ---------- Bosh ekran: mahsulot renderlari navbatma-navbat almashadi, sichqonchaga ergashadi ----------
-  (function heroSlides() {
-    var stage = $('.hx');
-    if (!stage) return;
-    var items = $$('.hx-item', stage), dots = $$('.hx-nav button'), cur = 0, timer = 0, DUR = 6500;
-    function go(n) {
-      if (stage.classList.contains('gl')) return; // 3D modellar yuklangan — boshqaruv hero3d.js da
-      n = (n + items.length) % items.length;
-      if (n === cur) return;
-      var old = items[cur];
-      old.classList.remove('is-on'); old.classList.add('is-out');
-      setTimeout(function () { old.classList.remove('is-out'); }, 1000);
-      cur = n;
-      items[cur].classList.add('is-on');
-      dots.forEach(function (d, i) { d.classList.toggle('on', i === cur); });
-      plan();
-    }
-    function plan() { clearTimeout(timer); if (!REDUCE && !document.hidden && !stage.classList.contains('gl')) timer = setTimeout(function () { go(cur + 1); }, DUR); }
-    dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
-    document.addEventListener('visibilitychange', plan);
-    // Chuqurlik effekti: render sichqoncha tomon, yorug'lik teskari tomonga siljiydi
-    var hero = stage.closest('.hero'), mx = 0, my = 0, cx = 0, cy = 0, raf = 0;
-    function tick() {
-      cx += (mx - cx) * .08; cy += (my - cy) * .08;
-      stage.style.setProperty('--px', (cx * 26).toFixed(2) + 'px');
-      stage.style.setProperty('--py', (cy * 18).toFixed(2) + 'px');
-      raf = Math.abs(mx - cx) + Math.abs(my - cy) > .002 ? requestAnimationFrame(tick) : 0;
-    }
-    if (!REDUCE) hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5;
-      if (!raf) raf = requestAnimationFrame(tick);
-    });
-    plan();
-  })();
   var progressEl = $('#scrollProgress');
   function onScroll() {
     if (progressEl) {

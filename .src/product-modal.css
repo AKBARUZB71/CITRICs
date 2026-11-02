@@ -343,97 +343,12 @@ h1, h2, h3, h4 { font-weight: 700; }
 /* Chat tugmasi: ixcham, to'lqinsiz */
 .chat-fab { height: 56px; min-width: 56px; }
 .chat-fab::before { display: none; }
-.chat-fab:hover { transform: none; }/* =====================================================================
-   BOSH EKRAN — 3D sahna (soyuzopttorg uslubida): chapda matn, o'rtada
-   3D obyekt panel chegarasida, ikki tomonda egri chiziqli izohlar
-   ===================================================================== */
-.hero.hero-3d { position: relative; display: block; min-height: 0; padding: var(--header-h) 0 0; background: #fff; overflow: hidden; }
-.hero-3d .hero-wrap { position: static; max-width: 1400px; margin: 0 auto; padding: 0 32px; min-height: min(720px, calc(100vh - var(--header-h))); display: flex; align-items: center; }
-.hero-3d .hero-inner { position: relative; z-index: 4; width: 100%; max-width: min(430px, 27vw); padding: 64px 0; margin: 0; }
-.hero-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
-.hero-kicker::before { content: ""; width: 28px; height: 2px; background: var(--orange); }
-.hero-3d h1 { color: var(--ink); text-shadow: none; max-width: none; font-size: clamp(30px, 2.7vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; text-transform: uppercase; }
-.hero-3d .hero-text { color: var(--text); max-width: 420px; }
-.hero-3d .btn-ghost-light { color: var(--ink); background: #fff; border-color: var(--line); }
-.hero-3d .btn-ghost-light:hover { color: #fff; background: var(--green); border-color: var(--green); }
-
-/* To'q sariq panel */
-.hero-3d .hero-visual { position: absolute; z-index: 0; top: var(--header-h); right: 0; bottom: 0; width: 40%; background: linear-gradient(180deg, #b84505 0%, #cd5609 38%, #e0700f 72%, #ec8a17 100%); }
-.hero-3d .hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 55% at 85% 0%, rgba(120,35,0,.28), transparent 70%); }
-
-/* Mahsulot renderlari — panel chegarasini kesib o'tadi, navbatma-navbat almashadi */
-.hx { position: absolute; z-index: 2; top: var(--header-h); bottom: 0; left: 34%; right: 0; --anchor: 40%; pointer-events: none; }
-.hx-glow { position: absolute; left: var(--anchor); top: 52%; width: 62%; aspect-ratio: 1; transform: translate(-50%, -50%) translate(calc(var(--px, 0px) * -1), calc(var(--py, 0px) * -1)); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,214,120,.25) 45%, transparent 75%); filter: blur(6px); animation: hpGlow 7s ease-in-out infinite; }
-.hx-move { position: absolute; inset: 0; transform: translate(var(--px, 0px), var(--py, 0px)); }
-.hx-item { position: absolute; left: var(--anchor); top: 50%; height: 96%; aspect-ratio: 2 / 3; margin: 0; opacity: 0; filter: blur(10px); transform: translate(-50%, -46%) scale(.84) rotate(-7deg); transition: opacity .9s ease, filter .9s ease, transform 1.2s cubic-bezier(.16,.9,.24,1); will-change: transform, opacity; }
-.hx-item.is-on { opacity: 1; filter: none; transform: translate(-50%, -50%); }
-.hx-item.is-out { opacity: 0; filter: blur(12px); transform: translate(-50%, -57%) scale(1.1) rotate(6deg); transition-duration: .7s, .7s, .9s; }
-.hx-item img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 34px 38px rgba(120, 58, 0, .22)); animation: hpFloat 6.5s ease-in-out infinite; }
-.hx-gl { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
-.hx.gl .hx-item { opacity: 0 !important; }
-.hx-nav { position: absolute; z-index: 4; right: 40px; bottom: 30px; display: flex; gap: 8px; }
-.hx-nav button { position: relative; width: 44px; height: 4px; padding: 0; border: 0; border-radius: 2px; background: rgba(255,255,255,.4); cursor: pointer; overflow: hidden; }
-.hx-nav button::before { content: ""; position: absolute; inset: -10px 0; }
-.hx-nav button::after { content: ""; position: absolute; inset: 0; transform: scaleX(0); transform-origin: 0 50%; background: #fff; }
-.hx-nav button.on::after { animation: hpProg 6.5s linear forwards; }
-@keyframes hpFloat { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(1.2deg); } }
-@keyframes hpGlow { 0%, 100% { opacity: .85; } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); } }
-@keyframes hpProg { to { transform: scaleX(1); } }
-
-/* Izohlar */
-.hero-tags { position: absolute; z-index: 3; top: var(--header-h); left: 0; right: 0; bottom: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
-.hero-tag { position: absolute; transform: translateY(-50%); pointer-events: auto; opacity: 0; animation: tagIn .7s cubic-bezier(.2,.8,.2,1) forwards; }
-.hero-tag button { display: flex; align-items: center; gap: 6px; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
-.tag-txt { display: block; }
-.hero-tag small { display: block; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; line-height: 1.35; }
-.hero-tag b { display: block; margin-top: 3px; font-size: 17px; line-height: 1.12; text-transform: uppercase; font-weight: 800; letter-spacing: .01em; max-width: 210px; transition: color .25s; }
-.tag-ln { flex: none; width: 106px; height: 44px; overflow: visible; }
-.tag-ln path { fill: none; stroke-width: 1.6; stroke-dasharray: 160; stroke-dashoffset: 160; animation: tagLn 1s .2s cubic-bezier(.6,0,.2,1) forwards; animation-delay: inherit; }
-.tag-ln circle { stroke-width: 2; opacity: 0; animation: tagDot .4s forwards; }
-/* Chap tomon: oq fonda, to'q sariq */
-.hero-tag.l1, .hero-tag.l2, .hero-tag.l3 { right: 51%; text-align: right; }
-.hero-tag.l1 { top: 20%; animation-delay: .9s; } .hero-tag.l2 { top: 47%; animation-delay: 1.05s; margin-right: 22px; } .hero-tag.l3 { top: 74%; animation-delay: 1.2s; }
-.hero-tag.l1 small, .hero-tag.l2 small, .hero-tag.l3 small { color: var(--muted); }
-.hero-tag.l1 b, .hero-tag.l2 b, .hero-tag.l3 b { color: var(--orange); margin-left: auto; }
-.hero-tag.l1 path, .hero-tag.l2 path, .hero-tag.l3 path { stroke: var(--orange); }
-.hero-tag.l1 circle, .hero-tag.l2 circle, .hero-tag.l3 circle { fill: #fff; stroke: var(--orange); }
-/* O'ng tomon: to'q sariq panelda, oq */
-.hero-tag.r1, .hero-tag.r2 { left: 75%; text-align: left; }
-.hero-tag.r1 { top: 34%; animation-delay: 1.35s; } .hero-tag.r2 { top: 66%; animation-delay: 1.5s; margin-left: 18px; }
-.hero-tag.r1 small, .hero-tag.r2 small { color: rgba(255,255,255,.88); }
-.hero-tag.r1 b, .hero-tag.r2 b { color: #fff; text-shadow: 0 2px 12px rgba(150,60,0,.25); }
-.hero-tag.r1 path, .hero-tag.r2 path { stroke: #fff; }
-.hero-tag.r1 circle, .hero-tag.r2 circle { fill: var(--orange); stroke: #fff; }
-.hero-tag button:hover b { color: var(--green); }
-.hero-tag.r1 button:hover b, .hero-tag.r2 button:hover b { color: #16220e; }
-.hero-tag button:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; border-radius: 4px; }
-@keyframes tagIn { from { opacity: 0; transform: translateY(-50%) translateY(10px); } to { opacity: 1; transform: translateY(-50%); } }
-@keyframes tagLn { to { stroke-dashoffset: 0; } }
-@keyframes tagDot { to { opacity: 1; } }
-
-@media (max-width: 1240px) {
-  .hero-tags { display: none; }
-  .hero-3d .hero-inner { max-width: min(460px, 44vw); }
-  .hero-3d .hero-visual { width: 44%; }
-  .hx { left: 40%; --anchor: 55%; }
-}
-@media (max-width: 900px) {
-  .hero-3d .hero-wrap { display: block; min-height: 0; padding: 0 0 400px; }
-  .hero-3d .hero-inner { max-width: none; padding: 34px 16px 30px; }
-  .hero-3d .hero-visual { top: auto; bottom: 0; width: 100%; height: 400px; }
-  .hx { top: auto; bottom: 0; left: 0; height: 400px; --anchor: 50%; }
-  .hx-nav { right: 50%; transform: translateX(50%); bottom: 16px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-tag, .tag-ln path, .tag-ln circle { animation: none; opacity: 1; stroke-dashoffset: 0; }
-  .hx-item img, .hx-glow { animation: none; }
-  .hx-item { transition: opacity .4s; }
-}
+.chat-fab:hover { transform: none; }
 
 /* Katta ekranlarda sayt biroz uzoqroqdan ko'rinadi (umumiy masshtab 90%) */
 @media (min-width: 1200px) {
   html { zoom: .9; }
-  .hero-3d .hero-wrap { min-height: min(720px, calc(100vh / .9 - var(--header-h))); }
+  .hero { min-height: min(780px, calc(100vh / .9)); }
   .lightbox img { max-height: calc(100vh / .9 - 110px); }
   .certs-panel { max-height: calc(100vh / .9 - 48px); }
 }
@@ -468,3 +383,9 @@ h1, h2, h3, h4 { font-weight: 700; }
 @keyframes imapBeat { 0% { box-shadow: 0 0 0 0 rgba(255,168,0,.6); } 100% { box-shadow: 0 0 0 10px rgba(255,168,0,0); } }
 @media (prefers-reduced-motion: reduce) { .imap .route, .imap .hub-pulse, .imap-dot { animation: none; } .imap .pkt { display: none; } }
 @media (max-width: 760px) { .about-media .about-badge { top: -18px; bottom: auto; right: 12px; } }
+
+/* Haqiqiy logotip: rasm ustida va xaritada */
+.why-media { position: relative; }
+.why-media .why-logo { position: absolute; z-index: 2; left: 18px; bottom: 18px; display: block; padding: 10px 16px; background: rgba(255,255,255,.94); border-radius: 8px; box-shadow: 0 10px 26px -10px rgba(0,0,0,.35); backdrop-filter: blur(6px); }
+.why-media .why-logo img { display: block; width: auto; height: 38px; aspect-ratio: auto; object-fit: contain; }
+.imap .hub-logo { opacity: .98; }
